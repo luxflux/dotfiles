@@ -6,7 +6,7 @@ call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'"
+Bundle 'gmarik/vundle'
 
 " color themes
 Bundle 'chriskempson/vim-tomorrow-theme'
@@ -29,7 +29,7 @@ Bundle 'wting/rust.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/commentary'
+Bundle 'tpope/vim-commentary'
 Bundle 'kien/ctrlp.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'luxflux/vim-git-inline-diff'
@@ -40,6 +40,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'fholgado/minibufexpl.vim'
 Bundle 'bufkill.vim'
 Bundle 'trailing-whitespace'
+Bundle 'xolox/vim-misc'
 
 """ testing
 Bundle 'thoughtbot/vim-rspec'
