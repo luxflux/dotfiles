@@ -282,4 +282,8 @@ endfunction
 iab REFS <C-R>=GitRedmineIssue('false')<CR>
 iab FIXES <C-R>=GitRedmineIssue('true')<CR>
 
+" fix whitespaces before writing the buffer
 autocmd BufWritePre * :FixWhitespace
+
+" enable line wrapping in the quickfix window
+autocmd FileType qf setlocal wrap linebreak
