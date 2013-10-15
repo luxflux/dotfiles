@@ -15,6 +15,10 @@ Bootstrap zsh
 
     rake boostrap:zsh
 
+Bootstrap tmux
+
+    rake bootstrap:tmux
+
 Link the dotfiles
 
     rake link

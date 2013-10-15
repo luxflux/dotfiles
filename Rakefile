@@ -53,4 +53,9 @@ namespace :bootstrap do
       sh 'git submodule update'
     end
   end
+
+  desc "Bootstrap tmux"
+  task :tmux do
+    sh 'brew install reattach-to-user-namespace'
+  end
 end
