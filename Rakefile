@@ -22,3 +22,23 @@ task :install do
     sh "ln -s #{install_dir}/#{file_or_dir}"
   end
 end
+
+namespace :bootstrap do
+  desc "Bootstrap vim"
+  task :vim do
+    bundle_dir = File.join('.vim', 'bundle')
+    vundle_dir = File.join(bundle_dir, 'vundle')
+    sh "git clone https://github.com/gmarik/vundle.git #{vundle_dir}" unless File.exists?(vundle_dir)
+
+    sh "brew install ctags"
+    sh "vim -c ':BundleInstall' -c ':quitall'"
+
+    Dir.chdir File.join(bundle_dir, 'YouCompleteMe') do
+      if File.exists?(File.join('python', 'ycm_core.so'))
+        puts 'YouCompleteMe already compiled'
+      else
+        sh './install.sh --clang-completer'
+      end
+    end
+  end
+end
