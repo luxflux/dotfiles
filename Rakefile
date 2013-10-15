@@ -1,8 +1,8 @@
 require 'fileutils'
 
-desc 'Install dotfiles'
-task :install do
-  install_dir = Dir.pwd
+desc 'Link dotfiles'
+task :link do
+  link_dir = Dir.pwd
 
   Dir.chdir ENV['HOME']
 
@@ -20,7 +20,7 @@ task :install do
         next
       end
     end
-    sh "ln -s #{install_dir}/#{file_or_dir}"
+    sh "ln -s #{link_dir}/#{file_or_dir}"
   end
 end
 
