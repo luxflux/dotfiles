@@ -6,7 +6,10 @@ task :install do
 
   Dir.chdir ENV['HOME']
 
-  %w[.vimrc .vim].each do |file_or_dir|
+  files = %w[.vimrc .vim]
+  files += %w[.tmux.conf .tmux]
+
+  files.each do |file_or_dir|
     if File.exists?(file_or_dir)
       print "Remove #{file_or_dir} (y/n)? "
       answer = STDIN.gets
