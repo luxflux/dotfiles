@@ -41,6 +41,7 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'bufkill.vim'
 Bundle 'trailing-whitespace'
 Bundle 'xolox/vim-misc'
+"Bundle 'mattboehm/vim-unstack'
 
 """ testing
 Bundle 'thoughtbot/vim-rspec'
@@ -166,7 +167,7 @@ let g:ctrlp_custom_ignore = '\v[\/]coverage$'
 "nmap <silent> <D-L> :call RunNearestSpec()<CR>
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
-let g:rspec_command = "Dispatch spring rspec {spec}"
+let g:rspec_command = "Dispatch rspec {spec}"
 
 " completion configuration
 let g:ycm_complete_in_comments = 1
