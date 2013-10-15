@@ -22,3 +22,13 @@ task :install do
     sh "ln -s #{install_dir}/#{file_or_dir}"
   end
 end
+
+namespace :bootstrap do
+  desc "Bootstrap vim"
+  task :vim do
+    vundle_dir = File.join('.vim', 'bundle', 'vundle')
+    sh "git clone https://github.com/gmarik/vundle.git #{vundle_dir}" unless File.exists?(vundle_dir)
+
+    sh "brew install ctags"
+  end
+end
