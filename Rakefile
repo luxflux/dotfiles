@@ -8,6 +8,7 @@ task :install do
 
   files = %w[.vimrc .vim]
   files += %w[.tmux.conf .tmux]
+  files += %w[.zlogin .zlogout .zpreztorc .zprofile .zshenv .zshrc .zprezto]
 
   files.each do |file_or_dir|
     if File.exists?(file_or_dir)
@@ -39,6 +40,17 @@ namespace :bootstrap do
       else
         sh './install.sh --clang-completer'
       end
+    end
+  end
+
+  desc "Bootstrap zsh"
+  task :zsh do
+    prezto_dir = File.join('.zprezto')
+    sh "git clone git@github.com:luxflux/prezto.git #{prezto_dir}" unless File.exists?(prezto_dir)
+
+    Dir.chdir prezto_dir do
+      sh 'git submodule init'
+      sh 'git submodule update'
     end
   end
 end
