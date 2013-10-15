@@ -30,5 +30,6 @@ namespace :bootstrap do
     sh "git clone https://github.com/gmarik/vundle.git #{vundle_dir}" unless File.exists?(vundle_dir)
 
     sh "brew install ctags"
+    sh "vim -c ':BundleInstall' -c ':quitall'"
   end
 end
