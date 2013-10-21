@@ -13,7 +13,7 @@ task :link do
 
   files.each do |file_or_dir|
     if File.exists?(file_or_dir)
-      print "Remove #{file_or_dir} (y/n)? "
+      print "Remove #{file_or_dir} (y/N)? "
       answer = STDIN.gets
       if answer.chomp == 'y'
         FileUtils.rm_rf file_or_dir
