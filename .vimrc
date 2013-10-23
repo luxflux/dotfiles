@@ -42,16 +42,12 @@ Bundle 'fholgado/minibufexpl.vim'
 Bundle 'bufkill.vim'
 Bundle 'trailing-whitespace'
 Bundle 'xolox/vim-misc'
+Bundle 'Lokaltog/vim-easymotion'
 "Bundle 'mattboehm/vim-unstack'
 
 """ testing
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-dispatch'
-
-""" ctags
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'xolox/vim-easytags'
-
 
 """"""""""""""""""""""""""""""
 "  configuration
@@ -234,11 +230,6 @@ noremap <D-6> :buffer 6<CR>
 noremap <D-7> :buffer 7<CR>
 noremap <D-8> :buffer 8<CR>
 noremap <D-9> :buffer 9<CR>
-
-" easytags configuration
-set tags='./.git/tags'
-let g:easytags_dynamic_files = 1
-let g:easytags_events = ['BufWritePost']
 
 " tagbar configuration
 "autocmd VimEnter * TagbarToggle

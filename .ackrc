@@ -1,0 +1,35 @@
+# Global options
+--smart-case
+--follow
+
+# Ruby
+--type-add=ruby:ext:ru,gemspec
+--type-add=ruby:is:Gemfile
+--type-add=ruby:is:Gemfile.lock
+--type-add=ruby:is:Procfile
+--type-add=ruby:is:Capfile
+--type-add=html:ext:haml
+
+# Log files (ignore by default)
+--type-set=log:ext:log
+--nolog
+
+# gettext files (ignore by default)
+--type-set=gettext:ext:pot,po
+--nogettext
+
+# Plaintext
+--type-set=plaintext:ext:md,mdown,markdown,mkdn,textile,rst,txt
+
+# CSS (SASS and Less)
+--type-add=css:ext:scss,sass,less
+--type-set=sass:ext:scss.sass
+--type-set=less:ext:less
+
+# Puppet
+--type-set=puppet:ext:puppet
+
+# CoffeeScript
+--type-set=coffee:ext:coffee
+
+--ignore-dir=tmp
