@@ -9,11 +9,11 @@ Clone the repo
 
 Bootstrap vim
 
-    rake boostrap:vim
+    rake bootstrap:vim
 
 Bootstrap zsh
 
-    rake boostrap:zsh
+    rake bootstrap:zsh
 
 Bootstrap tmux
 
