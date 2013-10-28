@@ -24,6 +24,7 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'groenewege/vim-less'
 Bundle 'netdata/vim-puppet'
 Bundle 'wting/rust.vim'
+Bundle 'elixir-lang/vim-elixir'
 
 "" Tools
 Bundle 'scrooloose/syntastic'
