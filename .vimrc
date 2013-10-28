@@ -141,7 +141,7 @@ set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
 " paste mode toggle
-set pastetoggle=<f4>
+map <F4> :set invpaste<CR>
 
 " toggle number
 nmap <F5> :set number! number?<CR>
