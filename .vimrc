@@ -194,6 +194,12 @@ set wildignore+=tmp/**
 set wildignore+=coverage/**
 set wildignore+=*.png,*.jpg,*.gif
 
+" Tab on the command line will show a menu to complete buffer and file names
+set wildchar=<Tab> wildmenu wildmode=full
+" select buffer
+nnoremap <Tab><Tab> :b <Tab>
+set wildcharm=<Tab>
+
 " surrounding
 map ,# ysiw#
 vmap ,# c#{<C-R>"}<ESC>
