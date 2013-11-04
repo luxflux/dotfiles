@@ -43,7 +43,7 @@ Bundle 'bufkill.vim'
 Bundle 'trailing-whitespace'
 Bundle 'xolox/vim-misc'
 Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'mattboehm/vim-unstack'
+Bundle 'christoomey/vim-tmux-navigator'
 
 """ testing
 Bundle 'thoughtbot/vim-rspec'
