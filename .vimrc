@@ -18,7 +18,7 @@ Bundle 'cespare/vim-toml'
 Bundle 'chriseppstein/vim-haml'
 Bundle 'pangloss/vim-javascript'
 Bundle 'plasticboy/vim-markdown'
-Bundle 'tpope/vim-rails'
+"Bundle 'tpope/vim-rails'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-cucumber'
 Bundle 'groenewege/vim-less'
@@ -33,12 +33,13 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
 Bundle 'kien/ctrlp.vim'
 Bundle 'godlygeek/tabular'
-Bundle 'luxflux/vim-git-inline-diff'
+"Bundle 'luxflux/vim-git-inline-diff'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-surround'
 Bundle 'docunext/closetag.vim'
 Bundle 'jamessan/vim-gnupg'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'fholgado/minibufexpl.vim'
+"Bundle 'fholgado/minibufexpl.vim'
 Bundle 'bufkill.vim'
 Bundle 'trailing-whitespace'
 Bundle 'xolox/vim-misc'
@@ -152,7 +153,10 @@ autocmd FileType puppet setlocal shiftwidth=4 tabstop=4
 
 " fancy powerline symbols
 let g:airline_powerline_fonts = 1
+" enable status line
 set laststatus=2
+" enable airline tabline
+let g:airline#extensions#tabline#enabled = 1
 
 " ctrlp configuration
 "nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
@@ -170,10 +174,11 @@ let g:rspec_command = "Dispatch rspec {spec}"
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_comments = 1
 
-" git diff plugin
-let g:git_diff_added_symbol='⇒'
-let g:git_diff_removed_symbol='⇐'
-let g:git_diff_changed_symbol='⇔'
+" git gutter plugin
+let g:gitgutter_sign_added = '⇒'
+let g:gitgutter_sign_modified = '⇔'
+let g:gitgutter_sign_removed = '⇐'
+let g:gitgutter_sign_modified_removed = '⇐'
 
 " completion
 set wildmode=list:longest
