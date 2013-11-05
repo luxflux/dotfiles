@@ -290,3 +290,6 @@ autocmd BufWritePre * :FixWhitespace
 
 " enable line wrapping in the quickfix window
 autocmd FileType qf setlocal wrap linebreak
+
+" allow copying to tmux buffer
+set clipboard=unnamed
