@@ -33,3 +33,5 @@
 --type-set=coffee:ext:coffee
 
 --ignore-dir=tmp
+--ignore-dir=coverage
+
