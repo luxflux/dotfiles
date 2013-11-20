@@ -45,6 +45,7 @@ Bundle 'trailing-whitespace'
 Bundle 'xolox/vim-misc'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'mileszs/ack.vim'
 
 """ testing
 Bundle 'thoughtbot/vim-rspec'
