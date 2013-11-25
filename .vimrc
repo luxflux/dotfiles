@@ -46,6 +46,7 @@ Bundle 'xolox/vim-misc'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'mileszs/ack.vim'
+Bundle 'ngmy/vim-rubocop'
 
 """ testing
 Bundle 'thoughtbot/vim-rspec'
