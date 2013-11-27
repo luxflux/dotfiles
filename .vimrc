@@ -293,5 +293,11 @@ autocmd BufWritePre * :FixWhitespace
 " enable line wrapping in the quickfix window
 autocmd FileType qf setlocal wrap linebreak
 
+" format the front matter as comment
+autocmd BufRead,BufNewFile * syntax match Comment /\%^---\_.\{-}---$/
+
+" ignore errors because of front matter
+let g:syntastic_html_tidy_ignore_errors = [ 'plain text isn''t allowed in <head> elements' ]
+
 " allow copying to tmux buffer
 set clipboard=unnamed
