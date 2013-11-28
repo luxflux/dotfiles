@@ -46,7 +46,8 @@ Bundle 'trailing-whitespace'
 Bundle 'xolox/vim-misc'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'mileszs/ack.vim'
+"Bundle 'mileszs/ack.vim'
+Bundle 'rking/ag.vim'
 Bundle 'ngmy/vim-rubocop'
 
 """ testing
@@ -299,3 +300,15 @@ let g:syntastic_html_tidy_ignore_errors = [ 'plain text isn''t allowed in <head>
 
 " allow copying to tmux buffer
 set clipboard=unnamed
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
