@@ -152,6 +152,10 @@ map <F4> :set invpaste<CR>
 " toggle number
 nmap <F5> :set number! number?<CR>
 
+" toggle spelling
+nmap <F6> :set spell! spell?<CR>
+set spell spelllang=de_ch,en_us
+
 " set indenting for puppet files
 autocmd FileType puppet setlocal shiftwidth=4 tabstop=4
 
