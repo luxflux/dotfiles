@@ -155,6 +155,7 @@ nmap <F5> :set number! number?<CR>
 " toggle spelling
 nmap <F6> :set spell! spell?<CR>
 set spell spelllang=de_ch,en_us
+set spell!
 
 " set indenting for puppet files
 autocmd FileType puppet setlocal shiftwidth=4 tabstop=4
@@ -316,3 +317,9 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+hi Normal ctermbg=none
+
+set lazyredraw          " Wait to redraw
+set scrolljump=8        " Scroll 8 lines at a time at bottom/top
+let html_no_rendering=1 " Don't render italic, bold, links in HTML
