@@ -9,7 +9,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " color themes
-Bundle 'chriskempson/vim-tomorrow-theme'
+" Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'tomasr/molokai'
 
 "" languages
 Bundle 'vim-ruby/vim-ruby'
@@ -58,7 +59,9 @@ Bundle 'tpope/vim-dispatch'
 "  configuration
 """"""""""""""""""""""""""""""
 
-color Tomorrow-Night-Eighties
+color molokai
+let g:rehash256 = 1
+set background=dark
 
 syntax enable
 set encoding=utf-8
