@@ -321,7 +321,11 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-hi Normal ctermbg=none
+hi Normal     ctermbg=none
+hi SignColumn ctermbg=none
+hi LineNr     ctermbg=none
+hi MatchParen ctermbg=none
+hi CursorLine ctermbg=234
 
 set lazyredraw          " Wait to redraw
 set scrolljump=8        " Scroll 8 lines at a time at bottom/top
