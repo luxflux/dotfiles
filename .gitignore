@@ -1,5 +1,6 @@
 .vim/bundle/*
 !.vim/bundle/.gitkeep
 .vim/_*
+.vim/spell
 
 .zprezto
