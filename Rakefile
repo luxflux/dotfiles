@@ -12,6 +12,7 @@ task :link do
   files += %w[.ackrc]
   files += %w[.slate]
   files += %w[.gemrc]
+  files += %w[.powconfig]
 
   files.each do |file_or_dir|
     if File.exists?(file_or_dir)
