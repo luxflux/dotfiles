@@ -11,6 +11,7 @@ task :link do
   files += %w[.zlogin .zlogout .zpreztorc .zprofile .zshenv .zshrc .zprezto]
   files += %w[.ackrc]
   files += %w[.slate]
+  files += %w[.gemrc]
 
   files.each do |file_or_dir|
     if File.exists?(file_or_dir)
