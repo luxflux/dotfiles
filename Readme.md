@@ -6,19 +6,15 @@ Clone the repo
 
     git clone https://github.com/luxflux/dotfiles.git
     cd dotfiles
-    
+
 Link the dotfiles
 
     rake link
 
-Bootstrap vim
+Bootstrap
 
+    rake bootstrap:rbenv
     rake bootstrap:vim
-
-Bootstrap zsh
-
     rake bootstrap:zsh
-
-Bootstrap tmux
-
     rake bootstrap:tmux
+    rake bootstrap:slate

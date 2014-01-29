@@ -65,4 +65,9 @@ namespace :bootstrap do
   task :slate do
     sh 'brew cask install slate'
   end
+
+  desc "Bootstrap rbenv"
+  task :rbenv do
+    sh 'brew install rbenv rbenv rbenv-gemset rbenv-gem-rehash'
+  end
 end
