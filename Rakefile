@@ -10,6 +10,7 @@ task :link do
   files += %w[.tmux.conf .tmux .tmux.status.conf]
   files += %w[.zlogin .zlogout .zpreztorc .zprofile .zshenv .zshrc .zprezto]
   files += %w[.ackrc]
+  files += %w[.slate]
 
   files.each do |file_or_dir|
     if File.exists?(file_or_dir)
