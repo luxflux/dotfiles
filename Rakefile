@@ -60,4 +60,9 @@ namespace :bootstrap do
   task :tmux do
     sh 'brew install reattach-to-user-namespace'
   end
+
+  desc "Bootstrap slate"
+  task :slate do
+    sh 'brew cask install slate'
+  end
 end
