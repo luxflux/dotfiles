@@ -11,10 +11,11 @@ Link the dotfiles
 
     rake link
 
+Install the dependencies
+
+    rake brew
+
 Bootstrap
 
-    rake bootstrap:rbenv
     rake bootstrap:vim
     rake bootstrap:zsh
-    rake bootstrap:tmux
-    rake bootstrap:slate

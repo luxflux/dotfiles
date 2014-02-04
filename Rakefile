@@ -28,6 +28,11 @@ task :link do
   end
 end
 
+desc "Install dependencies"
+task :brew do
+  sh 'brew bundle'
+end
+
 namespace :bootstrap do
   desc "Bootstrap vim"
   task :vim do
@@ -56,20 +61,5 @@ namespace :bootstrap do
       sh 'git submodule init'
       sh 'git submodule update'
     end
-  end
-
-  desc "Bootstrap tmux"
-  task :tmux do
-    sh 'brew install reattach-to-user-namespace'
-  end
-
-  desc "Bootstrap slate"
-  task :slate do
-    sh 'brew cask install slate'
-  end
-
-  desc "Bootstrap rbenv"
-  task :rbenv do
-    sh 'brew install rbenv rbenv rbenv-gemset rbenv-gem-rehash'
   end
 end
