@@ -30,6 +30,8 @@ cask install appcleaner
 cask install sequel-pro
 cask install sparkleshare
 
+cask alfred link
+
 tap homebrew/versions
 
 cleanup
