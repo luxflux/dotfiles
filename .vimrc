@@ -51,6 +51,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'rking/ag.vim'
 Bundle 'ngmy/vim-rubocop'
 Bundle 'edkolev/tmuxline.vim'
+Bundle 'ervandew/supertab'
 
 """ testing
 Bundle 'thoughtbot/vim-rspec'
@@ -169,7 +170,7 @@ let g:airline_powerline_fonts = 1
 " enable status line
 set laststatus=2
 " enable airline tabline
-"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " ctrlp configuration
 "nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
