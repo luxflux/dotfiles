@@ -13,6 +13,7 @@ install the_silver_searcher
 # shell
 install reattach-to-user-namespace
 install tmux
+install multitail
 
 
 # apps
