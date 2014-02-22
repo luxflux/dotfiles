@@ -26,7 +26,6 @@ cask install mou
 cask install sourcetree
 cask install macvim
 cask install iterm2
-cask install airmail-beta
 cask install appcleaner
 cask install sequel-pro
 cask install sparkleshare
