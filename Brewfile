@@ -30,6 +30,7 @@ cask install airmail-beta
 cask install appcleaner
 cask install sequel-pro
 cask install sparkleshare
+cask install launchrocket
 
 cask alfred link
 
