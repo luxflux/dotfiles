@@ -30,6 +30,7 @@ cask install appcleaner
 cask install sequel-pro
 cask install sparkleshare
 cask install launchrocket
+cask install flux
 
 cask alfred link
 
