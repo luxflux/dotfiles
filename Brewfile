@@ -14,6 +14,10 @@ install the_silver_searcher
 install reattach-to-user-namespace
 install tmux
 install multitail
+
+
+brew tap Goles/battery
+install battery
 install spark
 
 
