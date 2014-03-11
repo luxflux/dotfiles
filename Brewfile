@@ -14,6 +14,7 @@ install the_silver_searcher
 install reattach-to-user-namespace
 install tmux
 install multitail
+install spark
 
 
 # apps
