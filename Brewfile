@@ -36,6 +36,7 @@ cask install sequel-pro
 cask install sparkleshare
 cask install launchrocket
 cask install flux
+cask install github
 
 cask alfred link
 
