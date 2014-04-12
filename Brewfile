@@ -16,7 +16,7 @@ install tmux
 install multitail
 
 
-brew tap Goles/battery
+tap Goles/battery
 install battery
 install spark
 
