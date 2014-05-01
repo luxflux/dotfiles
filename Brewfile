@@ -37,6 +37,7 @@ cask install sparkleshare
 cask install launchrocket
 cask install flux
 cask install github
+cask install vagrant
 
 cask alfred link
 
