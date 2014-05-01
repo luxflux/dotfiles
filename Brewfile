@@ -38,6 +38,7 @@ cask install launchrocket
 cask install flux
 cask install github
 cask install vagrant
+cask install virtualbox
 
 cask alfred link
 
