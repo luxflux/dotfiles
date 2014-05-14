@@ -309,7 +309,20 @@ autocmd FileType qf setlocal wrap linebreak
 let g:syntastic_html_tidy_ignore_errors = [ 'plain text isn''t allowed in <head> elements' ]
 
 " allow copying to tmux buffer
-set clipboard=unnamed
+set clipboard=
+" fix copy&paste for neovim
+function! ClipboardYank()
+  call system('pbcopy', @@)
+endfunction
+function! ClipboardPaste()
+  let @@ = system('pbpaste')
+endfunction
+
+vnoremap <silent> y y:call ClipboardYank()<cr>
+vnoremap <silent> d d:call ClipboardYank()<cr>
+onoremap <silent> y y:call ClipboardYank()<cr>
+onoremap <silent> d d:call ClipboardYank()<cr>
+nnoremap <silent> p :call ClipboardPaste()<cr>p
 
 " The Silver Searcher
 if executable('ag')
