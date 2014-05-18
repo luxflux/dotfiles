@@ -50,7 +50,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 "Bundle 'mileszs/ack.vim'
 Bundle 'rking/ag.vim'
 Bundle 'ngmy/vim-rubocop'
-Bundle 'edkolev/tmuxline.vim'
+"Bundle 'edkolev/tmuxline.vim'
 Bundle 'ervandew/supertab'
 
 """ testing
