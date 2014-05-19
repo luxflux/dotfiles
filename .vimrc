@@ -117,6 +117,7 @@ set scrolloff=3
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_error_symbol='✗'
 let g:syntastic_auto_loc_list=1
+let g:syntastic_puppet_checkers = []
 
 " don't use Ex mode, use Q for formatting
 map Q gq
