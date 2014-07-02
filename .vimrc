@@ -289,7 +289,7 @@ endif
 " get reference for the current commit from git flow
 function GitRedmineIssue(fixes)
   let current_branch = system("git rev-parse --abbrev-ref HEAD")
-  let ref = substitute(current_branch, '^.\+\/\(\d\+\).\+$', '\1', '')
+  let ref = substitute(current_branch, '^\(\d\+\).\+$', '\1', '')
   if a:fixes == 'true'
     let prefix = 'fixes'
   else
