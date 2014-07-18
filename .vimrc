@@ -309,21 +309,12 @@ autocmd FileType qf setlocal wrap linebreak
 " ignore errors because of front matter
 let g:syntastic_html_tidy_ignore_errors = [ 'plain text isn''t allowed in <head> elements' ]
 
-" allow copying to tmux buffer
-set clipboard=
-" fix copy&paste for neovim
-function! ClipboardYank()
-  call system('pbcopy', @@)
-endfunction
-function! ClipboardPaste()
-  let @@ = system('pbpaste')
-endfunction
-
-vnoremap <silent> y y:call ClipboardYank()<cr>
-vnoremap <silent> d d:call ClipboardYank()<cr>
-onoremap <silent> y y:call ClipboardYank()<cr>
-onoremap <silent> d d:call ClipboardYank()<cr>
-nnoremap <silent> p :call ClipboardPaste()<cr>p
+if has('neovim')
+  let s:python_host_init = 'python -c "import neovim; neovim.start_host()"'
+  let &initpython = s:python_host_init
+  let &initclipboard = s:python_host_init
+  set unnamedclip " Automatically use clipboard as storage for the unnamed register
+endif
 
 " The Silver Searcher
 if executable('ag')
