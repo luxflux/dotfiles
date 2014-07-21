@@ -8,4 +8,4 @@ class NvimClipboard(object):
         return xerox.paste().split('\n')
 
     def clipboard_set(self, lines):
-        xerox.copy('\n'.join(lines))
+        xerox.copy('\n'.join(lines).decode("utf-8"))
