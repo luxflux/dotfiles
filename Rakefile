@@ -7,7 +7,7 @@ task :link do
   Dir.chdir ENV['HOME']
 
   files = %w[.vimrc .vim]
-  files = %w[.nvimrc .nvim]
+  files += %w[.nvimrc .nvim]
   files += %w[.tmux.conf .tmux .tmux.status.conf]
   files += %w[.zlogin .zlogout .zpreztorc .zprofile .zshenv .zshrc .zprezto]
   files += %w[.ackrc]
