@@ -9,7 +9,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " color themes
-Bundle 'chriskempson/vim-tomorrow-theme'
+"Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'w0ng/vim-hybrid'
 " Bundle 'tomasr/molokai'
 
 "" languages
@@ -61,7 +62,8 @@ Bundle 'tpope/vim-dispatch'
 "  configuration
 """"""""""""""""""""""""""""""
 
-color Tomorrow-Night
+let g:hybrid_use_iTerm_colors = 1
+color hybrid
 
 syntax enable
 set encoding=utf-8
