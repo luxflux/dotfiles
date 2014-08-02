@@ -29,7 +29,7 @@ Bundle 'elixir-lang/vim-elixir'
 Bundle 'tpope/vim-liquid'
 
 "" Tools
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
@@ -61,7 +61,7 @@ Bundle 'tpope/vim-dispatch'
 "  configuration
 """"""""""""""""""""""""""""""
 
-color Tomorrow-Night-Bright
+color Tomorrow-Night
 
 syntax enable
 set encoding=utf-8
@@ -112,10 +112,12 @@ set smartcase                     " ... unless they contain at least one capital
 set scrolloff=3
 
 " syntastic
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_error_symbol='✗'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_puppet_checkers = []
+" let g:syntastic_warning_symbol='⚠'
+" let g:syntastic_error_symbol='✗'
+" let g:syntastic_auto_loc_list=1
+" let g:syntastic_puppet_checkers = []
+" ignore errors because of front matter
+"let g:syntastic_html_tidy_ignore_errors = [ 'plain text isn''t allowed in <head> elements' ]
 
 " don't use Ex mode, use Q for formatting
 map Q gq
@@ -300,9 +302,6 @@ autocmd BufWritePre * :FixWhitespace
 
 " enable line wrapping in the quickfix window
 autocmd FileType qf setlocal wrap linebreak
-
-" ignore errors because of front matter
-let g:syntastic_html_tidy_ignore_errors = [ 'plain text isn''t allowed in <head> elements' ]
 
 if has('neovim')
   let s:python_host_init = 'python -c "import neovim; neovim.start_host()"'
