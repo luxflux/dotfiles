@@ -9,8 +9,8 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " color themes
-" Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'tomasr/molokai'
+Bundle 'chriskempson/vim-tomorrow-theme'
+" Bundle 'tomasr/molokai'
 
 "" languages
 Bundle 'vim-ruby/vim-ruby'
@@ -50,7 +50,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 "Bundle 'mileszs/ack.vim'
 Bundle 'rking/ag.vim'
 Bundle 'ngmy/vim-rubocop'
-"Bundle 'edkolev/tmuxline.vim'
+Bundle 'edkolev/tmuxline.vim'
 Bundle 'ervandew/supertab'
 
 """ testing
@@ -61,9 +61,7 @@ Bundle 'tpope/vim-dispatch'
 "  configuration
 """"""""""""""""""""""""""""""
 
-color molokai
-let g:rehash256 = 1
-set background=dark
+color Tomorrow-Night-Bright
 
 syntax enable
 set encoding=utf-8
@@ -167,6 +165,8 @@ let g:airline_powerline_fonts = 1
 set laststatus=2
 " enable airline tabline
 let g:airline#extensions#tabline#enabled = 1
+" airline theme
+let g:airline_theme='simple'
 
 " ctrlp configuration
 "nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
