@@ -53,6 +53,8 @@ Bundle 'rking/ag.vim'
 Bundle 'ngmy/vim-rubocop'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'ervandew/supertab'
+Bundle 'tyru/open-browser.vim'
+Bundle 'tyru/open-browser-github.vim'
 
 """ testing
 Bundle 'thoughtbot/vim-rspec'
