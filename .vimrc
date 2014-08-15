@@ -55,6 +55,7 @@ Bundle 'edkolev/tmuxline.vim'
 Bundle 'ervandew/supertab'
 Bundle 'tyru/open-browser.vim'
 Bundle 'tyru/open-browser-github.vim'
+Bundle 'terryma/vim-expand-region'
 
 """ testing
 Bundle 'thoughtbot/vim-rspec'
@@ -339,3 +340,7 @@ autocmd BufEnter,BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-
 " color over 100 signs
 set colorcolumn=111
 hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#000000 guibg=#FD971F
+
+" expand region config
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
