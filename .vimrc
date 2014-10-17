@@ -335,8 +335,6 @@ set lazyredraw          " Wait to redraw
 set scrolljump=8        " Scroll 8 lines at a time at bottom/top
 let html_no_rendering=1 " Don't render italic, bold, links in HTML
 
-autocmd BufEnter,BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window 'vim " . substitute(expand('%:p'), getcwd() . '/', '', '') . "'")
-
 " color over 100 signs
 set colorcolumn=111
 hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#000000 guibg=#FD971F
