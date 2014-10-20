@@ -79,7 +79,7 @@ set showcmd     " display incomplete commands
 set shell=bash  " avoids munging PATH under zsh
 let g:is_bash=1
 
-set guifont=Source_Code_Pro_for_Powerline:h14,Source_Code_Pro_for_Powerline:h12
+set guifont=Source_Code_Pro_for_Powerline:h16,Source_Code_Pro_for_Powerline:h16
 
 set autoread
 set history=1000

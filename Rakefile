@@ -9,7 +9,7 @@ task :link do
   files = %w[.vimrc .vim]
   files += %w[.nvimrc .nvim]
   files += %w[.tmux.conf .tmux .tmux.status.conf]
-  files += %w[.zlogin .zlogout .zpreztorc .zprofile .zshenv .zshrc .zprezto]
+  files += %w[.zlogin .zlogout .zpreztorc .zprofile .zshenv .zshrc .zprezto .zpreztorc.last]
   files += %w[.ackrc]
   files += %w[.slate]
   files += %w[.gemrc]
