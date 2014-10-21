@@ -12,7 +12,6 @@ task :link do
   files += %w[.zlogin .zlogout .zpreztorc .zprofile .zshenv .zshrc .zprezto .zpreztorc.last]
   files += %w[.ackrc]
   files += %w[.slate]
-  files += %w[.gemrc]
   files += %w[.powconfig]
   files += %w[.pryrc .pry]
 
