@@ -308,12 +308,7 @@ autocmd BufWritePre * :FixWhitespace
 " enable line wrapping in the quickfix window
 autocmd FileType qf setlocal wrap linebreak
 
-if has('neovim')
-  let s:python_host_init = 'python -c "import neovim; neovim.start_host()"'
-  let &initpython = s:python_host_init
-  let &initclipboard = s:python_host_init
-  set unnamedclip " Automatically use clipboard as storage for the unnamed register
-endif
+set clipboard=unnamed
 
 " The Silver Searcher
 if executable('ag')
