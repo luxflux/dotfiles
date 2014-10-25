@@ -36,6 +36,12 @@ rescue LoadError
   puts 'RBENV_GEMSETS="global" gem install awesome_print  # <-- highly recommended'
 end
 
+begin
+  require 'did_you_mean'
+rescue LoadError
+  puts 'RBENV_GEMSETS="global" gem install did_you_mean  # <-- highly recommended'
+end
+
 # === CUSTOM COMMANDS ===
 # from: https://gist.github.com/1297510
 default_command_set = Pry::CommandSet.new do
