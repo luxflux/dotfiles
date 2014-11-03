@@ -337,3 +337,6 @@ hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#0
 " expand region config
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" eyaml is yaml
+au BufNewFile,BufRead *.eyaml setlocal ft=yaml
