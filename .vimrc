@@ -337,3 +337,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " eyaml is yaml
 au BufNewFile,BufRead *.eyaml setlocal ft=yaml
+
+" disable folding
+set nofoldenable
