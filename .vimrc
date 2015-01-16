@@ -163,9 +163,6 @@ map <F4> :set invpaste<CR>
 " toggle number
 nmap <F5> :set number! number?<CR>
 
-" set indenting for puppet files
-autocmd FileType puppet setlocal shiftwidth=4 tabstop=4
-
 " fancy powerline symbols
 let g:airline_powerline_fonts = 1
 " enable status line
