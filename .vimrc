@@ -28,6 +28,7 @@ Bundle 'netdata/vim-puppet'
 Bundle 'wting/rust.vim'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'tpope/vim-liquid'
+Bundle 'fatih/vim-go'
 
 "" Tools
 "Bundle 'scrooloose/syntastic'
@@ -340,3 +341,6 @@ au BufNewFile,BufRead *.eyaml setlocal ft=yaml
 
 " disable folding
 set nofoldenable
+
+" faster vim startup
+let g:ruby_path = system('echo $BOXEN_HOME/rbenv/shims')
