@@ -35,7 +35,7 @@ Bundle 'fatih/vim-go'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
-Bundle 'kien/ctrlp.vim'
+Bundle 'junegunn/fzf'
 Bundle 'godlygeek/tabular'
 "Bundle 'luxflux/vim-git-inline-diff'
 Bundle 'airblade/vim-gitgutter'
@@ -77,8 +77,6 @@ set number
 set ruler       " show the cursor position all the time
 set cursorline
 set showcmd     " display incomplete commands
-set shell=bash  " avoids munging PATH under zsh
-let g:is_bash=1
 
 set guifont=Source_Code_Pro_for_Powerline:h16,Source_Code_Pro_for_Powerline:h16
 
@@ -131,17 +129,6 @@ map Q gq
 " clear the search buffer when hitting return
 :nnoremap <CR> :nohlsearch<cr>
 
-nnoremap <leader><leader> <c-^>
-
-" find merge conflict markers
-nmap <silent> <leader>cf <ESC>/\v^[<=>]{7}( .*\|$)<CR>
-
-" easier navigation between split windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
 " disable cursor keys in normal mode
 map <Left>  :echo "no!"<cr>
 map <Right> :echo "no!"<cr>
@@ -173,17 +160,12 @@ let g:airline#extensions#tabline#enabled = 1
 " airline theme
 let g:airline_theme='simple'
 
-" ctrlp configuration
-"nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
-nnoremap <silent> P :ClearCtrlPCache<cr>
-let g:ctrlp_custom_ignore = '\v[\/]coverage$'
+nnoremap <C-P> :FZF<cr>
 
 " vim-rspec configuration
-"nmap <silent> <D-R> :call RunCurrentSpecFile()<CR>
-"nmap <silent> <D-L> :call RunNearestSpec()<CR>
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
-let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = "term rspec {spec}"
 
 " completion configuration
 let g:ycm_complete_in_comments = 1
@@ -344,3 +326,5 @@ set nofoldenable
 
 " faster vim startup
 let g:ruby_path = system('echo $BOXEN_HOME/rbenv/shims')
+
+tnoremap <Esc> <C-\><C-n>
