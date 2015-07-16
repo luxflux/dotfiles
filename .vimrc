@@ -28,6 +28,7 @@ Bundle 'tpope/vim-liquid'
 Bundle 'fatih/vim-go'
 
 "" Tools
+Bundle 'benekastah/neomake'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
@@ -252,6 +253,9 @@ if has("autocmd")
 
   " enable line wrapping in the quickfix window
   au FileType qf setlocal wrap linebreak
+
+  " run neomake after save
+  au! BufWritePost * Neomake
 endif
 
 " get reference for the current commit from git flow
