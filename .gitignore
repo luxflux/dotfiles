@@ -1,5 +1,5 @@
-.vim/bundle/*
-!.vim/bundle/.gitkeep
+.vim/plugged/*
+!.vim/plugged/.gitkeep
 .vim/_*
 .vim/spell
 

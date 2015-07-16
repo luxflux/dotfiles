@@ -1,59 +1,44 @@
 set nocompatible                " be iMproved
-filetype off                    " required by vundle
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+call plug#begin('~/.vim/plugged')
 
 " color themes
-Bundle 'tomasr/molokai'
+Plug 'tomasr/molokai'
 
 "" languages
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'bling/vim-airline'
-Bundle 'cespare/vim-toml'
-Bundle 'chriseppstein/vim-haml'
-Bundle 'pangloss/vim-javascript'
-Bundle 'plasticboy/vim-markdown'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-cucumber'
-Bundle 'groenewege/vim-less'
-Bundle 'netdata/vim-puppet'
-Bundle 'wting/rust.vim'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'tpope/vim-liquid'
-Bundle 'fatih/vim-go'
+Plug 'vim-ruby/vim-ruby'
+Plug 'cespare/vim-toml'
+Plug 'chriseppstein/vim-haml'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
+Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-cucumber'
+Plug 'groenewege/vim-less'
+Plug 'netdata/vim-puppet'
+Plug 'tpope/vim-liquid'
+Plug 'fatih/vim-go'
 
 "" Tools
-Bundle 'benekastah/neomake'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-commentary'
-Bundle 'junegunn/fzf'
-Bundle 'godlygeek/tabular'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'tpope/vim-surround'
-Bundle 'docunext/closetag.vim'
-Bundle 'jamessan/vim-gnupg'
-Bundle 'bufkill.vim'
-Bundle 'trailing-whitespace'
-Bundle 'xolox/vim-misc'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'rking/ag.vim'
-Bundle 'ngmy/vim-rubocop'
-Bundle 'edkolev/tmuxline.vim'
-Bundle 'ervandew/supertab'
-Bundle 'tyru/open-browser.vim'
-Bundle 'tyru/open-browser-github.vim'
-Bundle 'terryma/vim-expand-region'
+Plug 'bling/vim-airline'
+Plug 'benekastah/neomake'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf'
+Plug 'godlygeek/tabular'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-surround'
+Plug 'docunext/closetag.vim'
+Plug 'jamessan/vim-gnupg'
+Plug 'trailing-whitespace'
+Plug 'ervandew/supertab'
+Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser-github.vim'
 
-""" testing
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-dispatch'
+" testing
+Plug 'thoughtbot/vim-rspec'
+
+call plug#end()
 
 """"""""""""""""""""""""""""""
 "  configuration
