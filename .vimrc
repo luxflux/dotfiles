@@ -34,8 +34,7 @@ Plug 'trailing-whitespace'
 Plug 'ervandew/supertab'
 Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
-
-" testing
+Plug 'kassio/neoterm'
 Plug 'thoughtbot/vim-rspec'
 
 call plug#end()
@@ -135,7 +134,7 @@ nnoremap <C-P> :FZF<cr>
 " vim-rspec configuration
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
-let g:rspec_command = "term rspec {spec}"
+let g:rspec_command = "T rspec {spec}"
 
 " git gutter plugin
 let g:gitgutter_sign_added = '⇒'
