@@ -142,20 +142,6 @@ let g:gitgutter_sign_modified = '⇔'
 let g:gitgutter_sign_removed = '⇐'
 let g:gitgutter_sign_modified_removed = '⇐'
 
-" completion
-set wildmode=list:longest
-set wildmenu
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=coverage/**
-set wildignore+=*.png,*.jpg,*.gif
-
 " Tab on the command line will show a menu to complete buffer and file names
 set wildchar=<Tab> wildmenu wildmode=full
 " select buffer
