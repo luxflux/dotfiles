@@ -256,10 +256,6 @@ let html_no_rendering=1 " Don't render italic, bold, links in HTML
 set colorcolumn=111
 hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#000000 guibg=#FD971F
 
-" expand region config
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
 " disable folding
 set nofoldenable
 
