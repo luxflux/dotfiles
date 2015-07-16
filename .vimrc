@@ -9,8 +9,6 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " color themes
-"Bundle 'chriskempson/vim-tomorrow-theme'
-"Bundle 'w0ng/vim-hybrid'
 Bundle 'tomasr/molokai'
 
 "" languages
@@ -20,7 +18,6 @@ Bundle 'cespare/vim-toml'
 Bundle 'chriseppstein/vim-haml'
 Bundle 'pangloss/vim-javascript'
 Bundle 'plasticboy/vim-markdown'
-"Bundle 'tpope/vim-rails'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-cucumber'
 Bundle 'groenewege/vim-less'
@@ -31,25 +28,20 @@ Bundle 'tpope/vim-liquid'
 Bundle 'fatih/vim-go'
 
 "" Tools
-"Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
 Bundle 'junegunn/fzf'
 Bundle 'godlygeek/tabular'
-"Bundle 'luxflux/vim-git-inline-diff'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-surround'
 Bundle 'docunext/closetag.vim'
 Bundle 'jamessan/vim-gnupg'
-"Bundle 'Valloric/YouCompleteMe'
-"Bundle 'fholgado/minibufexpl.vim'
 Bundle 'bufkill.vim'
 Bundle 'trailing-whitespace'
 Bundle 'xolox/vim-misc'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'christoomey/vim-tmux-navigator'
-"Bundle 'mileszs/ack.vim'
 Bundle 'rking/ag.vim'
 Bundle 'ngmy/vim-rubocop'
 Bundle 'edkolev/tmuxline.vim'
@@ -115,14 +107,6 @@ set smartcase                     " ... unless they contain at least one capital
 " provide some context when editing
 set scrolloff=3
 
-" syntastic
-" let g:syntastic_warning_symbol='⚠'
-" let g:syntastic_error_symbol='✗'
-" let g:syntastic_auto_loc_list=1
-" let g:syntastic_puppet_checkers = []
-" ignore errors because of front matter
-"let g:syntastic_html_tidy_ignore_errors = [ 'plain text isn''t allowed in <head> elements' ]
-
 " don't use Ex mode, use Q for formatting
 map Q gq
 
@@ -166,10 +150,6 @@ nnoremap <C-P> :FZF<cr>
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 let g:rspec_command = "term rspec {spec}"
-
-" completion configuration
-let g:ycm_complete_in_comments = 1
-let g:ycm_complete_in_comments = 1
 
 " git gutter plugin
 let g:gitgutter_sign_added = '⇒'
@@ -239,15 +219,12 @@ noremap <D-7> :buffer 7<CR>
 noremap <D-8> :buffer 8<CR>
 noremap <D-9> :buffer 9<CR>
 
-" tagbar configuration
-"autocmd VimEnter * TagbarToggle
-
 if has("autocmd")
 
   function s:setupWrapping()
     set wrap
     set wrapmargin=2
-    set textwidth=80
+    set textwidth=110
   endfunction
 
   " In Makefiles, use real tabs, not tabs expanded to spaces
@@ -266,6 +243,15 @@ if has("autocmd")
   " see :help last-position-jump
   au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
         \| exe "normal! g`\"" | endif
+
+  " eyaml is yaml
+  au BufNewFile,BufRead *.eyaml setlocal ft=yaml
+
+  " fix whitespaces before writing the buffer
+  au BufWritePre * :FixWhitespace
+
+  " enable line wrapping in the quickfix window
+  au FileType qf setlocal wrap linebreak
 endif
 
 " get reference for the current commit from git flow
@@ -282,25 +268,7 @@ endfunction
 iab REFS <C-R>=GitRedmineIssue('false')<CR>
 iab FIXES <C-R>=GitRedmineIssue('true')<CR>
 
-" fix whitespaces before writing the buffer
-autocmd BufWritePre * :FixWhitespace
-
-" enable line wrapping in the quickfix window
-autocmd FileType qf setlocal wrap linebreak
-
-set clipboard=unnamed
-
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
+set clipboard+=unnamedplus
 
 hi Normal     ctermbg=none
 hi SignColumn ctermbg=none
@@ -317,9 +285,6 @@ hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#0
 " expand region config
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
-
-" eyaml is yaml
-au BufNewFile,BufRead *.eyaml setlocal ft=yaml
 
 " disable folding
 set nofoldenable
