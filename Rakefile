@@ -14,6 +14,7 @@ task :link do
   files += %w[.slate]
   files += %w[.powconfig]
   files += %w[.pryrc .pry .irbrc]
+  files += %w[.rubocop.yml]
 
   files.each do |file_or_dir|
     if File.exists?(file_or_dir)
