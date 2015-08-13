@@ -17,6 +17,7 @@ Plug 'groenewege/vim-less'
 Plug 'netdata/vim-puppet'
 Plug 'tpope/vim-liquid'
 Plug 'fatih/vim-go'
+Plug 'mtscout6/vim-cjsx'
 
 "" Tools
 Plug 'bling/vim-airline'
