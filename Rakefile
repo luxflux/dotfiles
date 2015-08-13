@@ -14,7 +14,7 @@ task :link do
   files += %w[.slate]
   files += %w[.powconfig]
   files += %w[.pryrc .pry .irbrc]
-  files += %w[.rubocop.yml]
+  files += %w[.rubocop.yml .scss-lint.yml]
 
   files.each do |file_or_dir|
     if File.exists?(file_or_dir)
@@ -30,19 +30,10 @@ task :link do
   end
 end
 
-desc "Install dependencies"
-task :brew do
-  sh 'brew bundle'
-end
-
 namespace :bootstrap do
   desc "Bootstrap vim"
   task :vim do
-    bundle_dir = File.join('.vim', 'bundle')
-    vundle_dir = File.join(bundle_dir, 'vundle')
-    sh "git clone https://github.com/gmarik/vundle.git #{vundle_dir}" unless File.exists?(vundle_dir)
-
-    sh "vim -c ':BundleInstall' -c ':quitall'"
+    sh "vim -c ':PlugInstall' -c ':quitall'"
   end
 
   desc "Bootstrap zsh"
