@@ -226,7 +226,10 @@ if has("autocmd")
   au FileType qf setlocal wrap linebreak
 
   " run neomake after save
-  au! BufWritePost * Neomake
+  au BufWritePost * Neomake
+
+  " run ctags after save
+  au BufWritePost * Neomake! ctags
 endif
 
 " get reference for the current commit from git flow
@@ -264,3 +267,16 @@ set nofoldenable
 let g:ruby_path = system('echo $BOXEN_HOME/rbenv/shims')
 
 tnoremap <Esc> <C-\><C-n>
+
+let g:neomake_ctags_maker = {
+      \ 'exe': 'ctags',
+      \ 'args': [
+        \ '-a',
+        \ '-f .git/tags',
+        \ '--tag-relative',
+        \ '--exclude=.git',
+        \ '--exclude=tmp',
+        \ '--exclude=coverage',
+        \ '--languages=-javascript,sql',
+        \ '%p']
+  \ }
