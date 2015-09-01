@@ -17,16 +17,7 @@ task :link do
   files += %w[.rubocop.yml .scss-lint.yml]
 
   files.each do |file_or_dir|
-    if File.exists?(file_or_dir)
-      print "Remove #{file_or_dir} (y/N)? "
-      answer = STDIN.gets
-      if answer.chomp == 'y'
-        FileUtils.rm_rf file_or_dir
-      else
-        next
-      end
-    end
-    sh "ln -s #{link_dir}/#{file_or_dir}"
+    sh "ln -nfs #{link_dir}/#{file_or_dir}"
   end
 end
 
