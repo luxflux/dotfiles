@@ -15,6 +15,7 @@ task :link do
   files += %w[.powconfig]
   files += %w[.pryrc .pry .irbrc]
   files += %w[.rubocop.yml .scss-lint.yml]
+  files += %w[.bundle]
 
   files.each do |file_or_dir|
     sh "ln -nfs #{link_dir}/#{file_or_dir}"
