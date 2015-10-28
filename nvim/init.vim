@@ -1,6 +1,6 @@
 set nocompatible                " be iMproved
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 " color themes
 Plug 'tomasr/molokai'
@@ -105,10 +105,10 @@ map <Right> :echo "no!"<cr>
 map <Up>    :echo "no!"<cr>
 map <Down>  :echo "no!"<cr>
 
-silent !mkdir -p ~/.vim/_backup ~/.vim/_temp ~/.vim/_undo
-set backupdir=~/.vim/_backup    " where to put backup files.
-set directory=~/.vim/_temp      " where to put swap files.
-set undodir=~/.vim/_undo     " where to save undo histories
+silent !mkdir -p ~/.config/nvim/_backup ~/.config/nvim/_temp ~/.config/nvim/_undo
+set backupdir=~/.config/nvim/_backup    " where to put backup files.
+set directory=~/.config/nvim/_temp      " where to put swap files.
+set undodir=~/.config/nvim/_undo     " where to save undo histories
 
 " undo history
 set undofile

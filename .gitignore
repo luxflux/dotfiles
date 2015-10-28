@@ -1,10 +1,9 @@
-.vim/plugged/*
-!.vim/plugged/.gitkeep
-.vim/_*
-.vim/spell
-
 .zprezto
-
 *.pyc
-.vim/.netrwhist
-.vim/shada
+
+nvim/.netrwhist
+nvim/shada
+nvim/plugged/*
+nvim/_*
+nvim/spell
+!nvim/plugged/.gitkeep

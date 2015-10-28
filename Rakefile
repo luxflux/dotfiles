@@ -7,7 +7,6 @@ task :link do
   Dir.chdir ENV['HOME']
 
   files = %w[.vimrc .vim]
-  files += %w[.nvimrc .nvim]
   files += %w[.tmux.conf .tmux .tmux.status.conf]
   files += %w[.zlogin .zlogout .zpreztorc .zprofile .zshenv .zshrc .zprezto .zpreztorc.last]
   files += %w[.ackrc]
@@ -20,6 +19,9 @@ task :link do
   files.each do |file_or_dir|
     sh "ln -nfs #{link_dir}/#{file_or_dir}"
   end
+
+  sh "mkdir -p .config"
+  sh "ln -nfs #{link_dir}/nvim .config/nvim"
 end
 
 namespace :bootstrap do
