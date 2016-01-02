@@ -38,6 +38,10 @@ Plug 'tyru/open-browser-github.vim'
 Plug 'kassio/neoterm'
 Plug 'thoughtbot/vim-rspec'
 
+" WebUI
+Plug 'rhysd/nyaovim-popup-tooltip'
+Plug 'rhysd/nyaovim-markdown-preview'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""
