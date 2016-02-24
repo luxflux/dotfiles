@@ -20,7 +20,8 @@ Plug 'fatih/vim-go'
 Plug 'mtscout6/vim-cjsx'
 
 "" Tools
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
@@ -132,7 +133,7 @@ set laststatus=2
 " enable airline tabline
 let g:airline#extensions#tabline#enabled = 1
 " airline theme
-let g:airline_theme='simple'
+let g:airline_theme='molokai'
 
 nnoremap <C-P> :FZF<cr>
 
