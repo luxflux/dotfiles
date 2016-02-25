@@ -1,0 +1,5 @@
+--pedantic
+--explicit
+--check-payees
+--date-format=%Y-%m-%d
+--strict
