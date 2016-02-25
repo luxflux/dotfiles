@@ -186,57 +186,43 @@ map ,{ ysiw{
 vmap ,} c{ <C-R>" }<ESC>
 vmap ,{ c{<C-R>"}<ESC>
 
-" Switch to specific tab numbers with Command-number
-noremap <D-1> :buffer 1<CR>
-noremap <D-2> :buffer 2<CR>
-noremap <D-3> :buffer 3<CR>
-noremap <D-4> :buffer 4<CR>
-noremap <D-5> :buffer 5<CR>
-noremap <D-6> :buffer 6<CR>
-noremap <D-7> :buffer 7<CR>
-noremap <D-8> :buffer 8<CR>
-noremap <D-9> :buffer 9<CR>
+function s:setupWrapping()
+  set wrap
+  set wrapmargin=2
+  set textwidth=110
+endfunction
 
-if has("autocmd")
+" In Makefiles, use real tabs, not tabs expanded to spaces
+au FileType make set noexpandtab
 
-  function s:setupWrapping()
-    set wrap
-    set wrapmargin=2
-    set textwidth=110
-  endfunction
+" Make sure all markdown files have the correct filetype set and setup wrapping
+au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
 
-  " In Makefiles, use real tabs, not tabs expanded to spaces
-  au FileType make set noexpandtab
+" Treat JSON files like JavaScript
+au BufNewFile,BufRead *.json set ft=javascript
 
-  " Make sure all markdown files have the correct filetype set and setup wrapping
-  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
+" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
-  " Treat JSON files like JavaScript
-  au BufNewFile,BufRead *.json set ft=javascript
+" Remember last location in file, but not for commit messages.
+" see :help last-position-jump
+au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+      \| exe "normal! g`\"" | endif
 
-  " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+" eyaml is yaml
+au BufNewFile,BufRead *.eyaml setlocal ft=yaml
 
-  " Remember last location in file, but not for commit messages.
-  " see :help last-position-jump
-  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
-        \| exe "normal! g`\"" | endif
+" fix whitespaces before writing the buffer
+au BufWritePre * :FixWhitespace
 
-  " eyaml is yaml
-  au BufNewFile,BufRead *.eyaml setlocal ft=yaml
+" enable line wrapping in the quickfix window
+au FileType qf setlocal wrap linebreak
 
-  " fix whitespaces before writing the buffer
-  au BufWritePre * :FixWhitespace
+" run neomake after save
+au BufWritePost * Neomake
 
-  " enable line wrapping in the quickfix window
-  au FileType qf setlocal wrap linebreak
-
-  " run neomake after save
-  au BufWritePost * Neomake
-
-  " run ctags after save
-  au BufWritePost * Neomake! ctags
-endif
+" run ctags after save
+au BufWritePost * Neomake! ctags
 
 " get reference for the current commit from git flow
 function GitRedmineIssue(fixes)
@@ -317,3 +303,16 @@ endfunction
 command! PrettyXML call DoPrettyXML()
 
 command! PrettyJSON :%!python -m json.tool
+
+" ledger
+let g:ledger_extra_options = '--pedantic --explicit --check-payees'
+let g:ledger_commodity_sep = ' '
+let g:ledger_default_commodity = 'CHF'
+"
+" run ledger after save
+" au BufWritePost *.ledger :Ledger bal Aktiva Fremdkapital
+
+" run ledger
+autocmd FileType ledger map <buffer> ,l :Ledger bal Aktiva Fremdkapital<CR>
+" align file
+autocmd FileType ledger map <buffer> ,a :%LedgerAlign<CR>
