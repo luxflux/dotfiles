@@ -215,8 +215,8 @@ au BufNewFile,BufRead *.eyaml setlocal ft=yaml
 " fix whitespaces before writing the buffer
 au BufWritePre * :FixWhitespace
 
-" enable line wrapping in the quickfix window
-au FileType qf setlocal wrap linebreak
+" fix whitespaces before writing the buffer
+autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown autocmd BufWritePre * :FixWhitespace
 
 " run neomake after save
 au BufWritePost * Neomake
