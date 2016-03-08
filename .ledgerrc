@@ -3,3 +3,5 @@
 --check-payees
 --date-format=%Y-%m-%d
 --strict
+--sort date
+--file journal.ledger

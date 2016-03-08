@@ -274,6 +274,9 @@ let g:neomake_ctags_maker = {
         \ '%p']
   \ }
 
+" js hint
+let g:neomake_javascript_enabled_makers = ['eslint']
+
 function! DoPrettyXML()
   " save the filetype so we can restore it later
   let l:origft = &ft
@@ -317,3 +320,4 @@ let g:ledger_default_commodity = 'CHF'
 autocmd FileType ledger map <buffer> ,l :Ledger bal Aktiva Fremdkapital<CR>
 " align file
 autocmd FileType ledger map <buffer> ,a :%LedgerAlign<CR>
+
