@@ -320,4 +320,5 @@ let g:ledger_default_commodity = 'CHF'
 autocmd FileType ledger map <buffer> ,l :Ledger bal Aktiva Fremdkapital<CR>
 " align file
 autocmd FileType ledger map <buffer> ,a :%LedgerAlign<CR>
-
+" sort file
+autocmd FileType ledger map <buffer> ,s :%sort<CR>
