@@ -7,3 +7,5 @@ nvim/plugged/*
 nvim/_*
 nvim/spell
 !nvim/plugged/.gitkeep
+
+.mutt/tmp/*

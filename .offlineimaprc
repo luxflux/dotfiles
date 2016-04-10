@@ -1,0 +1,25 @@
+[general]
+ui = ttyui
+accounts = yux
+pythonfile=~/.mutt/offlineimap.py
+fsync = False
+
+[Account yux]
+localrepository = yux-Local
+remoterepository = yux-Remote
+status_backend = sqlite
+postsynchook = notmuch new
+
+[Repository yux-Local]
+type = Maildir
+localfolders = ~/.mail/yux.ch
+
+[Repository yux-Remote]
+maxconnections = 5
+type = IMAP
+remotehost = imap.kolabnow.com
+remoteuser = raffael@yux.ch
+remotepasseval = get_keychain_pass(account="raffael@yux.ch", server="imap.kolabnow.com")
+realdelete = no
+sslcacertfile = /usr/local/etc/openssl/cert.pem
+folderfilter = lambda folder: not re.search('^(Configuration|Files|Freebusy|Journal|Other Users|Raffaels K)', folder)
