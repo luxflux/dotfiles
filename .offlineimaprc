@@ -1,6 +1,8 @@
+# vim: ft=rc:
+
 [general]
 ui = ttyui
-accounts = yux
+accounts = yux,welltravel
 pythonfile=~/.mutt/offlineimap.py
 fsync = False
 
@@ -8,7 +10,9 @@ fsync = False
 localrepository = yux-Local
 remoterepository = yux-Remote
 status_backend = sqlite
-postsynchook = notmuch new
+presynchook = logger -t offlineimap -p mail.info "Starting sync of mail account yux"
+postsynchook = ~/.mutt/offlineimap-postsynchook yux.ch
+# autorefresh = 1
 
 [Repository yux-Local]
 type = Maildir
@@ -23,3 +27,24 @@ remotepasseval = get_keychain_pass(account="raffael@yux.ch", server="imap.kolabn
 realdelete = no
 sslcacertfile = /usr/local/etc/openssl/cert.pem
 folderfilter = lambda folder: not re.search('^(Configuration|Files|Freebusy|Journal|Other Users|Raffaels K)', folder)
+
+[Account welltravel]
+localrepository = welltravel-Local
+remoterepository = welltravel-Remote
+status_backend = sqlite
+presynchook = logger -t offlineimap -p mail.info "Starting sync of mail account welltravel"
+postsynchook = ~/.mutt/offlineimap-postsynchook welltravel.com
+# autorefresh = 1
+
+[Repository welltravel-Local]
+type = Maildir
+localfolders = ~/.mail/welltravel.com
+
+[Repository welltravel-Remote]
+maxconnections = 5
+type = IMAP
+remotehost = imap.nine.ch
+remoteuser = raffael.schmid@welltravel.com
+remotepasseval = get_keychain_pass(account="raffael.schmid@welltravel.com", server="imap.nine.ch")
+realdelete = no
+sslcacertfile = /usr/local/etc/openssl/cert.pem
