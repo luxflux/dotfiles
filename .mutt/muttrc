@@ -113,7 +113,7 @@ set fcc_attach                       # save attachments with the body
 unset mime_forward                   # forward attachments as part of body
 set forward_format = "Fwd: %s"       # format of subject when forwarding
 set forward_decode                   # decode when forwarding
-set attribution = "On %d, %n wrote:" # format of quoting header
+set attribution = "On %{%A %d %B %Y}, %n (%a) wrote:" # format of quoting header
 set reply_to                         # reply to Reply to: field
 set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
@@ -134,24 +134,25 @@ bind editor ^T    complete
 
 color	normal		default default             # default colours
 color   index       red default ~N              # new messages
+color   index       red default ~O              # new messages
 color   index       green default ~F            # flagged messages
 color   index       blue default ~T             # tagged messages
 color   index       cyan default ~D             # deleted messages
-color	body		brightyellow default    (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+color	body		brightyellow default    (https?|ftp)://[\+\-\.,/%~_:?&=\#a-zA-Z0-9]+
 color	body		brightgreen default     [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
 color	attachment	magenta default             # attachments
 color	signature	brightwhite default         # sigs
 color   search      brightred black             # highlight results
 
-color	indicator	brightyellow default        # currently highlighted message
+color	indicator	black yellow # currently highlighted message
 color	error		red default                 # error messages
-color	status		white cyan                  # status line
+color	status		cyan default                 # status line
 color	tree		brightblack default         # thread tree
 color   tilde       cyan default                # blank line padding
 
-color	hdrdefault	black cyan                  # default headers
-color   header      brightwhite cyan "^From:"
-color   header      brightwhite cyan "^Subject:"
+color	hdrdefault	cyan default # default headers
+color   header      blue default "^From:"
+color   header      blue default "^Subject:"
 
 color	quoted		cyan default                # quote colours
 color   quoted1     brightcyan default
