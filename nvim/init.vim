@@ -40,6 +40,7 @@ Plug 'tyru/open-browser.vim'
 Plug 'tyru/open-browser-github.vim'
 Plug 'kassio/neoterm'
 Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-speeddating'
 
 " WebUI
 Plug 'rhysd/nyaovim-popup-tooltip'
@@ -322,3 +323,5 @@ autocmd FileType ledger map <buffer> ,l :Ledger bal Aktiva Fremdkapital<CR>
 autocmd FileType ledger map <buffer> ,a :%LedgerAlign<CR>
 " sort file
 autocmd FileType ledger map <buffer> ,s :%sort<CR>
+" date replacer
+autocmd FileType ledger iab <expr> DATE strftime("%F")
