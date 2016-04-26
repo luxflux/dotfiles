@@ -11,7 +11,7 @@
 # configured here named ".notmuch".
 #
 [database]
-path=/Users/raf/.mail/yux.ch
+path=/Users/raf/.mail
 
 # User configuration
 #
@@ -31,7 +31,7 @@ path=/Users/raf/.mail/yux.ch
 [user]
 name=Raffael Schmid
 primary_email=raffael@yux.ch
-other_email=raffael@familieschmid.ch;root@yux.ch;mir2@yux.ch;
+other_email=raffael@familieschmid.ch;root@yux.ch;mir2@yux.ch;raffael.schmid@welltravel.com;
 
 # Configuration for "notmuch new"
 #
