@@ -16,7 +16,7 @@ task :link do
   files += %w[.rubocop.yml .scss-lint.yml]
   files += %w[.ledgerrc]
   files += %w[.bundle]
-  files += %w[.mutt .offlineimaprc .urlview .msmtprc .notmuch-config]
+  files += %w[.mutt .offlineimaprc .urlview .msmtprc .notmuch-config .muttqt]
 
   files.each do |file_or_dir|
     sh "ln -nfs #{link_dir}/#{file_or_dir}"

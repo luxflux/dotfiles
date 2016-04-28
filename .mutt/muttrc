@@ -126,7 +126,7 @@ bind compose p postpone-message
 set sendmail_wait = 0
 
 # Addressbook ----------------------------------------
-set query_command = "contacts -Sf '%eTOKEN%n' '%s' | sed -e 's/TOKEN/\t/g'"
+set query_command = "muttqt -q '\'%s'\'"
 bind editor <Tab> complete-query
 bind editor ^T    complete
 
