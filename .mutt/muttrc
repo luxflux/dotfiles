@@ -130,8 +130,10 @@ set query_command = "muttqt -q '\'%s'\'"
 bind editor <Tab> complete-query
 bind editor ^T    complete
 
-# Color Scheme ---------------------------------------
+# Tasks ----------------------------------------------
+macro index,pager ,ta '<pipe-message>~/.mutt/header2task add<enter>,a'
 
+# Color Scheme ---------------------------------------
 color	normal		default default             # default colours
 color   index       red default ~N              # new messages
 color   index       red default ~O              # new messages

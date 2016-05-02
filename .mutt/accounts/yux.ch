@@ -14,4 +14,4 @@ set record    = "+yux.ch/Sent"
 set from     = "raffael@yux.ch"
 set sendmail = "/usr/local/bin/msmtp -a yux"
 
-macro index,pager \Ca "<save-message>+yux.ch/Archive<enter>"  "mark message as Archived"
+macro index,pager ,a "<save-message>+yux.ch/Archive<enter>"  "mark message as Archived"

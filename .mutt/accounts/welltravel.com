@@ -14,4 +14,4 @@ set record    = "+welltravel.com/INBOX.Sent"
 set from     = "raffael.schmid@welltravel.com"
 set sendmail = "/usr/local/bin/msmtp -a welltravel"
 
-macro index,pager \Ca "<save-message>+welltravel.com/INBOX.Archive<enter>"  "mark message as Archived"
+macro index,pager ,a "<save-message>+yux.ch/Archive<enter>"  "mark message as Archived"

@@ -1,0 +1,138 @@
+#!/usr/bin/env sh
+
+process_task() {
+	command="$1"
+	if [ -z "$message_id" ]; then
+		echo "Can't find message-id in message" 1>&2
+		return 1
+	fi
+
+	case "$command" in
+		"add")
+			while [ -z "$description" ]; do
+				printf "task description (empty uses subject): " 1>&2
+				read description 0>&2
+				if [ -z "$description" ]; then
+					if [ -n "$subject" ]; then
+						description="$subject"
+					else
+						echo "subject is null - provide a description"
+					fi
+				fi
+			done
+
+			task_number="$(task rc.verbose:new-id add +in -- "$description" | awk -F"[ .]" '$3 ~ /[0-9]+/ { print $3 }')"
+			if [ -n "$task_number" ]; then
+				task_annotate "$message_id" "$from" "$subject"
+			fi
+			;;
+		"annotate")
+			task_annotate
+			;;
+		"done")
+			echo "Finding task $message_id" 1>&2
+			if task_find list; then
+				task_annotate
+				if ! task status:pending rc.regex:off /"$_message_id"/ "done" 0>&2 1>&2; then
+					echo "can't complete task with id $message_id"
+				fi
+			fi
+			return 1
+			;;
+		"edit")
+			task \( status:pending or status:complete \) /"$_message_id"/ edit 1>&2 0>&2
+			;;
+		"find")
+			task_find '(status:pending or status:completed)'
+			return 1
+			;;
+		"join")
+			task list >&2
+			printf "Add this to task #: " >&2
+			read task_number 0>&2
+			if [ -n "$task_number" ]; then
+				task_annotate "$message_id" 1>/dev/null 2>&1
+			fi
+			;;
+		"project")
+			printf "Project: "
+			read project 0>&2
+			if [ -n "$project" ]; then
+				if ! task rc.regex:off /"$_message_id"/ modify project:"$project"; then
+					echo "Can't change the project for $message_id"
+				fi
+			fi
+			return 1
+			;;
+		*)
+			;;
+	esac
+
+}
+
+task_find() {
+	if ! task rc.regex:off /"$_message_id"/ "$1" 1>&2; then
+		echo "no task found" 1>&2
+		return 1
+	fi
+	return 0
+}
+
+task_annotate() {
+	if [ "$#" -gt 0 ]; then
+		while [ "$#" -gt 0 ]; do
+			if [ -n "$1" ]; then
+				task "$task_number" status:pending annotate -- "$1"
+			fi
+			shift
+		done
+	else
+		while true; do
+			printf "Annotations? (leave empty if none): " 1>&2
+			read annotations 0>&2
+			if [ -n "$annotations" ]; then
+				task status:pending rc.regex:off /"$_message_id"/ annotate -- "$annotations"
+			else
+				break
+			fi
+		done
+	fi
+}
+
+awk '\
+/^$/ { exit }
+NR == 1 { p = $0; next }
+
+{
+	if( $0 ~ /^[ \t]+/ ) {
+		if( header ) {
+			printf("%s ", p)
+		}
+	} else {
+		printf("%s\n", p)
+		header=1
+	}
+	p = $0
+} END { printf "\n\n" } ' | \
+while IFS=: read k v; do
+	if [ -z "$k" ]; then
+		exec 0>&-
+		process_task "$1";
+		rc="$?"
+		exit "$rc"
+	fi
+	k="$(awk -v k="$k" 'BEGIN { printf "%s",tolower(k) }')"
+	v="${v# *}"
+	case "$k" in
+		"message-id")
+			message_id="$(echo "$v" | sed 's/[<>]//g')"
+			_message_id="$(echo "$message_id" | sed 's#/#\\/#g')"
+			;;
+		"from")
+			from="$(echo "$v" | sed 's/[<>]//g')"
+			;;
+		"subject")
+			subject="$v"
+			;;
+	esac
+done
