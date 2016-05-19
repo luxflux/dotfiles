@@ -325,3 +325,6 @@ autocmd FileType ledger map <buffer> ,a :%LedgerAlign<CR>
 autocmd FileType ledger map <buffer> ,s :%sort<CR>
 " date replacer
 autocmd FileType ledger iab <expr> DATE strftime("%F")
+
+" disable syntax highlighting for logs
+au BufNewFile,BufRead *.log setlocal ft=none
