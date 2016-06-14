@@ -271,7 +271,6 @@ let g:neomake_ctags_maker = {
         \ '--exclude=.git',
         \ '--exclude=tmp',
         \ '--exclude=coverage',
-        \ '--languages=-javascript,sql',
         \ '%p']
   \ }
 
