@@ -1,0 +1,34 @@
+[user]
+  name = Raffael Schmid
+  email = raffael@yux.ch
+
+[hub]
+  protocol = git
+
+[credential]
+  helper = /opt/boxen/bin/boxen-git-credential
+
+[core]
+	excludesfile = /opt/boxen/config/git/gitignore
+
+[push]
+  default = simple
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+
+[diff]
+	compactionHeuristic = true
+
+[pager]
+  log = diff-so-fancy | less --tabs=4 -RFX
+  show = diff-so-fancy | less --tabs=4 -RFX
+  diff = diff-so-fancy | less --tabs=4 -RFX
+
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
