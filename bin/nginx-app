@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+
+nginx_sites_path = '/usr/local/etc/nginx/servers'
+name = ARGV[0] || Dir.pwd.split(File::SEPARATOR).last
+conf = File.join(nginx_sites_path, "#{name}.dev.conf")
+File.open(conf, 'w+') do |f|
+  f.puts(format(DATA.read, name, name, name, name, name, Dir.pwd, name))
+end
+
+procfile = File.join(Dir.pwd, 'Procfile')
+command = "web: bundle exec puma -b unix:/tmp/#{name}.sock"
+if File.exist?(procfile)
+  puts 'Not overriding Procfile, please add this by yourself:'
+  puts command
+else
+  File.open(procfile, 'w+') do |f|
+    f.puts command
+  end
+end
+
+puts 'Restarting nginx...'
+`sudo brew services restart nginx`
+
+__END__
+
+upstream %s {
+  server unix:/tmp/%s.sock;
+}
+
+server {
+    listen      80;
+    server_name %s.dev *.%s.dev %s.dev.*;
+    client_max_body_size 4G;
+    keepalive_timeout 5;
+
+    root %s/public;
+
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_pass_header X-Accel-Redirect;
+        proxy_read_timeout 300s;
+        if (!-f $request_filename) {
+          proxy_pass http://%s;
+          break;
+        }
+    }
+}

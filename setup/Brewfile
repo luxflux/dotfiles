@@ -1,6 +1,7 @@
 cask_args appdir: '/Applications'
 
 tap 'caskroom/cask'
+tap 'homebrew/versions'
 brew 'mas'
 
 # mutt
@@ -63,7 +64,6 @@ brew 'mtr'
 brew 'nmap'
 brew 'pstree'
 brew 'qt55'
-brew 'rabbitmq'
 brew 'rbenv'
 brew 'reattach-to-user-namespace'
 brew 'task'
@@ -72,5 +72,8 @@ brew 'xz'
 brew 'zsh'
 
 # services
-brew 'elasticsearch', restart_service: :changed
-brew 'postgresql', restart_service: :changed
+brew 'elasticsearch', restart_service: :changed, start_service: true
+brew 'postgresql94', restart_service: :changed, start_service: true
+brew 'dnsmasq', restart_service: :changed, start_service: true
+brew 'rabbitmq', restart_service: :changed, start_service: true
+brew 'nginx', restart_service: :changed, start_service: true
