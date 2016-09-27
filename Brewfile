@@ -1,47 +1,76 @@
-update
-upgrade
+cask_args appdir: '/Applications'
 
-# development
-install git
-install openssl
-install rbenv
-install rbenv-gemset
-install rbenv-gem-rehash
-install ruby-build
-install the_silver_searcher
+tap 'caskroom/cask'
+brew 'mas'
 
-# shell
-install reattach-to-user-namespace
-install tmux
-install multitail
+# mutt
+tap 'tgray/homebrew-tgbrew'
+brew 'muttqt'
+brew 'contacts2'
+brew 'offlineimap'
+brew 'urlview'
+brew 'msmtp'
+brew 'notmuch'
+brew 'terminal-notifier'
+brew 'w3m'
+brew 'mutt'
 
-
-tap Goles/battery
-install battery
-install spark
-
+# neovim
+tap 'neovim/homebrew-neovim'
+tap 'universal-ctags/universal-ctags'
+brew 'neovim'
+brew 'universal-ctags'
 
 # apps
-tap phinze/cask
-install brew-cask
+cask '1password'
+cask 'appcleaner'
+cask 'dropbox'
+cask 'firefox'
+cask 'genymotion'
+cask 'github-desktop'
+cask 'google-chrome'
+cask 'paw'
+cask 'slack'
+cask 'soapui'
+cask 'sourcetree'
+cask 'sparkleshare'
+cask 'tunnelblick'
+cask 'vagrant'
+cask 'virtualbox'
+cask 'vlc'
+cask 'vmware-fusion'
+mas 'Baby Monitor 3G', id: 626137367
+mas 'Keynote', id: 409183694
+mas 'Numbers', id: 409203825
+mas 'Pages', id: 409201541
+mas 'Pixelmator', id: 407963104
+mas 'Tweetbot', id: 557168941
+mas 'Xcode', id: 497799835
+mas 'iA Writer', id: 775737590
 
-cask install slate
-cask install google-chrome
-cask install mou
-cask install sourcetree
-cask install macvim
-cask install iterm2
-cask install appcleaner
-cask install sequel-pro
-cask install sparkleshare
-cask install launchrocket
-cask install flux
-cask install github
-cask install vagrant
-cask install virtualbox
+# tools
+brew 'android-sdk'
+brew 'diff-so-fancy'
+brew 'fzf'
+brew 'go'
+brew 'graphviz'
+brew 'heroku'
+brew 'icu4c'
+brew 'imagemagick'
+brew 'influxdb'
+brew 'ledger'
+brew 'mtr'
+brew 'nmap'
+brew 'pstree'
+brew 'qt55'
+brew 'rabbitmq'
+brew 'rbenv'
+brew 'reattach-to-user-namespace'
+brew 'task'
+brew 'watchman'
+brew 'xz'
+brew 'zsh'
 
-cask alfred link
-
-tap homebrew/versions
-
-cleanup
+# services
+brew 'elasticsearch', restart_service: :changed
+brew 'postgresql', restart_service: :changed
