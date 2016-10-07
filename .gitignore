@@ -9,3 +9,4 @@ nvim/spell
 !nvim/plugged/.gitkeep
 
 .mutt/tmp/*
+.bundle
