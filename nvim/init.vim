@@ -226,19 +226,19 @@ au BufWritePost * Neomake
 " run ctags after save
 au BufWritePost * Neomake! ctags
 
-" get reference for the current commit from git flow
-function GitRedmineIssue(fixes)
+" get reference for the current commit from branch name
+function JiraIssue(type)
   let current_branch = system("git rev-parse --abbrev-ref HEAD")
-  let ref = substitute(current_branch, '^\(\d\+\).\+$', '\1', '')
-  if a:fixes == 'true'
-    let prefix = 'fixes'
+  let ref = substitute(current_branch, '^\(\w\+\)-\(\d\+\).\+$', '\1-\2', '')
+  if a:type == 'fixes' || a:type == 'refs'
+    return type . ' ' . ref
   else
-    let prefix = 'refs'
+    return '['. ref .'](https://welltravel.atlassian.net/browse/'. ref .')'
   endif
-  return prefix . ' #' . ref
 endfunction
-iab REFS <C-R>=GitRedmineIssue('false')<CR>
-iab FIXES <C-R>=GitRedmineIssue('true')<CR>
+iab REFS <C-R>=JiraIssue('fixes')<CR>
+iab FIXES <C-R>=JiraIssue('refs')<CR>
+iab STORY <C-R>=JiraIssue('story')<CR>
 
 set clipboard+=unnamedplus
 
