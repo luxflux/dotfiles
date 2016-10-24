@@ -1,7 +1,9 @@
 #!/bin/sh
 
+set -e
+
 mkdir -p /etc/resolver
-echo "nameserver 127.0.0.1" > /etc/resolver/dev
+sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
 cp ./files/dnsmasq.conf /usr/local/etc/dnsmasq.conf
 sudo brew services start dnsmasq
 
