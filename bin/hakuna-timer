@@ -1,0 +1,62 @@
+#!/bin/bash
+
+set -e
+
+URL="https://welltravel.hakuna.ch/api/v1"
+
+if [ -f ~/.hakuna-token ]; then
+  TOKEN=$(cat ~/.hakuna-token)
+else
+  echo "specify token in ~/.hakuna-token"
+  exit 1
+fi
+
+case $2 in
+  fd)
+    PROJECT_ID=1
+    ;;
+  review)
+    PROJECT_ID=2
+    ;;
+  *)
+    PROJECT_ID=''
+    ;;
+esac
+
+function timer_status() {
+  starts=$(call_api GET | jq '.starts')
+  if [ "${starts}" == 'null' ]; then
+    echo 'stopped'
+  else
+    echo 'running'
+  fi
+}
+
+function stop_timer() {
+  call_api PUT > /dev/null
+}
+
+function start_timer() {
+  curl -s -X POST -d 'time_type_id=1' -d "project_id=${1}" -H "X-Auth-Token: ${TOKEN}" "${URL}/timer" > /dev/null
+}
+
+function call_api() {
+  curl -s -X $1 -H "X-Auth-Token: ${TOKEN}" "${URL}/timer"
+}
+
+
+case $1 in
+  start)
+    if [ ! "$(timer_status)" == 'stopped' ]; then
+      stop_timer
+    fi
+    start_timer $PROJECT_ID
+    ;;
+  stop)
+    if [ ! "$(timer_status)" == 'stopped' ]; then
+      stop_timer
+    fi
+    ;;
+esac
+
+timer_status
