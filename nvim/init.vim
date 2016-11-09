@@ -306,7 +306,7 @@ function! DoPrettyXML()
 endfunction
 command! PrettyXML call DoPrettyXML()
 
-command! PrettyJSON :%!python -m json.tool
+command! PrettyJSON :%!jq .
 
 " ledger
 let g:ledger_extra_options = '--pedantic --explicit --check-payees'
