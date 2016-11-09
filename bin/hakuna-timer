@@ -24,8 +24,8 @@ case $2 in
 esac
 
 function timer_status() {
-  starts=$(call_api GET | jq '.starts')
-  if [ "${starts}" == 'null' ]; then
+  start_time=$(call_api GET | jq '.start_time')
+  if [ "${start_time}" == 'null' ]; then
     echo 'stopped'
   else
     echo 'running'
