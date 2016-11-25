@@ -2,8 +2,9 @@ set nocompatible                " be iMproved
 
 call plug#begin('~/.config/nvim/plugged')
 
-" color themes
+" look&feel
 Plug 'tomasr/molokai'
+Plug 'ryanoasis/vim-devicons'
 
 "" languages
 Plug 'vim-ruby/vim-ruby'
@@ -41,6 +42,7 @@ Plug 'tyru/open-browser-github.vim'
 Plug 'kassio/neoterm'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-speeddating'
+Plug 'mhinz/vim-startify'
 
 " WebUI
 Plug 'rhysd/nyaovim-popup-tooltip'
@@ -52,10 +54,22 @@ call plug#end()
 "  configuration
 """"""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""
+"  colors
+""""""""""""""""""""""""""""""
 let g:rehash256 = 1
 color molokai
+if (has("termguicolors"))
+  " set termguicolors
+endif
+" airline theme
+let g:airline_theme='molokai'
 
 syntax enable
+
+""""""""""""""""""""""""""""""
+"  misc
+""""""""""""""""""""""""""""""
 set encoding=utf-8
 filetype plugin indent on
 
@@ -135,8 +149,6 @@ let g:airline_powerline_fonts = 1
 set laststatus=2
 " enable airline tabline
 let g:airline#extensions#tabline#enabled = 1
-" airline theme
-let g:airline_theme='molokai'
 
 nnoremap <C-P> :FZF<cr>
 
