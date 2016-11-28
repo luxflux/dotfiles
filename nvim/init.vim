@@ -48,6 +48,9 @@ Plug 'mhinz/vim-startify'
 Plug 'rhysd/nyaovim-popup-tooltip'
 Plug 'rhysd/nyaovim-markdown-preview'
 
+" OrgMode
+Plug 'jceb/vim-orgmode'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""
