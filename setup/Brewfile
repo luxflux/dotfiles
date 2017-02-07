@@ -1,3 +1,4 @@
+# vi:ft=ruby
 cask_args appdir: '/Applications'
 
 tap 'caskroom/cask'
@@ -80,3 +81,4 @@ brew 'postgresql94', restart_service: :changed, start_service: true
 brew 'dnsmasq', restart_service: :changed, start_service: true
 brew 'rabbitmq', restart_service: :changed, start_service: true
 brew 'nginx', restart_service: :changed, start_service: true
+brew 'syncthing', restart_service: :changed, start_service: true
