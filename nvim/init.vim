@@ -3,7 +3,8 @@ set nocompatible                " be iMproved
 call plug#begin('~/.config/nvim/plugged')
 
 " look&feel
-Plug 'tomasr/molokai'
+" Plug 'tomasr/molokai'
+Plug 'Reewr/vim-monokai-phoenix'
 Plug 'ryanoasis/vim-devicons'
 
 "" languages
@@ -59,12 +60,13 @@ call plug#end()
 "  colors
 """"""""""""""""""""""""""""""
 let g:rehash256 = 1
-color molokai
-if (has("termguicolors"))
-  " set termguicolors
-endif
+" color molokai
+color monokai-phoenix
+" set termguicolors
+
 " airline theme
-let g:airline_theme='molokai'
+" let g:airline_theme='molokai'
+let g:airline_theme='simple'
 
 syntax enable
 
