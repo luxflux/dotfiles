@@ -26,6 +26,14 @@ task :link do
 
   sh "mkdir -p .config"
   sh "ln -nfs #{link_dir}/nvim .config/nvim"
+
+  sh "mkdir -p Library/LaunchAgents"
+  Dir.glob("#{link_dir}/LaunchAgents/*").each do |agent|
+    name = File.basename(agent)
+    sh "cp #{agent} Library/LaunchAgents/#{name}"
+    sh "launchctl load Library/LaunchAgents/#{name}"
+    sh "launchctl start #{name.gsub('.plist', '')}"
+  end
 end
 
 namespace :bootstrap do
