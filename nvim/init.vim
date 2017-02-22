@@ -265,7 +265,7 @@ set lazyredraw          " Wait to redraw
 set scrolljump=8        " Scroll 8 lines at a time at bottom/top
 let html_no_rendering=1 " Don't render italic, bold, links in HTML
 
-" color over 100 signs
+" color over 110 signs
 set colorcolumn=111
 hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#000000 guibg=#FD971F
 
@@ -349,7 +349,10 @@ vmap ,t :Tabularize /\|/<CR>
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ --print-width\ 100
 autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
 autocmd BufWritePre *.jsx exe "normal! gggqG\<C-o>\<C-o>"
+autocmd BufNewFile,BufRead *.js set colorcolumn=101
+autocmd BufNewFile,BufRead *.jsx set colorcolumn=101
 
 " startify
 let g:startify_change_to_dir = 1
 let g:startify_change_to_vcs_root = 1
+
