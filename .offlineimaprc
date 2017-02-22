@@ -12,7 +12,7 @@ remoterepository = yux-Remote
 status_backend = sqlite
 presynchook = logger -t offlineimap -p mail.info "Starting sync of mail account yux"
 postsynchook = ~/.mutt/offlineimap-postsynchook yux.ch
-# autorefresh = 1
+autorefresh = 5
 
 [Repository yux-Local]
 type = Maildir
@@ -27,6 +27,8 @@ remotepasseval = get_keychain_pass(account="raffael@yux.ch", server="imap.kolabn
 realdelete = no
 sslcacertfile = /usr/local/etc/openssl/cert.pem
 folderfilter = lambda folder: not re.search('^(Configuration|Files|Freebusy|Journal|Other Users|Raffaels K)', folder)
+idlefolders = ['INBOX']
+holdconnectionopen = yes
 
 [Account welltravel]
 localrepository = welltravel-Local
@@ -34,7 +36,7 @@ remoterepository = welltravel-Remote
 status_backend = sqlite
 presynchook = logger -t offlineimap -p mail.info "Starting sync of mail account welltravel"
 postsynchook = ~/.mutt/offlineimap-postsynchook welltravel.com
-# autorefresh = 1
+autorefresh = 5
 
 [Repository welltravel-Local]
 type = Maildir
@@ -48,3 +50,5 @@ remoteuser = raffael.schmid@welltravel.com
 remotepasseval = get_keychain_pass(account="raffael.schmid@welltravel.com", server="imap.nine.ch")
 realdelete = no
 sslcacertfile = /usr/local/etc/openssl/cert.pem
+idlefolders = ['INBOX']
+holdconnectionopen = yes

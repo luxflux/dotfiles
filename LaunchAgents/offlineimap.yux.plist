@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin</string>
+    </dict>
+    <key>KeepAlive</key>
+    <true/>
+    <key>Label</key>
+    <string>offlineimap.yux</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/opt/offlineimap/bin/offlineimap</string>
+      <string>-a</string>
+      <string>yux</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true />
+    <key>StandardErrorPath</key>
+    <string>/tmp/offlineimap.yux.err</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/offlineimap.yux.out</string>
+  </dict>
+</plist>
