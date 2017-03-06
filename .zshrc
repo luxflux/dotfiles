@@ -24,11 +24,43 @@ zplug load
 
 source /Users/raf/.iterm2_shell_integration.zsh
 
-# History Search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+typeset -A key
+
+key[Home]="$terminfo[khome]"
+key[End]="$terminfo[kend]"
+key[Insert]="$terminfo[kich1]"
+key[Backspace]="$terminfo[kbs]"
+key[Delete]="$terminfo[kdch1]"
+key[Up]="$terminfo[kcuu1]"
+key[Down]="$terminfo[kcud1]"
+key[Left]="$terminfo[kcub1]"
+key[Right]="$terminfo[kcuf1]"
+key[PageUp]="$terminfo[kpp]"
+key[PageDown]="$terminfo[knp]"
+
+# setup key accordingly
+[[ -n "$key[Home]"      ]] && bindkey -- "$key[Home]"      beginning-of-line
+[[ -n "$key[End]"       ]] && bindkey -- "$key[End]"       end-of-line
+[[ -n "$key[Insert]"    ]] && bindkey -- "$key[Insert]"    overwrite-mode
+[[ -n "$key[Backspace]" ]] && bindkey -- "$key[Backspace]" backward-delete-char
+[[ -n "$key[Delete]"    ]] && bindkey -- "$key[Delete]"    delete-char
+[[ -n "$key[Up]"        ]] && bindkey -- "$key[Up]"        history-substring-search-up
+[[ -n "$key[Down]"      ]] && bindkey -- "$key[Down]"      history-substring-search-down
+[[ -n "$key[Left]"      ]] && bindkey -- "$key[Left]"      backward-char
+[[ -n "$key[Right]"     ]] && bindkey -- "$key[Right]"     forward-char
+
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+    function zle-line-init () {
+        echoti smkx
+    }
+    function zle-line-finish () {
+        echoti rmkx
+    }
+    zle -N zle-line-init
+    zle -N zle-line-finish
+fi
 
 # Aliases
 alias netstat="sudo lsof -i -P"
@@ -37,6 +69,7 @@ alias prettyjson="ruby -rjson -e 'puts JSON.pretty_generate(JSON.parse(STDIN.rea
 alias vim="nvim"
 alias mutt="cd ~/Downloads && mutt"
 alias restart-offlineimap="kill -9 \$(pgrep -f offlineimap)"
+alias ls="ls -G"
 
 # Variables
 export EDITOR="nvim"
@@ -44,6 +77,8 @@ export GIT_EDITOR=${EDITOR}
 export VISUAL=${EDITOR}
 export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export SOCKET_DIR=/tmp
+export LSCOLORS='exfxcxdxbxGxDxabagacad'
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
 
 # Nodenv
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
