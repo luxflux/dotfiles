@@ -95,6 +95,8 @@ PATH="/usr/local/share/npm/bin:$PATH"
 PATH=".git/safe/../../bin:$PATH"
 PATH=".git/safe/../../node_modules/.bin:$PATH"
 PATH=".git/safe/../../client/node_modules/.bin:$PATH"
+# homebrew sbin
+PATH="$PATH:/usr/local/sbin"
 
 # ZSH config
 # change path without specifying cd
