@@ -5,9 +5,12 @@ fi
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
+if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
+if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash zsh)"; fi
+
 zplug "zsh-users/zsh-completions"
 zplug "caarlos0/zsh-git-sync"
-zplug "denysdovhan/spaceship-zsh-theme", as:theme
+zplug "frmendes/geometry", as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:2
 
@@ -18,6 +21,16 @@ if ! zplug check --verbose; then
         echo; zplug install
     fi
 fi
+
+export GEOMETRY_PROMPT_PLUGINS=(exec_time git ruby node)
+export GEOMETRY_PROMPT_PREFIX=""
+export PROMPT_GEOMETRY_EXEC_TIME="true"
+export GEOMETRY_COLOR_PROMPT="red"
+export PROMPT_GEOMETRY_COLORIZE_SYMBOL="true"
+export GEOMETRY_PLUGIN_SEPARATOR=" | "
+export GEOMETRY_SYMBOL_RUBY_RVM_VERSION=""
+export GEOMETRY_COLOR_PACKAGER_VERSION="green"
+export GEOMETRY_SYMBOL_PACKAGER_VERSION=""
 
 # zplug load --verbose
 zplug load
@@ -79,10 +92,6 @@ export FZF_DEFAULT_COMMAND='ag -l -g ""'
 export SOCKET_DIR=/tmp
 export LSCOLORS='exfxcxdxbxGxDxabagacad'
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
-
-# Nodenv
-if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
-if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash zsh)"; fi
 
 # Path
 # add dotfilez bin to path
