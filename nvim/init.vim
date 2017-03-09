@@ -356,3 +356,8 @@ autocmd BufNewFile,BufRead *.jsx set colorcolumn=101
 let g:startify_change_to_dir = 1
 let g:startify_change_to_vcs_root = 1
 
+" folding for XMLs
+augroup XML
+  autocmd!
+  autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
+augroup END
