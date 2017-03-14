@@ -1,0 +1,11 @@
+#!/bin/sh
+
+echo "* [ ] JS Tests"
+for file in $(git diff --name-only master -- '*.js' '*.jsx'); do
+  echo "  * [ ] ${file}"
+done
+
+echo "* [ ] Ruby Tests"
+for file in $(git diff --name-only master -- '*.rb'); do
+  echo "  * [ ] ${file}"
+done
