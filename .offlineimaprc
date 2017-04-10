@@ -16,7 +16,7 @@ autorefresh = 5
 
 [Repository yux-Local]
 type = Maildir
-localfolders = ~/.mail/yux.ch
+localfolders = ~/Mails/yux.ch
 
 [Repository yux-Remote]
 maxconnections = 5
@@ -40,7 +40,7 @@ autorefresh = 5
 
 [Repository welltravel-Local]
 type = Maildir
-localfolders = ~/.mail/welltravel.com
+localfolders = ~/Mails/welltravel.com
 
 [Repository welltravel-Remote]
 maxconnections = 5

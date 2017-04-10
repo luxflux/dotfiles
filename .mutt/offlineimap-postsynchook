@@ -4,7 +4,7 @@ ACCOUNT=$1
 
 notmuch new
 logger -t offlineimap -p mail.info "Sync of mail account completed"
-NEWDIRS=$(find ~/.mail/$ACCOUNT -type f -regex '.*/new/.*' | cut -f5 -d/ | sort | uniq -c)
+NEWDIRS=$(find ~/Mails/$ACCOUNT -type f -regex '.*/new/.*' | cut -f5 -d/ | sort | uniq -c)
 if [ -n "$NEWDIRS" ]; then
   terminal-notifier -title "Mutt" -subtitle "New Mail" -message "$NEWDIRS" -appIcon ~/.mutt/mutt.icns
 fi

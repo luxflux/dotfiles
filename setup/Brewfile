@@ -42,6 +42,7 @@ cask 'vagrant'
 cask 'virtualbox'
 cask 'vlc'
 cask 'vmware-fusion'
+cask 'qlstephen'
 cask 'google-cloud-sdk'
 mas 'Baby Monitor 3G', id: 626137367
 mas 'Keynote', id: 409183694

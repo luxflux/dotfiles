@@ -1,5 +1,5 @@
 # Paths ----------------------------------------------
-set folder           = ~/.mail               # mailbox location
+set folder           = ~/Mails               # mailbox location
 set alias_file       = ~/.mutt/alias         # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers
 set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
@@ -69,7 +69,7 @@ macro index o "<shell-escape>offlineimap -o -qf INBOX<enter>" "run offlineimap t
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
 
-macro index S "<enter-command>unset wait_key<enter><shell-escape>~/.mutt/mutt-notmuch.py ~/.mail/temporary/search<enter><change-folder-readonly>+temporary/search<enter>" "search mail (using notmuch)"
+macro index S "<enter-command>unset wait_key<enter><shell-escape>~/.mutt/mutt-notmuch.py ~/Mails/temporary/search<enter><change-folder-readonly>+temporary/search<enter>" "search mail (using notmuch)"
 
 # Pager View Options ---------------------------------
 set pager_index_lines = 5 # number of index lines to show
