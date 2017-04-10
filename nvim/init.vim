@@ -347,8 +347,8 @@ au BufNewFile,BufRead *.log setlocal ft=none
 vmap ,t :Tabularize /\|/<CR>
 
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all\ --print-width\ 100
-autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
-autocmd BufWritePre *.jsx exe "normal! gggqG\<C-o>\<C-o>"
+autocmd FileType javascript map ,p gggqG<C-o><C-o>
+autocmd FileType javascript.jsx map ,p gggqG<C-o><C-o>
 autocmd BufNewFile,BufRead *.js set colorcolumn=101
 autocmd BufNewFile,BufRead *.jsx set colorcolumn=101
 
