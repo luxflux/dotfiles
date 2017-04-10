@@ -1,5 +1,12 @@
 #!/bin/sh
 
+brew tap Homebrew/bundle
+brew tap caskroom/cask
+
+brew install mas
+
+brew bundle
+
 set -e
 
 mkdir -p /etc/resolver

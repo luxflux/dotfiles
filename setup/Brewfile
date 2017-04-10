@@ -54,7 +54,6 @@ mas 'Xcode', id: 497799835
 mas 'iA Writer', id: 775737590
 
 # tools
-brew 'android-sdk'
 brew 'diff-so-fancy'
 brew 'fzf'
 brew 'go'
