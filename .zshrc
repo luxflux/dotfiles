@@ -37,6 +37,10 @@ zplug load
 
 source /Users/raf/.iterm2_shell_integration.zsh
 
+if [ -f /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc ]; then
+  source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+fi
+
 typeset -A key
 
 key[Home]="$terminfo[khome]"
