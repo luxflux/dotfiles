@@ -264,6 +264,8 @@ function JiraSummary()
 endfunction
 iab DESC <C-R>=JiraSummary()<CR>
 
+iab PR <C-R>=JiraSummary()<CR><CR><C-R>=JiraIssue('story')<CR>
+
 set clipboard+=unnamedplus
 
 hi Normal     ctermbg=none
