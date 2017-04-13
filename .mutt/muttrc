@@ -103,7 +103,6 @@ macro  pager  <F10>  "|~/.mutt/viewhtmlmail<enter>" "View HTML in browser"
 auto_view text/html
 
 # Compose View Options -------------------------------
-set realname = "Raffael Schmid"      # who am i?
 set envelope_from                    # which from?
 set sig_dashes                       # dashes before sig
 set edit_headers                     # show headers when composing

@@ -12,6 +12,7 @@ set postponed = "+yux.ch/drafts"
 set record    = "+yux.ch/Sent"
 
 set from     = "raffael@yux.ch"
+set realname = "Raffael Schmid"
 set sendmail = "/usr/local/bin/msmtp -a yux"
 
 macro index,pager ,a "<save-message>+yux.ch/Archive<enter>"  "mark message as Archived"

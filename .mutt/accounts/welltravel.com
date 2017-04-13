@@ -12,6 +12,7 @@ set postponed = "+welltravel.com/INBOX.Drafts"
 set record    = "+welltravel.com/INBOX.Sent"
 
 set from     = "raffael.schmid@welltravel.com"
+set realname = "Raffael Schmid - Welltravel"
 set sendmail = "/usr/local/bin/msmtp -a welltravel"
 
 macro index,pager ,a "<save-message>+welltravel.com/INBOX.Archive<enter>"  "mark message as Archived"
