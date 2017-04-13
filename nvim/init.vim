@@ -255,6 +255,15 @@ iab REFS <C-R>=JiraIssue('fixes')<CR>
 iab FIXES <C-R>=JiraIssue('refs')<CR>
 iab STORY <C-R>=JiraIssue('story')<CR>
 
+function JiraSummary()
+  let current_branch = system("git rev-parse --abbrev-ref HEAD")
+  let current_branch = system("git rev-parse --abbrev-ref HEAD")
+  let ref = substitute(current_branch, '^\(\w\+\)-\(\d\+\).\+$', '\1-\2', '')
+  let summary = system("curl -u \"$(cat ~/.jira-access)\" -X GET -s -H 'Content-Type: application/json' https://welltravel.atlassian.net/rest/api/2/issue/" . ref . "\\?fields=summary | jq -r '.fields.summary'")
+  return summary
+endfunction
+iab DESC <C-R>=JiraSummary()<CR>
+
 set clipboard+=unnamedplus
 
 hi Normal     ctermbg=none
