@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+APP=$1
+
+if [ -z "$1" ]; then
+  echo "Usage: $0 <app>"
+  exit 1
+fi
+
+REVISION=fcacf7cef46649b4ba618f8d9781fe3801c98fca
+
+bundle package --all
+
+curl https://gist.githubusercontent.com/luxflux/eda852c65e0131f07625c66be5ccbb64/raw/${REVISION}/database.docker.yml  > config/database.docker.yml
+curl https://gist.githubusercontent.com/luxflux/eda852c65e0131f07625c66be5ccbb64/raw/${REVISION}/Dockerfile > Dockerfile
+curl https://gist.githubusercontent.com/luxflux/eda852c65e0131f07625c66be5ccbb64/raw/${REVISION}/puma.rb > config/puma.rb
+curl https://gist.githubusercontent.com/luxflux/eda852c65e0131f07625c66be5ccbb64/raw/${REVISION}/rufus-scheduler.rb > bin/rufus-scheduler
+curl https://gist.githubusercontent.com/luxflux/eda852c65e0131f07625c66be5ccbb64/raw/${REVISION}/.dockerignore > .dockerignore
+
+chmod 755 bin/rufus-scheduler
+
+sed -i '' "s/\\\$\\\$app\\\$\\\$/${APP}/g" config/database.docker.yml
+
+touch public/health
