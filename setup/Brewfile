@@ -77,7 +77,9 @@ brew 'xz'
 brew 'zsh'
 brew 'jq'
 brew 'kubectl'
+brew 'kubernetes-helm'
 brew 'redis'
+brew 'watch'
 
 # services
 brew 'elasticsearch', restart_service: :changed, start_service: true
