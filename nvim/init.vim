@@ -230,7 +230,7 @@ au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= l
 au BufNewFile,BufRead *.eyaml setlocal ft=yaml
 
 " fix whitespaces before writing the buffer
-au BufWritePre * :FixWhitespace
+" au BufWritePre * :FixWhitespace
 
 " fix whitespaces before writing the buffer
 autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown autocmd BufWritePre * :FixWhitespace
