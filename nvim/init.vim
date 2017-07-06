@@ -5,6 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 " look&feel
 " Plug 'tomasr/molokai'
 Plug 'Reewr/vim-monokai-phoenix'
+Plug 'bluz71/vim-moonfly-colors'
 Plug 'ryanoasis/vim-devicons'
 
 "" languages
@@ -59,10 +60,11 @@ call plug#end()
 """"""""""""""""""""""""""""""
 "  colors
 """"""""""""""""""""""""""""""
-let g:rehash256 = 1
+set termguicolors
+" let g:rehash256 = 1
 " color molokai
-color monokai-phoenix
-" set termguicolors
+" color monokai-phoenix
+color moonfly
 
 " airline theme
 " let g:airline_theme='molokai'
