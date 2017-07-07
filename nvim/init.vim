@@ -67,8 +67,8 @@ call plug#end()
 set termguicolors
 " let g:rehash256 = 1
 " color molokai
-" color monokai-phoenix
-color moonfly
+color monokai-phoenix
+" color moonfly
 
 " airline theme
 " let g:airline_theme='molokai'
