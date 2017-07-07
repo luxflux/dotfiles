@@ -45,10 +45,14 @@ Plug 'kassio/neoterm'
 Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-speeddating'
 Plug 'mhinz/vim-startify'
+Plug 'hashivim/vim-terraform'
 
 " WebUI
 Plug 'rhysd/nyaovim-popup-tooltip'
 Plug 'rhysd/nyaovim-markdown-preview'
+
+" Completion
+Plug 'roxma/nvim-completion-manager'
 
 
 call plug#end()
@@ -286,9 +290,6 @@ hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#0
 " disable folding
 set nofoldenable
 
-" faster vim startup
-let g:ruby_path = system('echo $BOXEN_HOME/rbenv/shims')
-
 tnoremap <Esc> <C-\><C-n>
 
 let g:neomake_ctags_maker = {
@@ -375,3 +376,7 @@ augroup XML
   autocmd!
   autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
 augroup END
+
+" auto align in terraform files
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
