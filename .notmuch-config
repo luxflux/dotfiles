@@ -49,7 +49,7 @@ other_email=raffael@familieschmid.ch;root@yux.ch;mir2@yux.ch;raffael.schmid@well
 #
 [new]
 tags=unread;inbox;
-ignore=
+ignore=search
 
 # Search configuration
 #
