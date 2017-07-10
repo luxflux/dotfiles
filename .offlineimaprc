@@ -9,7 +9,6 @@ fsync = False
 [Account yux]
 localrepository = yux-Local
 remoterepository = yux-Remote
-status_backend = sqlite
 presynchook = logger -t offlineimap -p mail.info "Starting sync of mail account yux"
 postsynchook = ~/.mutt/offlineimap-postsynchook yux.ch
 autorefresh = 5
@@ -33,7 +32,6 @@ holdconnectionopen = yes
 [Account welltravel]
 localrepository = welltravel-Local
 remoterepository = welltravel-Remote
-status_backend = sqlite
 presynchook = logger -t offlineimap -p mail.info "Starting sync of mail account welltravel"
 postsynchook = ~/.mutt/offlineimap-postsynchook welltravel.com
 autorefresh = 5
