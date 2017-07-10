@@ -5,7 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 " look&feel
 " Plug 'tomasr/molokai'
 Plug 'Reewr/vim-monokai-phoenix'
-Plug 'bluz71/vim-moonfly-colors'
+" Plug 'bluz71/vim-moonfly-colors'
 Plug 'ryanoasis/vim-devicons'
 
 "" languages
