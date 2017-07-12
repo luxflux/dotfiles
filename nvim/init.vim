@@ -84,7 +84,7 @@ filetype plugin indent on
 
 set number
 set ruler       " show the cursor position all the time
-set cursorline
+" set cursorline
 set showcmd     " display incomplete commands
 
 set guifont=Source_Code_Pro_for_Powerline:h16,Source_Code_Pro_for_Powerline:h16
