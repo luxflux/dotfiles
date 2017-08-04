@@ -87,6 +87,7 @@ alias vim="nvim"
 alias mutt="cd ~/Downloads && mutt"
 alias restart-offlineimap="kill -9 \$(pgrep -f offlineimap)"
 alias ls="ls -G"
+alias l="exa -lhg --git --time-style long-iso"
 
 # Variables
 export EDITOR="nvim"

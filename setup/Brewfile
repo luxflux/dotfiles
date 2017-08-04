@@ -16,6 +16,7 @@ brew 'notmuch'
 brew 'terminal-notifier'
 brew 'w3m'
 brew 'mutt'
+brew 'exa'
 
 # neovim
 tap 'neovim/homebrew-neovim'
