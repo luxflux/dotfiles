@@ -87,9 +87,8 @@ linters:
     allow_element_with_id: false
     severity: warning
   SelectorDepth:
-    enabled: true
-    max_depth: 2
-    severity: warning
+    enabled: false
+    max_depth: 3
   SelectorFormat:
     enabled: true
     convention: hyphenated_lowercase
