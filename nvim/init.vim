@@ -240,7 +240,7 @@ au BufNewFile,BufRead *.eyaml setlocal ft=yaml
 " au BufWritePre * :FixWhitespace
 
 " fix whitespaces before writing the buffer
-autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown autocmd BufWritePre * :FixWhitespace
+autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown,scss autocmd BufWritePre * :FixWhitespace
 
 " run neomake after save
 au BufWritePost * Neomake
