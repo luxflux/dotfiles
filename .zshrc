@@ -22,7 +22,7 @@ if ! zplug check --verbose; then
     fi
 fi
 
-export GEOMETRY_PROMPT_PLUGINS=(exec_time git ruby node)
+export GEOMETRY_PROMPT_PLUGINS=(exec_time git ruby node k8s)
 export GEOMETRY_PROMPT_PREFIX=""
 export PROMPT_GEOMETRY_EXEC_TIME="true"
 export GEOMETRY_COLOR_PROMPT="red"
@@ -34,6 +34,18 @@ export GEOMETRY_SYMBOL_PACKAGER_VERSION=""
 
 # zplug load --verbose
 zplug load
+
+geometry_prompt_k8s_setup() {}
+geometry_prompt_k8s_check() { $(echo $PWD | grep k8s) || return 1 }
+geometry_prompt_k8s_render() {
+   kubectl_current_context=$(kubectl config current-context)
+   # kubectl_project=$(echo $kubectl_current_context | cut -d '_' -f 2)
+   kubectl_cluster=$(echo $kubectl_current_context | cut -d '_' -f 4)
+   kubectl_prompt="k8s:$kubectl_cluster"
+   echo $kubectl_prompt
+}
+
+geometry_plugin_register k8s
 
 source /Users/raf/.iterm2_shell_integration.zsh
 
