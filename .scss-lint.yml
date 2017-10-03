@@ -90,7 +90,7 @@ linters:
     enabled: false
     max_depth: 3
   SelectorFormat:
-    enabled: true
+    enabled: false
     convention: hyphenated_lowercase
   Shorthand:
     enabled: true
