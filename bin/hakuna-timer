@@ -18,6 +18,9 @@ case $2 in
   review)
     PROJECT_ID=2
     ;;
+  oo)
+    PROJECT_ID=4
+    ;;
   *)
     PROJECT_ID=''
     ;;
