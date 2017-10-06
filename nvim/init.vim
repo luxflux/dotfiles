@@ -23,6 +23,7 @@ Plug 'fatih/vim-go'
 Plug 'mtscout6/vim-cjsx'
 Plug 'ledger/vim-ledger'
 Plug 'mxw/vim-jsx'
+Plug 'google/vim-jsonnet'
 
 "" Tools
 Plug 'vim-airline/vim-airline'
