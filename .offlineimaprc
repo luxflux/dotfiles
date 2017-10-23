@@ -20,12 +20,11 @@ localfolders = ~/Mails/yux.ch
 [Repository yux-Remote]
 maxconnections = 5
 type = IMAP
-remotehost = imap.kolabnow.com
+remotehost = mail.zux.ch
 remoteuser = raffael@yux.ch
-remotepasseval = get_keychain_pass(account="raffael@yux.ch", server="imap.kolabnow.com")
+remotepasseval = get_keychain_pass(account="raffael@yux.ch", server="mail.zux.ch")
 realdelete = no
 sslcacertfile = /usr/local/etc/openssl/cert.pem
-folderfilter = lambda folder: not re.search('^(Configuration|Files|Freebusy|Journal|Other Users|Raffaels K)', folder)
 idlefolders = ['INBOX']
 holdconnectionopen = yes
 

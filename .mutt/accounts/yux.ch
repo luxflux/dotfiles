@@ -7,8 +7,8 @@ set spoolfile = "+yux.ch/INBOX"
 alternates raffael@yux.ch mir2@yux.ch
 
 # Other special folders.
-set mbox      = "+yux.ch/archive"
-set postponed = "+yux.ch/drafts"
+set mbox      = "+yux.ch/Archive"
+set postponed = "+yux.ch/Drafts"
 set record    = "+yux.ch/Sent"
 
 set from     = "raffael@yux.ch"
