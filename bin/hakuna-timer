@@ -27,7 +27,7 @@ case $2 in
 esac
 
 function timer_status() {
-  start_time=$(call_api GET | jq '.start_time')
+  start_time=$(call_timer GET | jq '.start_time')
   if [ "${start_time}" == 'null' ]; then
     echo 'stopped'
   else
@@ -36,17 +36,27 @@ function timer_status() {
 }
 
 function stop_timer() {
-  call_api PUT > /dev/null
+  call_timer PUT > /dev/null
 }
 
 function start_timer() {
   curl -s -X POST -d 'time_type_id=1' -d "project_id=${1}" -H "X-Auth-Token: ${TOKEN}" "${URL}/timer" > /dev/null
 }
 
-function call_api() {
+function call_timer() {
   curl -s -X $1 -H "X-Auth-Token: ${TOKEN}" "${URL}/timer"
 }
 
+function overview() {
+  overview=$(api_get /overview)
+  echo -e "Overtime:\t$(echo "${overview}" | jq '.overtime' -r)"
+  echo -e "Vacation Left:\t$(echo "${overview}" | jq '.vacation.remaining_days' -r)d"
+  echo -e "Timer:\t\t$(timer_status)"
+}
+
+function api_get() {
+  curl -s -X GET -H "X-Auth-Token: ${TOKEN}" "${URL}${1}"
+}
 
 case $1 in
   start)
@@ -60,6 +70,11 @@ case $1 in
       stop_timer
     fi
     ;;
+  status)
+    echo "Timer: $(timer_status)"
+    ;;
+  overview)
+    overview
+    ;;
 esac
 
-timer_status
