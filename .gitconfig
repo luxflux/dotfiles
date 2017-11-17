@@ -16,10 +16,10 @@
   default = simple
 
 [filter "lfs"]
-	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+	clean = git-lfs clean -- %f
 
 [diff]
 	compactionHeuristic = true
@@ -57,3 +57,7 @@
 
 [alias]
 	sync = !zsh -ic git-sync
+[log]
+  date = short
+[format]
+  pretty = format:%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s
