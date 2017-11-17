@@ -124,7 +124,7 @@ PATH=".git/safe/../../client/node_modules/.bin:$PATH"
 # homebrew sbin
 PATH="$PATH:/usr/local/sbin"
 # postgres
-PATH="/usr/local/opt/postgresql@9.4/bin:$PATH"
+PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 # ZSH config
 # change path without specifying cd
