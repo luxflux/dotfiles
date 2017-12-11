@@ -362,7 +362,8 @@ au BufNewFile,BufRead *.log setlocal ft=none
 " easier tabularize tables
 vmap ,t :Tabularize /\|/<CR>
 
-autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all\ --print-width\ 100
+" autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all\ --print-width\ 100
+autocmd FileType javascript set formatprg=prettier\ --stdin
 autocmd FileType javascript map ,p gggqG<C-o><C-o>
 autocmd FileType javascript.jsx map ,p gggqG<C-o><C-o>
 autocmd BufNewFile,BufRead *.js set colorcolumn=101
