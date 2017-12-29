@@ -7,6 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'Reewr/vim-monokai-phoenix'
 " Plug 'bluz71/vim-moonfly-colors'
 Plug 'ryanoasis/vim-devicons'
+Plug 'luochen1990/rainbow'
 
 "" languages
 Plug 'vim-ruby/vim-ruby'
@@ -76,6 +77,8 @@ color monokai-phoenix
 let g:airline_theme='simple'
 
 syntax enable
+
+let g:rainbow_active = 1
 
 """"""""""""""""""""""""""""""
 "  misc
