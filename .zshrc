@@ -148,3 +148,7 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 setopt HIST_BEEP                 # Beep when accessing non-existent history.
 
 if which kubectl > /dev/null; then source <(kubectl completion zsh); fi
+
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
