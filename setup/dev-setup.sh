@@ -10,7 +10,7 @@ brew bundle
 set -e
 
 mkdir -p /etc/resolver
-sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/dev'
+sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/test'
 cp ./files/dnsmasq.conf /usr/local/etc/dnsmasq.conf
 sudo brew services start dnsmasq
 

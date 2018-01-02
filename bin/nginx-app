@@ -2,7 +2,7 @@
 
 nginx_sites_path = '/usr/local/etc/nginx/servers'
 name = ARGV[0] || Dir.pwd.split(File::SEPARATOR).last
-conf = File.join(nginx_sites_path, "#{name}.dev.conf")
+conf = File.join(nginx_sites_path, "#{name}.test.conf")
 File.open(conf, 'w+') do |f|
   f.puts(format(DATA.read, name, name, name, name, name, Dir.pwd, name))
 end
@@ -29,7 +29,7 @@ upstream %s {
 
 server {
     listen      80;
-    server_name %s.dev *.%s.dev %s.dev.*;
+    server_name %s.test *.%s.test %s.test.*;
     client_max_body_size 4G;
     keepalive_timeout 5;
 
