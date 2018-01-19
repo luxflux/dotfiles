@@ -91,14 +91,14 @@ set ruler       " show the cursor position all the time
 " set cursorline
 set showcmd     " display incomplete commands
 
-set guifont=Source_Code_Pro_for_Powerline:h16,Source_Code_Pro_for_Powerline:h16
+" set guifont=Source_Code_Pro_for_Powerline:h16,Source_Code_Pro_for_Powerline:h16
 
 set autoread
 set history=1000
 
-if has("gui_macvim")
-  set noballooneval
-endif
+" if has("gui_macvim")
+"   set noballooneval
+" endif
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
