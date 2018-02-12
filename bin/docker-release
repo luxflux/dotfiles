@@ -10,7 +10,6 @@ if [ -z "$1" -o -z "$2" ]; then
   exit 1
 fi
 
-eval $(docker-machine env default)
 docker build -t ${APP} .
 docker tag ${APP} eu.gcr.io/nodal-algebra-161404/${APP}:${VERSION}
 gcloud docker -- push eu.gcr.io/nodal-algebra-161404/${APP}:${VERSION}
