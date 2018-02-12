@@ -11,7 +11,6 @@ localrepository = yux-Local
 remoterepository = yux-Remote
 presynchook = logger -t offlineimap -p mail.info "Starting sync of mail account yux"
 postsynchook = ~/.mutt/offlineimap-postsynchook yux.ch
-autorefresh = 5
 
 [Repository yux-Local]
 type = Maildir
@@ -25,27 +24,34 @@ remoteuser = raffael@yux.ch
 remotepasseval = get_keychain_pass(account="raffael@yux.ch", server="mail.zux.ch")
 realdelete = no
 sslcacertfile = /usr/local/etc/openssl/cert.pem
-idlefolders = ['INBOX']
-holdconnectionopen = yes
 
 [Account welltravel]
 localrepository = welltravel-Local
 remoterepository = welltravel-Remote
 presynchook = logger -t offlineimap -p mail.info "Starting sync of mail account welltravel"
 postsynchook = ~/.mutt/offlineimap-postsynchook welltravel.com
-autorefresh = 5
+
+synclabels = yes
+labelsheader = X-Keywords
 
 [Repository welltravel-Local]
-type = Maildir
+type = GmailMaildir
 localfolders = ~/Mails/welltravel.com
+nametrans = lambda f: '[Gmail]/' + f if f in ['Drafts', 'Starred', 'Important', 'Spam', 'Bin', 'All Mail', 'Sent Mail'] else f
 
 [Repository welltravel-Remote]
 maxconnections = 5
-type = IMAP
-remotehost = imap.nine.ch
-remoteuser = raffael.schmid@welltravel.com
-remotepasseval = get_keychain_pass(account="raffael.schmid@welltravel.com", server="imap.nine.ch")
+type = Gmail
+remoteuser = raffael.schmid@welldev.io
 realdelete = no
 sslcacertfile = /usr/local/etc/openssl/cert.pem
-idlefolders = ['INBOX']
-holdconnectionopen = yes
+
+auth_mechanisms = XOAUTH2
+oauth2_client_id_eval = get_keychain_pass(account="raffael.schmid@welldev.io", server="client_id")
+oauth2_client_secret_eval = get_keychain_pass(account="raffael.schmid@welldev.io", server="client_secret")
+oauth2_request_url = https://accounts.google.com/o/oauth2/token
+oauth2_refresh_token_eval = get_keychain_pass(account="raffael.schmid@welldev.io", server="refresh_token")
+
+nametrans = lambda folder: re.sub('^\[Gmail\]/', '', folder)
+
+folderfilter = lambda foldername: foldername in ['INBOX', '[Gmail]/All Mail', '[Gmail]/Sent Mail', '[Gmail]/Drafts', '[Gmail]/Bin']
