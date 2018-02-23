@@ -3,10 +3,9 @@ set nocompatible                " be iMproved
 call plug#begin('~/.config/nvim/plugged')
 
 " look&feel
-" Plug 'tomasr/molokai'
 " Plug 'Reewr/vim-monokai-phoenix'
-Plug 'arcticicestudio/nord-vim'
-" Plug 'bluz71/vim-moonfly-colors'
+" Plug 'arcticicestudio/nord-vim'
+Plug 'mhartington/oceanic-next'
 Plug 'ryanoasis/vim-devicons'
 Plug 'luochen1990/rainbow'
 
@@ -14,7 +13,9 @@ Plug 'luochen1990/rainbow'
 Plug 'vim-ruby/vim-ruby'
 Plug 'cespare/vim-toml'
 Plug 'chriseppstein/vim-haml'
-Plug 'pangloss/vim-javascript'
+" Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
+Plug 'othree/html5.vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'kchmck/vim-coffee-script'
 Plug 'tpope/vim-cucumber'
@@ -22,8 +23,8 @@ Plug 'groenewege/vim-less'
 Plug 'netdata/vim-puppet'
 Plug 'tpope/vim-liquid'
 Plug 'fatih/vim-go'
-Plug 'mtscout6/vim-cjsx'
-Plug 'ledger/vim-ledger'
+" Plug 'mtscout6/vim-cjsx'
+" Plug 'ledger/vim-ledger'
 Plug 'mxw/vim-jsx'
 Plug 'google/vim-jsonnet'
 
@@ -57,7 +58,6 @@ Plug 'rhysd/nyaovim-markdown-preview'
 " Completion
 Plug 'roxma/nvim-completion-manager'
 
-
 call plug#end()
 
 """"""""""""""""""""""""""""""
@@ -69,16 +69,18 @@ call plug#end()
 """"""""""""""""""""""""""""""
 set termguicolors
 " let g:rehash256 = 1
-" color molokai
 " color monokai-phoenix
-" color moonfly
-color nord
+" color nord
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 
 " airline theme
 " let g:airline_theme='molokai'
-let g:airline_theme='simple'
+" let g:airline_theme='simple'
+let g:airline_theme='oceanicnext'
 
 syntax enable
 
