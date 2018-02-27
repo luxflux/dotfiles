@@ -17,7 +17,6 @@ unset move               # gmail does that
 set delete               # don't ask, just do
 unset confirmappend      # don't ask, just do!
 set quit                 # don't ask, just do!!
-unset mark_old           # read/new is good enough for me
 set beep_new             # bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
@@ -39,8 +38,6 @@ macro index <F5> '<sync-mailbox><enter-command>source ~/.mutt/accounts/yux.ch<en
 macro index <F6> '<sync-mailbox><enter-command>source ~/.mutt/accounts/welltravel.com<enter><change-folder>!<enter>'
 
 source ~/.mutt/accounts/yux.ch
-
-set mark_old
 
 # Index View Options ---------------------------------
 set date_format = "%Y-%m-%d %H:%M"
