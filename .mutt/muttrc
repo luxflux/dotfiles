@@ -59,12 +59,15 @@ bind index <space>  collapse-thread
 bind index p recall-message
 
 # Sync email
-macro index O "<shell-escape>offlineimap -o<enter>"           "run offlineimap to sync all mail"
-macro index o "<shell-escape>offlineimap -o -qf INBOX<enter>" "run offlineimap to sync inbox"
+macro index y "<shell-escape>~/dotfiles/bin/sync-mail<enter>"           "run offlineimap to sync all mail"
 
 # Saner copy/move dialogs
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+macro index c "<change-folder>?" "change folder"
+
+# Mark as old
+macro index O "<set-flag>O" "Mark message as old"
 
 macro index S "<enter-command>unset wait_key<enter><shell-escape>~/.mutt/mutt-notmuch.py ~/Mails/temporary/search<enter><change-folder-readonly>+temporary/search<enter>" "search mail (using notmuch)"
 

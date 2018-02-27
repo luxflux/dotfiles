@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+while pkill -0 offlineimap
+do
+    sleep 2
+done
+offlineimap > ~/mail-log 2>&1 &
