@@ -25,7 +25,7 @@ brew 'exa'
 tap 'neovim/homebrew-neovim'
 tap 'universal-ctags/universal-ctags'
 brew 'neovim'
-brew 'universal-ctags'
+brew 'universal-ctags', args: ['HEAD']
 
 # apps
 cask 'iterm2'
@@ -55,7 +55,7 @@ mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'Pixelmator', id: 407963104
 mas 'Tweetbot', id: 557168941
-mas 'iA Writer', id: 775737590
+mas 'Bear', id: 1091189122
 
 # tools
 brew 'diff-so-fancy'
