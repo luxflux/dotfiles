@@ -79,14 +79,14 @@ brew 'jq'
 brew 'kubectl'
 brew 'kubectx'
 brew 'kubernetes-helm'
-brew 'redis'
 brew 'watch'
 brew 'hub'
+brew 'rg'
+brew 's3cmd'
 
 # services
 brew 'elasticsearch@2.4', restart_service: :changed, start_service: true
 brew 'postgresql@9.6', restart_service: :changed, start_service: true
-brew 'dnsmasq', restart_service: :changed, start_service: true
 brew 'rabbitmq', restart_service: :changed, start_service: true
-brew 'nginx', restart_service: :changed, start_service: true
 brew 'syncthing', restart_service: :changed, start_service: true
+brew 'redis', restart_service: :changed, start_service: true

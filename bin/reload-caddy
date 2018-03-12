@@ -1,0 +1,4 @@
+#!/bin/sh
+
+launchctl unload ~/Library/LaunchAgents/com.caddyserver.web.plist
+launchctl load -w ~/Library/LaunchAgents/com.caddyserver.web.plist

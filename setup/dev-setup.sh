@@ -1,21 +1,21 @@
-#!/bin/sh
-
-brew tap Homebrew/bundle
-brew tap caskroom/cask
-
-brew install mas
+#!/bin/bash
 
 brew bundle
 
 set -e
 
-sudo mkdir -p /etc/resolver
-sudo sh -c 'echo "nameserver 127.0.0.1" > /etc/resolver/test'
-sudo cp ./files/dnsmasq.conf /usr/local/etc/dnsmasq.conf
-sudo brew services start dnsmasq
+echo -n "DNSimple Email: "
+read DNSIMPLE_EMAIL
+echo -n "DNSimple Token (organization): "
+read -s DNSIMPLE_TOKEN
+echo 
 
-sudo sed -E -e 's/listen( +)8080;/listen\180;/' -i '' /usr/local/etc/nginx/nginx.conf
-sudo brew services start nginx
+mkdir -p /usr/local/var/log/caddy
 
+sed "s/::DNSIMPLE_EMAIL::/${DNSIMPLE_EMAIL}/; s/::DNSIMPLE_TOKEN::/${DNSIMPLE_TOKEN}/" ./files/com.caddyserver.web.plist > ~/Library/LaunchAgents/com.caddyserver.web.plist
+launchctl load -w ~/Library/LaunchAgents/com.caddyserver.web.plist
+
+echo "Adding zsh to shells"
 echo /usr/local/bin/zsh | sudo tee -a /etc/shells
+echo "Changing shell for raf"
 chsh -s /usr/local/bin/zsh raf

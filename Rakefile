@@ -36,6 +36,7 @@ task :link do
   end
 
   sh 'ln -nfs /Users/raf/data/Raffael/GPG/gnupg .gnupg'
+  sh 'ln -nfs /Users/raf/AppSettings/Caddy .caddy'
 end
 
 namespace :bootstrap do

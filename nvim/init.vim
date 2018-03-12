@@ -27,6 +27,7 @@ Plug 'fatih/vim-go'
 " Plug 'ledger/vim-ledger'
 Plug 'mxw/vim-jsx'
 Plug 'google/vim-jsonnet'
+Plug 'isobit/vim-caddyfile'
 
 "" Tools
 Plug 'vim-airline/vim-airline'
