@@ -34,6 +34,8 @@ task :link do
     sh "launchctl load Library/LaunchAgents/#{name}"
     sh "launchctl start #{name.gsub('.plist', '')}"
   end
+
+  sh 'ln -nfs /Users/raf/data/Raffael/GPG/gnupg .gnupg'
 end
 
 namespace :bootstrap do

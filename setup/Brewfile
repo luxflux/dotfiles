@@ -2,13 +2,16 @@
 cask_args appdir: '/Applications'
 
 tap 'caskroom/cask'
-tap 'homebrew/versions'
+
 brew 'mas'
+mas 'Xcode', id: 497799835
 
 # mutt
-tap 'tgray/homebrew-tgbrew'
-brew 'muttqt'
-brew 'contacts2'
+#tap 'tgray/homebrew-tgbrew'
+#brew 'muttqt'
+brew 'https://raw.github.com/tgray/homebrew-tgbrew/master/muttqt.rb'
+#brew 'contacts2'
+brew 'https://raw.github.com/tgray/homebrew-tgbrew/master/contacts2.rb'
 brew 'offlineimap'
 brew 'urlview'
 brew 'msmtp'
@@ -25,12 +28,13 @@ brew 'neovim'
 brew 'universal-ctags'
 
 # apps
+cask 'iterm2'
 cask '1password'
 cask 'appcleaner'
 cask 'dropbox'
 cask 'firefox'
-cask 'genymotion'
-cask 'github-desktop'
+#cask 'genymotion'
+cask 'github'
 cask 'google-chrome'
 cask 'java'
 cask 'paw'
@@ -51,7 +55,6 @@ mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'Pixelmator', id: 407963104
 mas 'Tweetbot', id: 557168941
-mas 'Xcode', id: 497799835
 mas 'iA Writer', id: 775737590
 
 # tools
@@ -68,7 +71,7 @@ brew 'mtr'
 brew 'nmap'
 brew 'phantomjs'
 brew 'pstree'
-brew 'qt55'
+#brew 'qt55'
 brew 'rbenv'
 brew 'nodenv'
 brew 'reattach-to-user-namespace'
@@ -76,15 +79,17 @@ brew 'task'
 brew 'watchman'
 brew 'xz'
 brew 'zsh'
+brew 'zplug'
 brew 'jq'
 brew 'kubectl'
 brew 'kubernetes-helm'
 brew 'redis'
 brew 'watch'
+brew 'hub'
 
 # services
-brew 'elasticsearch', restart_service: :changed, start_service: true
-brew 'postgresql94', restart_service: :changed, start_service: true
+brew 'elasticsearch@2.4', restart_service: :changed, start_service: true
+brew 'postgresql@9.6', restart_service: :changed, start_service: true
 brew 'dnsmasq', restart_service: :changed, start_service: true
 brew 'rabbitmq', restart_service: :changed, start_service: true
 brew 'nginx', restart_service: :changed, start_service: true
