@@ -8,7 +8,6 @@
      <string>/sbin/pfctl</string>
      <key>ProgramArguments</key>
      <array>
-          <string>pfctl</string>
           <string>-e</string>
           <string>-f</string>
           <string>/etc/pf-caddy.conf</string>

@@ -56,3 +56,10 @@ namespace :bootstrap do
     end
   end
 end
+
+namespace :update do
+  desc "Update caddy"
+  task :caddy do
+    sh "curl 'https://caddyserver.com/download/darwin/amd64?plugins=hook.service,tls.dns.dnsimple&license=personal' | tar xzf - -C ~/dotfiles/bin/ caddy"
+  end
+end
