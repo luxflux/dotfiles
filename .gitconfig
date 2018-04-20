@@ -37,6 +37,7 @@
 
 [merge]
   tool = vimdiff
+	renameLimit = 999999
 
 [mergetool]
   prompt = true
