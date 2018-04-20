@@ -34,8 +34,10 @@ hdr_order from: to: cc: date: subject:  # and in this order
 # Account Settings -----------------------------------
 folder-hook yux.ch/*         source ~/.mutt/accounts/yux.ch
 folder-hook welltravel.com/* source ~/.mutt/accounts/welltravel.com
+folder-hook hakuna.ch/*      source ~/.mutt/accounts/hakuna.ch
 macro index <F5> '<sync-mailbox><enter-command>source ~/.mutt/accounts/yux.ch<enter><change-folder>!<enter>'
 macro index <F6> '<sync-mailbox><enter-command>source ~/.mutt/accounts/welltravel.com<enter><change-folder>!<enter>'
+macro index <F7> '<sync-mailbox><enter-command>source ~/.mutt/accounts/hakuna.ch<enter><change-folder>!<enter>'
 
 source ~/.mutt/accounts/yux.ch
 

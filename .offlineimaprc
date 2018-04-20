@@ -2,7 +2,7 @@
 
 [general]
 ui = ttyui
-accounts = yux,welltravel
+accounts = yux,welltravel,hakuna
 pythonfile=~/.mutt/offlineimap.py
 fsync = False
 
@@ -24,6 +24,27 @@ remoteuser = raffael@yux.ch
 remotepasseval = get_keychain_pass(account="raffael@yux.ch", server="mail.zux.ch")
 realdelete = no
 sslcacertfile = /usr/local/etc/openssl/cert.pem
+
+
+[Account hakuna]
+localrepository = hakuna-Local
+remoterepository = hakuna-Remote
+presynchook = logger -t offlineimap -p mail.info "Starting sync of mail account hakuna"
+postsynchook = ~/.mutt/offlineimap-postsynchook hakuna.ch
+
+[Repository hakuna-Local]
+type = Maildir
+localfolders = ~/Mails/hakuna.ch
+
+[Repository hakuna-Remote]
+maxconnections = 5
+type = IMAP
+remotehost = imap.fastmail.com
+remoteuser = raffael@hakuna.ch
+remotepasseval = get_keychain_pass(account="raffael@hakuna.ch", server="imap.fastmail.com")
+realdelete = no
+sslcacertfile = /usr/local/etc/openssl/cert.pem
+
 
 [Account welltravel]
 localrepository = welltravel-Local
