@@ -4,12 +4,17 @@ set -e
 
 APP=$1
 VERSION=$2
+DOCKERFILE=$3
 
 if [ -z "$1" -o -z "$2" ]; then
   echo "Usage: $0 <app> <version>"
   exit 1
 fi
 
-docker build -t ${APP} .
+if [ -z "$DOCKERFILE" ]; then
+  DOCKERFILE=Dockerfile
+fi
+
+docker build -t ${APP} -f $DOCKERFILE .
 docker tag ${APP} eu.gcr.io/nodal-algebra-161404/${APP}:${VERSION}
 gcloud docker -- push eu.gcr.io/nodal-algebra-161404/${APP}:${VERSION}
