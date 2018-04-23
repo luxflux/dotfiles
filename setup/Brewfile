@@ -45,6 +45,7 @@ cask 'vlc'
 cask 'vmware-fusion'
 cask 'qlstephen'
 cask 'google-cloud-sdk'
+cask 'docker'
 mas 'Baby Monitor 3G', id: 626137367
 mas 'Keynote', id: 409183694
 mas 'Numbers', id: 409203825
@@ -83,6 +84,7 @@ brew 'watch'
 brew 'hub'
 brew 'rg'
 brew 's3cmd'
+brew 'cmake'
 
 # services
 brew 'elasticsearch@2.4', restart_service: :changed, start_service: true
