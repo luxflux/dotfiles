@@ -28,6 +28,8 @@ Plug 'fatih/vim-go'
 Plug 'mxw/vim-jsx'
 Plug 'google/vim-jsonnet'
 Plug 'isobit/vim-caddyfile'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'cakebaker/scss-syntax.vim'
 
 "" Tools
 Plug 'vim-airline/vim-airline'
@@ -394,3 +396,7 @@ augroup END
 " auto align in terraform files
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
+
+" CSS Highlighting
+au BufRead,BufNewFile *.scss set filetype=scss.css
+autocmd FileType scss set iskeyword+=-
