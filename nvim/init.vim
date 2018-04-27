@@ -51,6 +51,7 @@ Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-speeddating'
 Plug 'mhinz/vim-startify'
 Plug 'hashivim/vim-terraform'
+Plug 'jaawerth/nrun.vim'
 
 " WebUI
 Plug 'rhysd/nyaovim-popup-tooltip'
@@ -317,6 +318,7 @@ let g:neomake_ctags_maker = {
 
 " js hint
 let g:neomake_javascript_enabled_makers = ['eslint']
+au FileType javascript let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
 
 function! DoPrettyXML()
   " save the filetype so we can restore it later
