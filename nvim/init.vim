@@ -54,6 +54,7 @@ Plug 'tpope/vim-speeddating'
 Plug 'mhinz/vim-startify'
 Plug 'hashivim/vim-terraform'
 Plug 'jaawerth/nrun.vim'
+Plug 'ludovicchabant/vim-gutentags'
 
 " WebUI
 Plug 'rhysd/nyaovim-popup-tooltip'
@@ -259,9 +260,6 @@ autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown,scs
 " run neomake after save
 au BufWritePost * Neomake
 
-" run ctags after save
-au BufWritePost * Neomake! ctags
-
 " get reference for the current commit from branch name
 function JiraIssue(type)
   let current_branch = system("git rev-parse --abbrev-ref HEAD")
@@ -305,18 +303,6 @@ hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#0
 set nofoldenable
 
 tnoremap <Esc> <C-\><C-n>
-
-let g:neomake_ctags_maker = {
-      \ 'exe': 'ctags',
-      \ 'args': [
-        \ '-a',
-        \ '-f .git/tags',
-        \ '--tag-relative',
-        \ '--exclude=.git',
-        \ '--exclude=tmp',
-        \ '--exclude=coverage',
-        \ '%p']
-  \ }
 
 " js hint
 let g:neomake_javascript_enabled_makers = ['eslint']
