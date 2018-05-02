@@ -389,3 +389,6 @@ autocmd FileType scss set iskeyword+=-
 
 " Spellchecking!
 set spell
+
+" ctags configuration
+let g:gutentags_ctags_exclude = ['node_modules', 'vendor', 'coverage', 'tmp', '*.json', 'public']
