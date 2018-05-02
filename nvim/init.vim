@@ -386,3 +386,6 @@ let g:terraform_fmt_on_save=1
 " CSS Highlighting
 au BufRead,BufNewFile *.scss set filetype=scss.css
 autocmd FileType scss set iskeyword+=-
+
+" Spellchecking!
+set spell
