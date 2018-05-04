@@ -19,6 +19,7 @@ task :link do
   files += %w[.mutt .offlineimaprc .urlview .msmtprc .notmuch-config .muttqt]
   files += %w[.taskrc]
   files += %w[.gitconfig]
+  files += %w[.ctags]
 
   files.each do |file_or_dir|
     sh "ln -nfs #{link_dir}/#{file_or_dir}"
