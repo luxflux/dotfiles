@@ -165,6 +165,18 @@ Metrics/PerceivedComplexity:
     reader.
   Enabled: false
   Max: 7
+Metrics/BlockLength:
+  Max: 25
+  Enabled: true
+  ExcludedMethods:
+    # RSpec
+    - describe
+    - context
+    # Grape
+    - resources
+    - params
+    - route_param
+    - namespace
 Lint/AssignmentInCondition:
   Description: Don't use assignment in conditions.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition
