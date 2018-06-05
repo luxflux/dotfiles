@@ -150,6 +150,8 @@ setopt HIST_BEEP                 # Beep when accessing non-existent history.
 
 if which kubectl > /dev/null; then source <(kubectl completion zsh); fi
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
