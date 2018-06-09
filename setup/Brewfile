@@ -87,6 +87,8 @@ brew 'rg'
 brew 's3cmd'
 brew 'cmake'
 
+bew 'boz/repo/kail'
+
 # services
 brew 'elasticsearch@2.4', restart_service: :changed, start_service: true
 brew 'postgresql@9.6', restart_service: :changed, start_service: true
