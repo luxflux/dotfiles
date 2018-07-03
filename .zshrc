@@ -102,6 +102,7 @@ alias vim="nvim"
 alias mutt="cd ~/Downloads && mutt"
 alias ls="ls -G"
 alias l="exa -lhga --git --time-style long-iso"
+alias less="less -r"
 
 # Variables
 export EDITOR="nvim"
