@@ -30,6 +30,7 @@ Plug 'google/vim-jsonnet'
 Plug 'isobit/vim-caddyfile'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'slim-template/vim-slim'
 
 "" Tools
 Plug 'vim-airline/vim-airline'
@@ -363,7 +364,7 @@ au BufNewFile,BufRead *.log setlocal ft=none
 vmap ,t :Tabularize /\|/<CR>
 
 " autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all\ --print-width\ 100
-autocmd FileType javascript set formatprg=prettier\ --stdin
+autocmd FileType javascript set formatprg=prettier\ --stdin-filepath\ %
 autocmd FileType javascript map ,p gggqG<C-o><C-o>
 autocmd FileType javascript.jsx map ,p gggqG<C-o><C-o>
 autocmd BufNewFile,BufRead *.js set colorcolumn=101
