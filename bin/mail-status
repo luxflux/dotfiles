@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+(for ACCOUNT in $(ls ~/Mails | egrep \\.); do
+  NEWDIRS=$(ls ~/Mails/$ACCOUNT/INBOX/new/ | wc -l)
+  echo -e " ${ACCOUNT}: ${NEWDIRS//[[:blank:]]/}"
+done) | column -t | sed 's/^/ /'
