@@ -46,6 +46,7 @@ cask 'vmware-fusion'
 cask 'qlstephen'
 cask 'google-cloud-sdk'
 cask 'docker'
+cask 'syncthing-app'
 mas 'Baby Monitor 3G', id: 626137367
 mas 'Keynote', id: 409183694
 mas 'Numbers', id: 409203825
@@ -92,5 +93,4 @@ brew 'stern'
 brew 'elasticsearch@2.4', restart_service: :changed, start_service: true
 brew 'postgresql@9.6', restart_service: :changed, start_service: true
 brew 'rabbitmq', restart_service: :changed, start_service: true
-brew 'syncthing', restart_service: :changed, start_service: true
 brew 'redis', restart_service: :changed, start_service: true
