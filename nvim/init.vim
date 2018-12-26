@@ -1,136 +1,59 @@
-set nocompatible                " be iMproved
-
 call plug#begin('~/.config/nvim/plugged')
 
-" look&feel
-" Plug 'Reewr/vim-monokai-phoenix'
-" Plug 'arcticicestudio/nord-vim'
+" colorschemes
 Plug 'mhartington/oceanic-next'
-Plug 'ryanoasis/vim-devicons'
-Plug 'luochen1990/rainbow'
 
-"" languages
-Plug 'vim-ruby/vim-ruby'
-Plug 'cespare/vim-toml'
-Plug 'chriseppstein/vim-haml'
-" Plug 'pangloss/vim-javascript'
-Plug 'othree/yajs.vim'
-Plug 'othree/html5.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'kchmck/vim-coffee-script'
-Plug 'tpope/vim-cucumber'
-Plug 'groenewege/vim-less'
-Plug 'netdata/vim-puppet'
-Plug 'tpope/vim-liquid'
-Plug 'fatih/vim-go'
-" Plug 'mtscout6/vim-cjsx'
-" Plug 'ledger/vim-ledger'
-Plug 'mxw/vim-jsx'
-Plug 'google/vim-jsonnet'
-Plug 'isobit/vim-caddyfile'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'slim-template/vim-slim'
+Plug 'sheerun/vim-polyglot'     " all the languages
+Plug 'wincent/terminus'         " switch cursor for insert/normal mode
+Plug 'ervandew/supertab'        " use tab for completion
+Plug 'airblade/vim-gitgutter'   " show changes on line in the gutter
+Plug 'vim-scripts/trailing-whitespace' " fix whitespaces
 
-"" Tools
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'benekastah/neomake'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-Plug 'junegunn/fzf'
-Plug 'godlygeek/tabular'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-surround'
-Plug 'docunext/closetag.vim'
-Plug 'jamessan/vim-gnupg'
-Plug 'vim-scripts/trailing-whitespace'
-Plug 'ervandew/supertab'
-Plug 'tyru/open-browser.vim'
-Plug 'tyru/open-browser-github.vim'
-Plug 'kassio/neoterm'
-Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-speeddating'
-Plug 'mhinz/vim-startify'
-Plug 'hashivim/vim-terraform'
-Plug 'jaawerth/nrun.vim'
-Plug 'ludovicchabant/vim-gutentags'
-
-" WebUI
-Plug 'rhysd/nyaovim-popup-tooltip'
-Plug 'rhysd/nyaovim-markdown-preview'
-
-" Completion
-Plug 'roxma/nvim-completion-manager'
+Plug '/usr/local/opt/fzf'       " basic fzf integration
+Plug 'junegunn/fzf.vim'         " advanced fzf integration
+Plug 'godlygeek/tabular'        " table helpers
+"Plug 'kassio/neoterm'           " easier terminal management
+Plug 'vimlab/split-term.vim'    " easier terminal management
+Plug 'neomake/neomake'          " async stuff
+Plug 'tpope/vim-commentary'     " Use gcc to comment a line
+Plug 'tpope/vim-fugitive'       " Gblame and friends
 
 call plug#end()
 
-""""""""""""""""""""""""""""""
-"  configuration
-""""""""""""""""""""""""""""""
+" Directories
+silent !mkdir -p ~/.config/nvim/_backup ~/.config/nvim/_temp ~/.config/nvim/_undo
+set backupdir=~/.config/nvim/_backup    " where to put backup files
+set directory=~/.config/nvim/_temp      " where to put swap files
+set undodir=~/.config/nvim/_undo        " where to save undo histories
 
-""""""""""""""""""""""""""""""
-"  colors
-""""""""""""""""""""""""""""""
+" Colors
 set termguicolors
-" let g:rehash256 = 1
-" color monokai-phoenix
-" color nord
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 colorscheme OceanicNext
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
 
-" airline theme
-" let g:airline_theme='molokai'
-" let g:airline_theme='simple'
-let g:airline_theme='oceanicnext'
-
-syntax enable
-
-let g:rainbow_active = 1
-
-""""""""""""""""""""""""""""""
-"  misc
-""""""""""""""""""""""""""""""
-set encoding=utf-8
-filetype plugin indent on
-
+" Misc
 set number
-set ruler       " show the cursor position all the time
-" set cursorline
-set showcmd     " display incomplete commands
-
-" set guifont=Source_Code_Pro_for_Powerline:h16,Source_Code_Pro_for_Powerline:h16
-
+set ruler
+" set cursorline " disabled for performance reasons
+set showcmd
 set autoread
-set history=1000
+set clipboard+=unnamedplus " system clipboard
 
-" if has("gui_macvim")
-"   set noballooneval
-" endif
+" Whitespace
+set tabstop=2     " a tab is two spaces
+set shiftwidth=2  " an autoindent is two spaces
+set expandtab     " use spaces, not tabs
+set list          " show invisible characters
 
-" Allow backgrounding buffers without writing them, and remember marks/undo
-" for backgrounded buffers
-set hidden
-
-"" Whitespace
-set nowrap                        " don't wrap lines
-set tabstop=2                     " a tab is two spaces
-set shiftwidth=2                  " an autoindent (with <<) is two spaces
-set expandtab                     " use spaces, not tabs
-set list                          " Show invisible characters
-set backspace=indent,eol,start    " backspace through everything in insert mode
 " List chars
 set listchars=""                  " Reset the listchars
 set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
 set listchars+=trail:.            " show trailing spaces as dots
 set listchars+=extends:>          " The character to show in the last column when wrap is
-" off and the line continues beyond the right of the screen
+                                  " off and the line continues beyond the right of the screen
 set listchars+=precedes:<         " The character to show in the first column when wrap is
-" off and the line continues beyond the left of the screen
+                                  " off and the line continues beyond the left of the screen
 "" Searching
 set hlsearch                      " highlight matches
 set incsearch                     " incremental searching
@@ -138,258 +61,73 @@ set ignorecase                    " searches are case insensitive...
 set smartcase                     " ... unless they contain at least one capital letter
 set inccommand=nosplit            " Substitution previews
 
-" provide some context when editing
-set scrolloff=3
-
-" don't use Ex mode, use Q for formatting
-map Q gq
-
-" clear the search buffer when hitting return
-:nnoremap <CR> :nohlsearch<cr>
-
-" disable cursor keys in normal mode
-map <Left>  :echo "no!"<cr>
-map <Right> :echo "no!"<cr>
-map <Up>    :echo "no!"<cr>
-map <Down>  :echo "no!"<cr>
-
-silent !mkdir -p ~/.config/nvim/_backup ~/.config/nvim/_temp ~/.config/nvim/_undo
-set backupdir=~/.config/nvim/_backup    " where to put backup files.
-set directory=~/.config/nvim/_temp      " where to put swap files.
-set undodir=~/.config/nvim/_undo     " where to save undo histories
-
-" undo history
+" undo
 set undofile
 set undolevels=1000         " How many undos
 set undoreload=10000        " number of lines to save for undo
 
-" paste mode toggle
-map <F4> :set invpaste<CR>
+" Tab on the command line will show a menu to complete buffer and file names
+set wildchar=<Tab> wildmenu wildmode=full
 
-" toggle number
-nmap <F5> :set number! number?<CR>
+" Allow backgrounding buffers without writing them, and remember marks/undo
+" for backgrounded buffers
+set hidden
 
-" fancy powerline symbols
-let g:airline_powerline_fonts = 1
-" enable status line
-set laststatus=2
-" enable airline tabline
-let g:airline#extensions#tabline#enabled = 1
+" Remember last location in file, but not for commit messages.
+au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+      \| exe "normal! g`\"" | endif
 
-nnoremap <C-P> :FZF<cr>
+" color over 110 signs on one line
+set colorcolumn=111
+hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#000000 guibg=#FD971F
 
-" vim-rspec configuration
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-let g:rspec_command = "T rspec {spec}"
+""""""""""""""""""""""""""""""
+" Generic Mappings
+""""""""""""""""""""""""""""""
+" clear the search buffer when hitting return
+nnoremap <CR> :nohlsearch<cr>
 
-" git gutter plugin
+
+""""""""""""""""""""""""""""""
+" FZF
+""""""""""""""""""""""""""""""
+" Open FZF with CTRL+p
+nnoremap <C-P> :Files<cr>
+" open the buffers on tab-tab
+nnoremap <Tab><Tab> :Buffers<cr>
+
+""""""""""""""""""""""""""""""
+" gitgutter
+""""""""""""""""""""""""""""""
 let g:gitgutter_sign_added = '⇒'
 let g:gitgutter_sign_modified = '⇔'
 let g:gitgutter_sign_removed = '⇐'
 let g:gitgutter_sign_modified_removed = '⇐'
 
-" Tab on the command line will show a menu to complete buffer and file names
-set wildchar=<Tab> wildmenu wildmode=full
-" select buffer
-nnoremap <Tab><Tab> :b <Tab>
-set wildcharm=<Tab>
-
-" surrounding
-map ,# ysiw#
-vmap ,# c#{<C-R>"}<ESC>
-
-" ," Surround a word with "quotes"
-map ," ysiw"
-vmap ," c"<C-R>""<ESC>
-
-" ,' Surround a word with 'single quotes'
-map ,' ysiw'
-vmap ,' c'<C-R>"'<ESC>
-
-" ,) or ,( Surround a word with (parens)
-" The difference is in whether a space is put in
-map ,( ysiw(
-map ,) ysiw)
-vmap ,( c( <C-R>" )<ESC>
-vmap ,) c(<C-R>")<ESC>
-
-" ,[ Surround a word with [brackets]
-map ,] ysiw]
-map ,[ ysiw[
-vmap ,[ c[ <C-R>" ]<ESC>
-vmap ,] c[<C-R>"]<ESC>
-
-" ,{ Surround a word with {braces}
-map ,} ysiw}
-map ,{ ysiw{
-vmap ,} c{ <C-R>" }<ESC>
-vmap ,{ c{<C-R>"}<ESC>
-
-function s:setupWrapping()
-  set wrap
-  set wrapmargin=2
-  set textwidth=110
-endfunction
-
-" In Makefiles, use real tabs, not tabs expanded to spaces
-au FileType make set noexpandtab
-
-" Make sure all markdown files have the correct filetype set and setup wrapping
-au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
-
-" Treat JSON files like JavaScript
-au BufNewFile,BufRead *.json set ft=javascript
-
-" make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
-
-" Remember last location in file, but not for commit messages.
-" see :help last-position-jump
-au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
-      \| exe "normal! g`\"" | endif
-
-" eyaml is yaml
-au BufNewFile,BufRead *.eyaml setlocal ft=yaml
-
-" fix whitespaces before writing the buffer
-" au BufWritePre * :FixWhitespace
-
-" fix whitespaces before writing the buffer
+""""""""""""""""""""""""""""""
+" whitespaces
+""""""""""""""""""""""""""""""
 autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown,scss autocmd BufWritePre * :FixWhitespace
 
-" run neomake after save
-au BufWritePost * Neomake
-
-" get reference for the current commit from branch name
-function JiraIssue(type)
-  let current_branch = system("git rev-parse --abbrev-ref HEAD")
-  let ref = substitute(current_branch, '^\(\w\+\)-\(\d\+\).\+$', '\1-\2', '')
-  if a:type == 'fixes' || a:type == 'refs'
-    return type . ' ' . ref
-  else
-    return '['. ref .'](https://welltravel.atlassian.net/browse/'. ref .')'
-  endif
-endfunction
-iab REFS <C-R>=JiraIssue('fixes')<CR>
-iab FIXES <C-R>=JiraIssue('refs')<CR>
-iab STORY <C-R>=JiraIssue('story')<CR>
-
-function JiraSummary()
-  let current_branch = system("git rev-parse --abbrev-ref HEAD")
-  let current_branch = system("git rev-parse --abbrev-ref HEAD")
-  let ref = substitute(current_branch, '^\(\w\+\)-\(\d\+\).\+$', '\1-\2', '')
-  let summary = system("curl -u \"$(cat ~/.jira-access)\" -X GET -s -H 'Content-Type: application/json' https://welltravel.atlassian.net/rest/api/2/issue/" . ref . "\\?fields=summary | jq -r '.fields.summary'")
-  return summary
-endfunction
-iab DESC <C-R>=JiraSummary()<CR>
-
-iab PR <C-R>=JiraSummary()<CR><CR><C-R>=JiraIssue('story')<CR>
-
-set clipboard+=unnamedplus
-
-hi Normal     ctermbg=none
-hi SignColumn ctermbg=none
-hi LineNr     ctermbg=none
-
-set lazyredraw          " Wait to redraw
-set scrolljump=8        " Scroll 8 lines at a time at bottom/top
-let html_no_rendering=1 " Don't render italic, bold, links in HTML
-
-" color over 110 signs
-set colorcolumn=111
-hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#000000 guibg=#FD971F
-
-" disable folding
-set nofoldenable
-
-tnoremap <Esc> <C-\><C-n>
-
-" js hint
-let g:neomake_javascript_enabled_makers = ['eslint']
-au FileType javascript let b:neomake_javascript_eslint_exe = nrun#Which('eslint')
-
-function! DoPrettyXML()
-  " save the filetype so we can restore it later
-  let l:origft = &ft
-  set ft=
-  " delete the xml header if it exists. This will
-  " permit us to surround the document with fake tags
-  " without creating invalid xml.
-  1s/<?xml .*?>//e
-  " insert fake tags around the entire document.
-  " This will permit us to pretty-format excerpts of
-  " XML that may contain multiple top-level elements.
-  0put ='<PrettyXML>'
-  $put ='</PrettyXML>'
-  silent %!xmllint --format -
-  " xmllint will insert an <?xml?> header. it's easy enough to delete
-  " if you don't want it.
-  " delete the fake tags
-  2d
-  $d
-  " restore the 'normal' indentation, which is one extra level
-  " too deep due to the extra tags we wrapped around the document.
-  silent %<
-  " back to home
-  1
-  " restore the filetype
-  exe "set ft=" . l:origft
-endfunction
-command! PrettyXML call DoPrettyXML()
-
-command! PrettyJSON :%!jq .
-
-" ledger
-let g:ledger_extra_options = '--pedantic --explicit --check-payees'
-let g:ledger_commodity_sep = ' '
-let g:ledger_default_commodity = 'CHF'
-"
-" run ledger after save
-" au BufWritePost *.ledger :Ledger bal Aktiva Fremdkapital
-
-" run ledger
-autocmd FileType ledger map <buffer> ,l :Ledger bal Aktiva Fremdkapital<CR>
-" align file
-autocmd FileType ledger map <buffer> ,a :%LedgerAlign<CR>
-" sort file
-autocmd FileType ledger map <buffer> ,s :%sort<CR>
-" date replacer
-autocmd FileType ledger iab <expr> DATE strftime("%F")
-
-" disable syntax highlighting for logs
-au BufNewFile,BufRead *.log setlocal ft=none
-
-" easier tabularize tables
+""""""""""""""""""""""""""""""
+" tabular
+""""""""""""""""""""""""""""""
 vmap ,t :Tabularize /\|/<CR>
 
-" autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote\ --trailing-comma\ all\ --print-width\ 100
-autocmd FileType javascript set formatprg=prettier\ --stdin-filepath\ %
-autocmd FileType javascript map ,p gggqG<C-o><C-o>
-autocmd FileType javascript.jsx map ,p gggqG<C-o><C-o>
-autocmd BufNewFile,BufRead *.js set colorcolumn=101
-autocmd BufNewFile,BufRead *.jsx set colorcolumn=101
+""""""""""""""""""""""""""""""
+" make
+""""""""""""""""""""""""""""""
+" run neomake after every write
+autocmd BufWritePost * Neomake
 
-" startify
-let g:startify_change_to_dir = 1
-let g:startify_change_to_vcs_root = 1
+""""""""""""""""""""""""""""""
+" RSpec
+""""""""""""""""""""""""""""""
+"autocmd BufRead,BufNewFile .*_spec.rb nnoremap ,T :terminal rspec %
+"nnoremap ,T :below T rspec %:<c-r>=line('.')<cr><cr>
 
-" folding for XMLs
-augroup XML
-  autocmd!
-  autocmd FileType xml setlocal foldmethod=indent foldlevelstart=999 foldminlines=0
-augroup END
-
-" auto align in terraform files
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
-
-" CSS Highlighting
-au BufRead,BufNewFile *.scss set filetype=scss.css
-autocmd FileType scss set iskeyword+=-
-
-" Spellchecking!
-set spell
-
-" ctags configuration
-let g:gutentags_ctags_exclude = ['node_modules', 'vendor', 'coverage', 'tmp', '*.json', 'public']
+""""""""""""""""""""""""""""""
+" Terminal
+""""""""""""""""""""""""""""""
+" Prefer Neovim terminal insert mode to normal mode.
+autocmd BufEnter term://* startinsert
