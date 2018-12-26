@@ -6,9 +6,6 @@
 [hub]
   protocol = git
 
-[credential]
-  helper = /opt/boxen/bin/boxen-git-credential
-
 [core]
 	excludesfile = /Users/raf/dotfiles/gitignore
 
@@ -16,10 +13,10 @@
   default = simple
 
 [filter "lfs"]
+	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-	clean = git-lfs clean -- %f
 
 [diff]
 	compactionHeuristic = true
