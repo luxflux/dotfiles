@@ -17,6 +17,7 @@ Plug 'vimlab/split-term.vim'    " easier terminal management
 Plug 'neomake/neomake'          " async stuff
 Plug 'tpope/vim-commentary'     " Use gcc to comment a line
 Plug 'tpope/vim-fugitive'       " Gblame and friends
+Plug 'sbdchd/neoformat'         " formatting for all the different file types
 
 call plug#end()
 
@@ -77,10 +78,6 @@ set hidden
 au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
       \| exe "normal! g`\"" | endif
 
-" color over 110 signs on one line
-set colorcolumn=111
-hi ColorColumn term=reverse cterm=bold ctermfg=233 ctermbg=208 gui=bold guifg=#000000 guibg=#FD971F
-
 """"""""""""""""""""""""""""""
 " Generic Mappings
 """"""""""""""""""""""""""""""
@@ -115,7 +112,7 @@ autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown,scs
 vmap ,t :Tabularize /\|/<CR>
 
 """"""""""""""""""""""""""""""
-" make
+" linting and so
 """"""""""""""""""""""""""""""
 " run neomake after every write
 autocmd BufWritePost * Neomake
@@ -131,3 +128,19 @@ autocmd BufWritePost * Neomake
 """"""""""""""""""""""""""""""
 " Prefer Neovim terminal insert mode to normal mode.
 autocmd BufEnter term://* startinsert
+
+""""""""""""""""""""""""""""""
+" Code formatting
+""""""""""""""""""""""""""""""
+map ,p :Neoformat<CR>
+
+""""""""""""""""""""""""""""""
+" Max n chars per line
+""""""""""""""""""""""""""""""
+autocmd FileType ruby setlocal colorcolumn=111
+autocmd FileType javascript setlocal colorcolumn=101
+
+""""""""""""""""""""""""""""""
+" Spellchecking
+""""""""""""""""""""""""""""""
+set spell
