@@ -12,8 +12,7 @@ Plug 'vim-scripts/trailing-whitespace' " fix whitespaces
 Plug '/usr/local/opt/fzf'       " basic fzf integration
 Plug 'junegunn/fzf.vim'         " advanced fzf integration
 Plug 'godlygeek/tabular'        " table helpers
-"Plug 'kassio/neoterm'           " easier terminal management
-Plug 'vimlab/split-term.vim'    " easier terminal management
+Plug 'kassio/neoterm'           " easier terminal management (ctrl-w and stuff)
 Plug 'neomake/neomake'          " async stuff
 Plug 'tpope/vim-commentary'     " Use gcc to comment a line
 Plug 'tpope/vim-fugitive'       " Gblame and friends
@@ -118,16 +117,20 @@ vmap ,t :Tabularize /\|/<CR>
 autocmd BufWritePost * Neomake
 
 """"""""""""""""""""""""""""""
-" RSpec
+" Testing
 """"""""""""""""""""""""""""""
-"autocmd BufRead,BufNewFile .*_spec.rb nnoremap ,T :terminal rspec %
-"nnoremap ,T :below T rspec %:<c-r>=line('.')<cr><cr>
+autocmd FileType ruby nnoremap <buffer> ,t :below T rspec %:<c-r>=line('.')<cr><cr>
+autocmd FileType javascript nnoremap <buffer> ,t :below T yarn run test %<cr><cr>
+autocmd FileType javascript nnoremap <buffer> ,W :below T yarn run test:watch %<cr><cr>
 
 """"""""""""""""""""""""""""""
 " Terminal
 """"""""""""""""""""""""""""""
+let g:neoterm_size = 20
 " Prefer Neovim terminal insert mode to normal mode.
 autocmd BufEnter term://* startinsert
+" allow using ctrl-w to switch out of the terminal
+tnoremap <C-w> <C-\><C-n><C-w>
 
 """"""""""""""""""""""""""""""
 " Code formatting
