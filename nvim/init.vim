@@ -147,3 +147,13 @@ autocmd FileType javascript setlocal colorcolumn=101
 " Spellchecking
 """"""""""""""""""""""""""""""
 set spell
+
+""""""""""""""""""""""""""""""
+" Autolinking
+""""""""""""""""""""""""""""""
+function JiraIssue()		
+  let current_branch = system("git rev-parse --abbrev-ref HEAD")		
+  let ref = substitute(current_branch, '^\(\w\+\)-\(\d\+\).\+$', '\1-\2', '')		
+  return '['. ref .'](https://welltravel.atlassian.net/browse/'. ref .')'		
+endfunction		
+iab STORY <C-R>=JiraIssue()<CR>
