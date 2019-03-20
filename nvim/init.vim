@@ -18,6 +18,7 @@ Plug 'tpope/vim-commentary'     " Use gcc to comment a line
 Plug 'tpope/vim-fugitive'       " Gblame and friends
 Plug 'sbdchd/neoformat'         " formatting for all the different file types
 Plug 'jaawerth/neomake-local-eslint-first'
+Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -158,3 +159,8 @@ function JiraIssue()
   return '['. ref .'](https://welltravel.atlassian.net/browse/'. ref .')'		
 endfunction		
 iab STORY <C-R>=JiraIssue()<CR>
+
+""""""""""""""""""""""""""""""
+" Statusline
+""""""""""""""""""""""""""""""
+set statusline+=%{gutentags#statusline()}
