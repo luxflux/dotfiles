@@ -94,6 +94,9 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-finish
 fi
 
+theme-switch () { echo -e "\033]50;SetProfile=$1\a"; export ITERM_PROFILE=$1; }
+sunny-theme () { theme-switch "Sunny" }
+default-theme () { theme-switch "Default" }
 # Aliases
 alias netstat="sudo lsof -i -P"
 alias stree="/Applications/SourceTree.app/Contents/MacOS/SourceTree \$(pwd)"

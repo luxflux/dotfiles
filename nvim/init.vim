@@ -32,7 +32,14 @@ set undodir=~/.config/nvim/_undo        " where to save undo histories
 set termguicolors
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
-colorscheme OceanicNext
+let iterm_profile = $ITERM_PROFILE
+if iterm_profile == "Sunny"
+   " set background=light
+   colorscheme OceanicNextLight
+else
+   colorscheme OceanicNext
+    " set background=dark
+endif
 
 " Misc
 set number
@@ -161,6 +168,7 @@ endfunction
 iab STORY <C-R>=JiraIssue()<CR>
 
 """"""""""""""""""""""""""""""
-" Statusline
+" Gutentags
 """"""""""""""""""""""""""""""
 set statusline+=%{gutentags#statusline()}
+let g:gutentags_ctags_exclude = ['node_modules']
