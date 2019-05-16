@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 " colorschemes
 Plug 'mhartington/oceanic-next'
+Plug 'ayu-theme/ayu-vim'
 
 Plug 'sheerun/vim-polyglot'     " all the languages
 Plug 'wincent/terminus'         " switch cursor for insert/normal mode
@@ -30,16 +31,31 @@ set undodir=~/.config/nvim/_undo        " where to save undo histories
 
 " Colors
 set termguicolors
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-let iterm_profile = $ITERM_PROFILE
-if iterm_profile == "Sunny"
-   " set background=light
-   colorscheme OceanicNextLight
-else
-   colorscheme OceanicNext
-    " set background=dark
-endif
+" let g:oceanic_next_terminal_bold = 1
+" let g:oceanic_next_terminal_italic = 1
+
+"
+function! SetBackgroundMode(...)
+  let s:iterm_profile = $ITERM_PROFILE
+  let s:mode = systemlist("osascript -e 'tell application \"System Events\" to tell appearance preferences to return (get dark mode)'")[0]
+  if s:mode == "false"
+    " if get(g:, 'colors_name', 'default') !=? 'OceanicNextLight'
+      " set background=light
+      " colorscheme OceanicNextLight
+      let g:ayucolor="light"
+      colorscheme ayu
+    " endif
+  else
+    " if get(g:, 'colors_name', 'default') !=? 'OceanicNext'
+      " set background=dark
+      " colorscheme OceanicNext
+      let g:ayucolor="dark"
+      colorscheme ayu
+    " endif
+  endif
+endfunction
+call SetBackgroundMode()
+" call timer_start(3000, "SetBackgroundMode", {"repeat": -1})
 
 " Misc
 set number
