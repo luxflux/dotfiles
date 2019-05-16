@@ -171,4 +171,4 @@ iab STORY <C-R>=JiraIssue()<CR>
 " Gutentags
 """"""""""""""""""""""""""""""
 set statusline+=%{gutentags#statusline()}
-let g:gutentags_ctags_exclude = ['node_modules']
+let g:gutentags_ctags_exclude = ['node_modules', 'tmp']
