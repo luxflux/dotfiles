@@ -7,6 +7,7 @@ source $ZPLUG_HOME/init.zsh
 
 if which nodenv > /dev/null; then eval "$(nodenv init -)"; fi
 if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash zsh)"; fi
+if type brew &>/dev/null; then FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH; fi
 
 zplug "zsh-users/zsh-completions"
 zplug "caarlos0/zsh-git-sync"
@@ -160,9 +161,12 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 setopt HIST_BEEP                 # Beep when accessing non-existent history.
 
 if which kubectl > /dev/null; then source <(kubectl completion zsh); fi
+if which hub > /dev/null; then eval "$(hub alias -s)"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
 fi
+
+compinit
