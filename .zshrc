@@ -24,7 +24,7 @@ if ! zplug check --verbose; then
 fi
 
 export GEOMETRY_PROMPT_PLUGINS_PRIMARY=(jobs)
-export GEOMETRY_PROMPT_PLUGINS=(exec_time kube)
+export GEOMETRY_PROMPT_PLUGINS=(exec_time)
 export GEOMETRY_PROMPT_PREFIX=""
 
 # zplug load --verbose
