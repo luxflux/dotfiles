@@ -11,7 +11,7 @@ if type brew &>/dev/null; then FPATH=$(brew --prefix)/share/zsh/site-functions:$
 
 zplug "zsh-users/zsh-completions"
 zplug "caarlos0/zsh-git-sync"
-zplug "frmendes/geometry", as:theme
+zplug "geometry-zsh/geometry", as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:2
 
@@ -23,30 +23,12 @@ if ! zplug check --verbose; then
     fi
 fi
 
-export GEOMETRY_PROMPT_PLUGINS=(exec_time git ruby node k8s)
+export GEOMETRY_PROMPT_PLUGINS_PRIMARY=(jobs)
+export GEOMETRY_PROMPT_PLUGINS=(exec_time kube)
 export GEOMETRY_PROMPT_PREFIX=""
-export PROMPT_GEOMETRY_EXEC_TIME="true"
-export GEOMETRY_COLOR_PROMPT="red"
-export PROMPT_GEOMETRY_COLORIZE_SYMBOL="true"
-export GEOMETRY_PLUGIN_SEPARATOR=" | "
-export GEOMETRY_SYMBOL_RUBY_RVM_VERSION=""
-export GEOMETRY_COLOR_PACKAGER_VERSION="green"
-export GEOMETRY_SYMBOL_PACKAGER_VERSION=""
 
 # zplug load --verbose
 zplug load
-
-geometry_prompt_k8s_setup() {}
-geometry_prompt_k8s_check() { $(echo $PWD | grep k8s) || return 1 }
-geometry_prompt_k8s_render() {
-   kubectl_current_context=$(kubectl config current-context)
-   # kubectl_project=$(echo $kubectl_current_context | cut -d '_' -f 2)
-   kubectl_cluster=$(echo $kubectl_current_context | cut -d '_' -f 4)
-   kubectl_prompt="k8s:$kubectl_cluster"
-   echo $kubectl_prompt
-}
-
-geometry_plugin_register k8s
 
 source /Users/raf/.iterm2_shell_integration.zsh
 
@@ -120,8 +102,6 @@ export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg
 # Path
 # add dotfilez bin to path
 PATH=$PATH:~/dotfiles/bin
-# add postgres app to path
-PATH="/Applications/Postgres93.app/Contents/MacOS/bin:$PATH"
 # add npm modules to path
 PATH="/usr/local/share/npm/bin:$PATH"
 # mkdir .git/safe in the root of repositories you trust
@@ -130,7 +110,7 @@ PATH=".git/safe/../../node_modules/.bin:$PATH"
 # homebrew sbin
 PATH="$PATH:/usr/local/sbin"
 # postgres
-PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+PATH="/usr/local/opt/postgresql@10/bin:$PATH"
 
 # ZSH config
 # change path without specifying cd
