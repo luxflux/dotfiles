@@ -124,7 +124,7 @@ let g:gitgutter_sign_modified_removed = '⇐'
 """"""""""""""""""""""""""""""
 " whitespaces
 """"""""""""""""""""""""""""""
-autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown,scss autocmd BufWritePre * :FixWhitespace
+autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown,scss,eruby autocmd BufWritePre * :FixWhitespace
 
 """"""""""""""""""""""""""""""
 " tabular
