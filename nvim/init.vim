@@ -157,6 +157,18 @@ tnoremap <C-w> <C-\><C-n><C-w>
 " Code formatting
 """"""""""""""""""""""""""""""
 map ,p :Neoformat<CR>
+let g:neoformat_xml_tidy = {
+            \ 'exe': 'tidy',
+            \ 'args': ['-quiet',
+            \          '-xml',
+            \          '--indent auto',
+            \          '--indent-spaces ' . shiftwidth(),
+            \          '--vertical-space yes',
+            \          '--tidy-mark no',
+            \          '--wrap -1'
+            \         ],
+            \ 'stdin': 1,
+            \ }
 
 """"""""""""""""""""""""""""""
 " Max n chars per line
