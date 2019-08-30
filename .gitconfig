@@ -7,7 +7,7 @@
   protocol = git
 
 [core]
-	excludesfile = /Users/raf/dotfiles/gitignore
+	excludesfile = ~/.gitignore
 
 [push]
   default = simple

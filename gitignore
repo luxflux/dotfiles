@@ -3,7 +3,7 @@
 .Spotlight-V100
 .Trashes
 ._*
-Icon
+Icon
 Thumbs.db
 ehthumbs.db
 *.swp
@@ -11,5 +11,13 @@ ehthumbs.db
 *.orig
 *~
 \#*\#
-/tags
 /.bundle/
+
+# ctags
+/tags
+/tags.lock
+/tags.temp
+/tags.temp.tmp
+.notags
+
+stellar.yaml

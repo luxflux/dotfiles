@@ -25,6 +25,7 @@ task :link do
   files.each do |file_or_dir|
     sh "ln -nfs #{link_dir}/#{file_or_dir}"
   end
+  sh "ln -nfs #{link_dir}/gitignore .gitignore"
 
   sh "mkdir -p .config"
   sh "ln -nfs #{link_dir}/nvim .config/nvim"
@@ -37,8 +38,8 @@ task :link do
     sh "launchctl start #{name.gsub('.plist', '')}"
   end
 
-  sh 'ln -nfs /Users/raf/data/Raffael/GPG/gnupg .gnupg'
-  sh 'ln -nfs /Users/raf/AppSettings/Caddy .caddy'
+  sh 'ln -nfs /Users/raf/Sync/data/Raffael/GPG/gnupg .gnupg'
+  sh 'ln -nfs /Users/raf/Sync/AppSettings/Caddy .caddy'
 end
 
 namespace :bootstrap do
