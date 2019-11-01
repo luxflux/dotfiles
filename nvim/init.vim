@@ -202,4 +202,5 @@ iab STORY <C-R>=JiraIssue()<CR>
 " Gutentags
 """"""""""""""""""""""""""""""
 set statusline+=%{gutentags#statusline()}
+let g:gutentags_exclude_filetypes=['gitcommit']
 let g:gutentags_ctags_exclude = ['node_modules', 'tmp', 'public', 'vendor', 'coverage']
