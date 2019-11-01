@@ -124,7 +124,7 @@ let g:gitgutter_sign_modified_removed = '⇐'
 """"""""""""""""""""""""""""""
 " whitespaces
 """"""""""""""""""""""""""""""
-autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown,scss,eruby autocmd BufWritePre * :FixWhitespace
+autocmd FileType c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown,scss,eruby,javascriptreact autocmd BufWritePre * :FixWhitespace
 
 """"""""""""""""""""""""""""""
 " tabular
@@ -169,6 +169,13 @@ let g:neoformat_xml_tidy = {
             \         ],
             \ 'stdin': 1,
             \ }
+
+let g:neoformat_javascriptreact_prettier = {
+        \ 'exe': 'prettier',
+        \ 'args': ['--stdin', '--stdin-filepath', '"%:p"'],
+        \ 'stdin': 1,
+        \ }
+let g:neoformat_enabled_javascriptreact = ['prettier']
 
 """"""""""""""""""""""""""""""
 " Max n chars per line
