@@ -191,12 +191,12 @@ set spell
 """"""""""""""""""""""""""""""
 " Autolinking
 """"""""""""""""""""""""""""""
-function JiraIssue()		
+function StoryIdentifier()		
   let current_branch = system("git rev-parse --abbrev-ref HEAD")		
   let ref = substitute(current_branch, '^\(\w\+\)-\(\d\+\).\+$', '\1-\2', '')		
-  return '['. ref .'](https://welltravel.atlassian.net/browse/'. ref .')'		
+  return ref
 endfunction		
-iab STORY <C-R>=JiraIssue()<CR>
+iab STORY <C-R>=StoryIdentifier()<CR>
 
 """"""""""""""""""""""""""""""
 " Gutentags
