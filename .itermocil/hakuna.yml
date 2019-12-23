@@ -1,0 +1,29 @@
+windows:
+  - name: development
+    root: ~/projects/hk/monorepo
+    layout: even-horizontal
+    panes:
+      - cd hakuna
+      - cd queenbee
+
+  - name: logs
+    root: ~/projects/hk/monorepo
+    panes:
+      - tail -f hakuna/log/development.log
+      - tail -f queenbee/log/development.log
+
+  - name: hakuna
+    root: ~/projects/hk/monorepo/hakuna
+    panes:
+      - HTTPS_DEVELOPMENT=false foreman start web
+      - HTTPS_DEVELOPMENT=false foreman start webpack
+      - HTTPS_DEVELOPMENT=false foreman start queenbee-message-handler
+      - HTTPS_DEVELOPMENT=false foreman start sidekiq
+
+  - name: queenbee
+    root: ~/projects/hk/monorepo/queenbee
+    panes:
+      - HTTPS_DEVELOPMENT=false foreman start web
+      - HTTPS_DEVELOPMENT=false foreman start webpack
+      - HTTPS_DEVELOPMENT=false foreman start amqp
+      - HTTPS_DEVELOPMENT=false foreman start sidekiq

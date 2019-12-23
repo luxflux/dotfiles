@@ -143,6 +143,8 @@ setopt HIST_BEEP                 # Beep when accessing non-existent history.
 if which kubectl > /dev/null; then source <(kubectl completion zsh); fi
 if which hub > /dev/null; then eval "$(hub alias -s)"; fi
 
+compctl -g '~/.itermocil/*(:t:r)' itermocil
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -f ~/.zshrc.local ]; then

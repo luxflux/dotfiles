@@ -1,0 +1,19 @@
+windows:
+  - name: development
+    root: ~/projects/wt/agent
+    layout: even-horizontal
+    panes:
+      - cd .
+
+  - name: agent
+    root: ~/projects/wt/agent
+    layout: main-vertical-flipped
+    panes:
+      - foreman start web
+      - foreman start services
+      - foreman start js
+
+  - name: logs
+    root: ~/projects/wt/agent
+    panes:
+      - tail -f log/development.log
