@@ -182,6 +182,7 @@ let g:neoformat_enabled_javascriptreact = ['prettier']
 """"""""""""""""""""""""""""""
 autocmd FileType ruby setlocal colorcolumn=111
 autocmd FileType javascript setlocal colorcolumn=101
+autocmd FileType javascriptreact setlocal colorcolumn=101
 
 """"""""""""""""""""""""""""""
 " Spellchecking
