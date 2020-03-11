@@ -10,7 +10,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init - --no-rehash zsh)"; fi
 if type brew &>/dev/null; then FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH; fi
 
 zplug "zsh-users/zsh-completions"
-zplug "caarlos0/zsh-git-sync"
+# zplug "caarlos0/zsh-git-sync"
 zplug "geometry-zsh/geometry", as:theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:2
@@ -89,6 +89,7 @@ alias mutt="cd ~/Downloads && mutt"
 alias ls="ls -G"
 alias l="exa -lhga --git --time-style long-iso"
 alias less="less -r"
+alias oni2='/Applications/Onivim2.app/Contents/MacOS/Oni2'
 
 # Variables
 export EDITOR="nvim"
@@ -141,7 +142,7 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 setopt HIST_BEEP                 # Beep when accessing non-existent history.
 
 if which kubectl > /dev/null; then source <(kubectl completion zsh); fi
-if which hub > /dev/null; then eval "$(hub alias -s)"; fi
+source $HOME/.cargo/env
 
 compctl -g '~/.itermocil/*(:t:r)' itermocil
 
