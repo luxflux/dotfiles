@@ -30,6 +30,7 @@ task :link do
 
   sh "mkdir -p .config"
   sh "ln -nfs #{link_dir}/nvim .config/nvim"
+  sh "ln -nfs #{link_dir}/fish .config/fish"
 
   sh "mkdir -p Library/LaunchAgents"
   Dir.glob("#{link_dir}/LaunchAgents/*").each do |agent|
