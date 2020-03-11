@@ -176,6 +176,7 @@ let g:neoformat_javascriptreact_prettier = {
         \ 'stdin': 1,
         \ }
 let g:neoformat_enabled_javascriptreact = ['prettier']
+let g:neoformat_enabled_javascript = ['prettier']
 
 """"""""""""""""""""""""""""""
 " Max n chars per line
