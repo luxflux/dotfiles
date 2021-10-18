@@ -1,6 +1,6 @@
 [user]
 	name = Raffael Schmid
-	email = raffael@yux.ch
+	email = raffael.schmid@welldev.io
 	signingkey = 5D46F536
 
 [hub]
@@ -66,3 +66,7 @@
 	path = 
 [diff "sopsdiffer"]
 	textconv = sops -d
+[init]
+	defaultBranch = main
+[includeIf "gitdir:~/projects/lf/**"]
+  path = ~/.personal.gitconfig
