@@ -1,10 +1,10 @@
 # vi:ft=ruby
 cask_args appdir: '/Applications'
 
-tap 'caskroom/cask'
+tap 'homebrew/cask'
 
-brew 'mas'
-mas 'Xcode', id: 497799835
+#brew 'mas'
+#mas 'Xcode', id: 497799835
 
 # neovim
 tap 'neovim/homebrew-neovim'
@@ -20,47 +20,47 @@ cask 'dropbox'
 cask 'firefox'
 cask 'github'
 cask 'google-chrome'
-cask 'java'
+#cask 'java'
 cask 'paw'
 cask 'slack'
-cask 'soapui'
-cask 'sourcetree'
-cask 'sparkleshare'
-cask 'tunnelblick'
+#cask 'soapui'
+#cask 'sourcetree'
+#cask 'sparkleshare'
+#cask 'tunnelblick'
 cask 'vagrant'
 cask 'virtualbox'
 cask 'vlc'
 cask 'vmware-fusion'
-cask 'qlstephen'
+#cask 'qlstephen'
 cask 'google-cloud-sdk'
 cask 'docker'
 cask 'syncthing-app'
-mas 'Baby Monitor 3G', id: 626137367
-mas 'Keynote', id: 409183694
-mas 'Numbers', id: 409203825
-mas 'Pages', id: 409201541
-mas 'Pixelmator', id: 407963104
-mas 'Tweetbot', id: 557168941
-mas 'Bear', id: 1091189122
+#mas 'Baby Monitor 3G', id: 626137367
+#mas 'Keynote', id: 409183694
+#mas 'Numbers', id: 409203825
+#mas 'Pages', id: 409201541
+#mas 'Pixelmator', id: 407963104
+#mas 'Tweetbot', id: 557168941
+#mas 'Bear', id: 1091189122
 
 # tools
 brew 'diff-so-fancy'
 brew 'fzf'
-brew 'go'
-brew 'graphviz'
+#brew 'go'
+#brew 'graphviz'
 brew 'heroku'
 brew 'icu4c'
 brew 'imagemagick'
-brew 'influxdb'
-brew 'ledger'
+#brew 'influxdb'
+#brew 'ledger'
 brew 'mtr'
 brew 'nmap'
-brew 'phantomjs'
+#brew 'phantomjs'
 brew 'pstree'
 brew 'rbenv'
 brew 'nodenv'
 brew 'reattach-to-user-namespace'
-brew 'task'
+#brew 'task'
 brew 'watchman'
 brew 'xz'
 brew 'zsh'
@@ -71,15 +71,15 @@ brew 'kubectx'
 brew 'helm'
 brew 'watch'
 brew 'hub'
-brew 'zaquestion/tap/lab'
+#brew 'zaquestion/tap/lab'
 brew 'rg'
-brew 's3cmd'
+#brew 's3cmd'
 brew 'cmake'
 brew 'stern'
 brew 'itermocil'
 
 # services
 brew 'postgresql@9.6', restart_service: :changed, start_service: true
-brew 'postgresql@10', restart_service: :changed, start_service: false
-brew 'rabbitmq', restart_service: :changed, start_service: true
-brew 'redis', restart_service: :changed, start_service: true
+#brew 'postgresql@10', restart_service: :changed, start_service: false
+brew 'rabbitmq'#, restart_service: :changed, start_service: true
+brew 'redis'#, restart_service: :changed, start_service: true

@@ -7,21 +7,21 @@ task :link do
   Dir.chdir ENV['HOME']
 
   files = %w[.vimrc .vim]
-  files += %w[.tmux.conf .tmux .tmux.status.conf]
+#  files += %w[.tmux.conf .tmux .tmux.status.conf]
   files += %w[.zshrc]
-  files += %w[.ackrc]
-  files += %w[.slate]
-  files += %w[.powconfig]
+#  files += %w[.ackrc]
+#  files += %w[.slate]
+#  files += %w[.powconfig]
   files += %w[.pryrc .pry .irbrc]
   files += %w[.rubocop.yml .scss-lint.yml]
-  files += %w[.ledgerrc]
+#  files += %w[.ledgerrc]
   files += %w[.bundle]
-  files += %w[.mutt .offlineimaprc .urlview .msmtprc .notmuch-config .muttqt]
-  files += %w[.taskrc]
-  files += %w[.gitconfig]
+#  files += %w[.mutt .offlineimaprc .urlview .msmtprc .notmuch-config .muttqt]
+#  files += %w[.taskrc]
+  files += %w[.gitconfig .personal.gitconfig]
   files += %w[.ctags]
   files += %w[.fzf.zsh]
-  files += %w[.itermocil]
+#  files += %w[.itermocil]
 
   files.each do |file_or_dir|
     sh "ln -nfs #{link_dir}/#{file_or_dir}"
@@ -67,4 +67,11 @@ namespace :update do
   task :caddy do
     sh "curl 'https://caddyserver.com/download/darwin/amd64?plugins=hook.service,tls.dns.dnsimple&license=personal' | tar xzf - -C ~/dotfiles/bin/ caddy"
   end
+end
+
+desc "Install brew dependencies"
+task :brew do
+  sh "xcode-select --install"
+  Dir.chdir 'setup'
+  sh "/opt/homebrew/bin/brew bundle"
 end

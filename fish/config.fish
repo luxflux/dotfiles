@@ -1,5 +1,9 @@
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+set -g fish_user_paths "/usr/local/opt/terraform@0.11/bin" $fish_user_paths
+set -g fish_user_paths "/opt/homebrew/bin" $fish_user_paths
+set -g fish_user_paths "/opt/homebrew/sbin" $fish_user_paths
+
 status --is-interactive; and source (nodenv init -|psub)
 
 export HTTPS_DEVELOPMENT=true
@@ -11,4 +15,7 @@ export VISUAL=$EDITOR
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob \!.git'
 
 test -e {$HOME}/.local_config.fish ; and source {$HOME}/.local_config.fish
-set -g fish_user_paths "/usr/local/opt/terraform@0.11/bin" $fish_user_paths
+
+set google_cloud_config /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc
+test -e {$google_cloud_config} ; and source {$google_cloud_config}
+set -g fish_user_paths "/opt/homebrew/opt/terraform@0.11/bin" $fish_user_paths

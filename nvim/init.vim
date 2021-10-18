@@ -10,7 +10,7 @@ Plug 'ervandew/supertab'        " use tab for completion
 Plug 'airblade/vim-gitgutter'   " show changes on line in the gutter
 Plug 'vim-scripts/trailing-whitespace' " fix whitespaces
 
-Plug '/usr/local/opt/fzf'       " basic fzf integration
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " basic fzf integration
 Plug 'junegunn/fzf.vim'         " advanced fzf integration
 Plug 'godlygeek/tabular'        " table helpers
 Plug 'kassio/neoterm'           " easier terminal management (ctrl-w and stuff)
