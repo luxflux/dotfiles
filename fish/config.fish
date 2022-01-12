@@ -4,8 +4,6 @@ set -g fish_user_paths "/usr/local/opt/terraform@0.11/bin" $fish_user_paths
 set -g fish_user_paths "/opt/homebrew/bin" $fish_user_paths
 set -g fish_user_paths "/opt/homebrew/sbin" $fish_user_paths
 
-status --is-interactive; and source (nodenv init -|psub)
-
 export HTTPS_DEVELOPMENT=true
 export WEBPACKER_DEV_SERVER_HTTPS=true
 

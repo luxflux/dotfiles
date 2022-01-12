@@ -22,6 +22,7 @@ task :link do
 #  files += %w[.ctags]
 #  files += %w[.fzf.zsh]
 #  files += %w[.itermocil]
+  files += %w[.default-npm-packages .default-gems]
 
   files.each do |file_or_dir|
     sh "ln -nfs #{link_dir}/#{file_or_dir}"
