@@ -62,6 +62,9 @@ return require('packer').startup(function(use)
   -- Vertical Lines
   use 'lukas-reineke/indent-blankline.nvim'
 
+  -- Remote Copy
+  use 'justone/remotecopy-vim'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
@@ -172,4 +175,8 @@ return require('packer').startup(function(use)
     show_current_context = true,
     show_current_context_start = true,
   }
+
+  -- Remote Copy
+  map('', ',y', ':RemoteCopy<CR>')
+  map('v', ',y', ':RemoteCopyVisual<CR>')
 end)
