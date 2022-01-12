@@ -6,6 +6,7 @@ nvim/shada
 nvim/plugged/*
 nvim/_*
 nvim/spell
+nvim/plugin/packer_compiled.lua
 !nvim/plugged/.gitkeep
 
 .mutt/tmp/*
