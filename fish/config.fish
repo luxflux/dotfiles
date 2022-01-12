@@ -5,6 +5,8 @@ set -g fish_user_paths "/opt/homebrew/bin" $fish_user_paths
 set -g fish_user_paths "/opt/homebrew/sbin" $fish_user_paths
 set -g fish_user_paths "$HOME/projects/lf/dotfiles/bin" $fish_user_paths
 
+set -g fish_greeting
+
 export EDITOR="nvim"
 export GIT_EDITOR=$EDITOR
 export VISUAL=$EDITOR

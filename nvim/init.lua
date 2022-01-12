@@ -84,14 +84,23 @@ return require('packer').startup(function(use)
 
   -- Completion
   g['deoplete#enable_at_startup'] = 1
+  map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
+  map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
 
   -- Misc
   opt.number = true
   opt.ruler = true
   opt.showcmd = true
   opt.autoread = true
-  opt.list = true      -- show invisible characters
   opt.spell = true
+
+  -- invisible character display
+  opt.list = true                           -- show invisible characters
+  opt.listchars = ""                        -- Reset the listchars
+  opt.listchars:append({ tab = '  ' })      -- a tab should display as "  ", trailing whitespace as "."
+  opt.listchars:append({ trail = '.' })     -- show trailing spaces as dots
+  opt.listchars:append({ extends = '>' })   --  The character to show in the last column when wrap is off and the line continues beyond the right of the screen
+  opt.listchars:append({ precedes = '<' })  -- The character to show in the first column when wrap is off and the line continues beyond the left of the screen
 
   -- Whitespace
   opt.tabstop = 2      -- a tab is two spaces
@@ -153,6 +162,8 @@ return require('packer').startup(function(use)
 
   -- Code formatting
   map('', ',p', ':Neoformat<CR>')
+  g['neoformat_enabled_javascript'] = {'prettier'}
+  g['neoformat_enabled_javascriptreact'] = {'prettier'}
 
   -- Tree-Sitter
   local ts = require 'nvim-treesitter.configs'
