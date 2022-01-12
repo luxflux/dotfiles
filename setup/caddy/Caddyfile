@@ -1,0 +1,58 @@
+(defaults) {
+  handle_errors {
+    respond "{http.error.status_code} {http.error.status_text}"
+  }
+}
+
+(defaults_ssl) {
+  import defaults
+  tls internal
+}
+
+{
+  debug
+  local_certs
+}
+
+https://*.agent.wt.d.yux.ch:443 {
+  import defaults_ssl
+  reverse_proxy /packs/* http://host.docker.internal:3035
+  reverse_proxy /sockjs-node* http://host.docker.internal:3035
+  reverse_proxy /* http://host.docker.internal:3310
+}
+
+# https://chat.wt.d.yux.ch:443 {
+#   import defaults_ssl
+#   reverse_proxy / http://host.docker.internal:18443
+# }
+
+# https://*.accounts.wt.d.yux.ch:443 {
+#   import defaults_ssl
+#   reverse_proxy / http://host.docker.internal:3315
+# }
+
+https://affiliates.wt.d.yux.ch:443 {
+  import defaults_ssl
+  reverse_proxy /* http://host.docker.internal:3320
+}
+
+https://login.wt.d.yux.ch:443 {
+  import defaults_ssl
+  reverse_proxy /* http://host.docker.internal:3325
+}
+
+# https://meta.wt.d.yux.ch:443 {
+#   import defaults_ssl
+#   reverse_proxy / http://host.docker.internal:3330 
+#   reverse_proxy /admin/ http://host.docker.internal:3331 
+# }
+
+# https://reservations.wt.d.yux.ch:443 {
+#   import defaults_ssl
+#   reverse_proxy / http://host.docker.internal:3335
+# }
+
+# https://ccv.wt.d.yux.ch:443 {
+#   import defaults_ssl
+#   reverse_proxy / http://host.docker.internal:3000
+# }
