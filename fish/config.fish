@@ -4,6 +4,7 @@ set -g fish_user_paths "/usr/local/opt/terraform@0.11/bin" $fish_user_paths
 set -g fish_user_paths "/opt/homebrew/bin" $fish_user_paths
 set -g fish_user_paths "/opt/homebrew/sbin" $fish_user_paths
 set -g fish_user_paths "$HOME/projects/lf/dotfiles/bin" $fish_user_paths
+set -g fish_user_paths "$HOME/.local/bin" $fish_user_paths
 
 set -g fish_greeting
 
