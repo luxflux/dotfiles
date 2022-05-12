@@ -41,7 +41,7 @@ task :link do
   #   sh "launchctl start #{name.gsub('.plist', '')}"
   # end
 
-  # sh 'ln -nfs /Users/raf/Sync/data/Raffael/GPG/gnupg .gnupg'
+  sh "ln -nfs #{ENV['HOME']}/Sync/data/Raffael/GPG/gnupg .gnupg"
   # sh 'ln -nfs /Users/raf/Sync/AppSettings/Caddy .caddy'
 end
 
