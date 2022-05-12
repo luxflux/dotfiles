@@ -160,7 +160,7 @@ return require('packer').startup(function(use)
   cmd 'autocmd FileType lua,c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown,scss,eruby,javascriptreact autocmd BufWritePre * :FixWhitespace'
 
   -- Table helpers
-  map('v', ',t', ':Tabularize /\|/<CR>')
+  map('v', ',t', ':Tabularize /\\|/<CR>')
 
   -- Linting
   cmd 'autocmd BufWritePost * Neomake'
@@ -172,7 +172,10 @@ return require('packer').startup(function(use)
 
   -- Tree-Sitter
   local ts = require 'nvim-treesitter.configs'
-  ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
+  ts.setup {
+    ensure_installed = { "css", "dockerfile", "javascript", "json", "html", "lua", "markdown", "python", "ruby", "scss", "bash" },
+    highlight = { enable = true }
+  }
 
   -- LSP
   local lsp = require 'lspconfig'
