@@ -132,6 +132,11 @@ return require('packer').startup(function(use)
   cmd 'autocmd FileType javascript setlocal colorcolumn=101'
   cmd 'autocmd FileType javascriptreact setlocal colorcolumn=101'
 
+  -- Jump to last position in file when reopening, but not for git messages
+  cmd [[autocmd BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
+
+  -- Treat jbuilder files as ruby files
+  cmd 'autocmd BufReadPost *.jbuilder set syntax=ruby'
 
   -- Jira Story Linking
   vim.api.nvim_exec(
@@ -190,4 +195,9 @@ return require('packer').startup(function(use)
   -- Remote Copy
   map('', ',y', ':RemoteCopy<CR>')
   map('v', ',y', ':RemoteCopyVisual<CR>')
+
+  -- Gitsigns
+  require('gitsigns').setup {
+    current_line_blame = true,
+  }
 end)
