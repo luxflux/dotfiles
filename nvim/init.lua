@@ -35,6 +35,9 @@ return require('packer').startup(function(use)
   -- Completion
   use 'Shougo/ddc.vim'
   use 'vim-denops/denops.vim'
+  use 'tani/ddc-git'
+  use 'matsui54/ddc-buffer'
+  use 'delphinus/ddc-treesitter'
   use 'Shougo/ddc-nvim-lsp'
   use 'Shougo/ddc-matcher_head'
   use 'Shougo/ddc-sorter_rank'
@@ -86,11 +89,21 @@ return require('packer').startup(function(use)
   g['srcery_inverse_match_paren'] = 1
 
   -- Completion
-  fn['ddc#custom#patch_global']('sources', {'nvim-lsp'})
+  fn['ddc#custom#patch_global']('sources', {'nvim-lsp', 'treesitter', 'buffer', 'git-branch'})
+  fn['ddc#custom#patch_global']('completionMode', 'inline')
   fn['ddc#custom#patch_global']('sourceOptions', { _ = { matchers = {'matcher_head'}}})
   fn['ddc#custom#patch_global']('sourceOptions', { _ = { sorters = {'sorter_rank'}}})
   fn['ddc#custom#patch_global']('sourceOptions', { ['nvim-lsp'] = { mark = '[LSP]' }})
-  fn['ddc#custom#patch_global']('sourceOptions', { ['nvim-lsp'] = { forceCompletionPattern = '[LSP]' }})
+  fn['ddc#custom#patch_global']('sourceOptions', { ['treesitter'] = { mark = '[TS]' }})
+  fn['ddc#custom#patch_global']('sourceOptions', { ['git-branch'] = { mark = '[GB]' }})
+  fn['ddc#custom#patch_global']('sourceOptions', { ['buffer'] = { mark = '[B]' }})
+  fn['ddc#custom#patch_global']('sourceParams', { ['buffer'] = {
+    requireSameFiletype = false,
+    fromAltBuf = true,
+    forceCollect = true,
+    bufNameStyle = 'basename',
+  }})
+
   map('i', '<TAB>', "ddc#map#pum_visible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()", {expr = true})
   map('i', '<S-TAB>', "ddc#map#pum_visible() ? '<C-p>' : '<C-h>'")
   fn['ddc#enable']()
