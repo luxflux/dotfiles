@@ -28,13 +28,16 @@ return require('packer').startup(function(use)
   -- Table helpers
   use 'godlygeek/tabular'
 
-  -- Completion
-  use 'shougo/deoplete-lsp'
-  use { 'shougo/deoplete.nvim', run = fn['remote#host#UpdateRemotePlugins'] }
-
   -- Language Support
-  use 'nvim-treesitter/nvim-treesitter'
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'neovim/nvim-lspconfig'
+
+  -- Completion
+  use 'Shougo/ddc.vim'
+  use 'vim-denops/denops.vim'
+  use 'Shougo/ddc-nvim-lsp'
+  use 'Shougo/ddc-matcher_head'
+  use 'Shougo/ddc-sorter_rank'
 
   -- Fuzzy Finder
   use { 'junegunn/fzf', run = fn['fzf#install()'] }
@@ -83,9 +86,14 @@ return require('packer').startup(function(use)
   g['srcery_inverse_match_paren'] = 1
 
   -- Completion
-  g['deoplete#enable_at_startup'] = 1
-  map('i', '<S-Tab>', 'pumvisible() ? "\\<C-p>" : "\\<Tab>"', {expr = true})
-  map('i', '<Tab>', 'pumvisible() ? "\\<C-n>" : "\\<Tab>"', {expr = true})
+  fn['ddc#custom#patch_global']('sources', {'nvim-lsp'})
+  fn['ddc#custom#patch_global']('sourceOptions', { _ = { matchers = {'matcher_head'}}})
+  fn['ddc#custom#patch_global']('sourceOptions', { _ = { sorters = {'sorter_rank'}}})
+  fn['ddc#custom#patch_global']('sourceOptions', { ['nvim-lsp'] = { mark = '[LSP]' }})
+  fn['ddc#custom#patch_global']('sourceOptions', { ['nvim-lsp'] = { forceCompletionPattern = '[LSP]' }})
+  map('i', '<TAB>', "ddc#map#pum_visible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()", {expr = true})
+  map('i', '<S-TAB>', "ddc#map#pum_visible() ? '<C-p>' : '<C-h>'")
+  fn['ddc#enable']()
 
   -- Misc
   opt.number = true
@@ -136,7 +144,7 @@ return require('packer').startup(function(use)
   cmd [[autocmd BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
 
   -- Treat jbuilder files as ruby files
-  cmd 'autocmd BufReadPost *.jbuilder set syntax=ruby'
+  cmd 'autocmd BufReadPost *.jbuilder set ft=ruby'
 
   -- Jira Story Linking
   vim.api.nvim_exec(
@@ -174,11 +182,41 @@ return require('packer').startup(function(use)
   local ts = require 'nvim-treesitter.configs'
   ts.setup {
     ensure_installed = { "css", "dockerfile", "javascript", "json", "html", "lua", "markdown", "python", "ruby", "scss", "bash" },
-    highlight = { enable = true }
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = false,
+    }
   }
 
   -- LSP
   local lsp = require 'lspconfig'
+  local on_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    -- Mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, bufopts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+  end
+  lsp.solargraph.setup{
+    on_attach = on_attach,
+  }
+
   -- lsp.ruby.setup {}
   -- lsp.javascript.setup {}
   -- lsp.javascriptreact.setup {}
