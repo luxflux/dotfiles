@@ -104,7 +104,8 @@ return require('packer').startup(function(use)
     bufNameStyle = 'basename',
   }})
 
-  map('i', '<TAB>', "ddc#map#pum_visible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()", {expr = true})
+  map('i', '<TAB>', "ddc#map#pum_visible() ? '<C-n>' : ddc#insert_item(0)", {expr = true})
+  map('i', '<C-n>', "ddc#map#pum_visible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()", {expr = true})
   map('i', '<S-TAB>', "ddc#map#pum_visible() ? '<C-p>' : '<C-h>'")
   fn['ddc#enable']()
 
