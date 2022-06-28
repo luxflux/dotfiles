@@ -4,13 +4,16 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'srcery-colors/srcery-vim'
 
-Plug 'sheerun/vim-polyglot'     " all the languages
+Plug 'neovim/nvim-lspconfig'    " Language Server Protocol Stuff
+Plug 'alexaandru/nvim-lspupdate' " Language Server installer
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'sheerun/vim-polyglot'     " all the languages
 Plug 'wincent/terminus'         " switch cursor for insert/normal mode
 Plug 'ervandew/supertab'        " use tab for completion
 Plug 'airblade/vim-gitgutter'   " show changes on line in the gutter
 Plug 'vim-scripts/trailing-whitespace' " fix whitespaces
 
-Plug '/usr/local/opt/fzf'       " basic fzf integration
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'         " advanced fzf integration
 Plug 'godlygeek/tabular'        " table helpers
 Plug 'kassio/neoterm'           " easier terminal management (ctrl-w and stuff)
@@ -19,7 +22,7 @@ Plug 'tpope/vim-commentary'     " Use gcc to comment a line
 Plug 'tpope/vim-fugitive'       " Gblame and friends
 Plug 'sbdchd/neoformat'         " formatting for all the different file types
 Plug 'jaawerth/neomake-local-eslint-first'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 call plug#end()
 
@@ -29,7 +32,7 @@ set backupdir=~/.config/nvim/_backup    " where to put backup files
 set directory=~/.config/nvim/_temp      " where to put swap files
 set undodir=~/.config/nvim/_undo        " where to save undo histories
 
-" Colors
+" " Colors
 set termguicolors
 let g:srcery_italic = 1
 let g:srcery_bold = 1
@@ -203,6 +206,20 @@ iab STORY <C-R>=StoryIdentifier()<CR>
 """"""""""""""""""""""""""""""
 " Gutentags
 """"""""""""""""""""""""""""""
-set statusline+=%{gutentags#statusline()}
-let g:gutentags_exclude_filetypes=['gitcommit']
-let g:gutentags_ctags_exclude = ['node_modules', 'tmp', 'public', 'vendor', 'coverage']
+" set statusline+=%{gutentags#statusline()}
+" let g:gutentags_exclude_filetypes=['gitcommit']
+" let g:gutentags_ctags_exclude = ['node_modules', 'tmp', 'public', 'vendor', 'coverage']
+"
+
+lua require'lspconfig'.solargraph.setup{}
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "ruby", "javascript" }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+ -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    --disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+EOF
