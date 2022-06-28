@@ -28,20 +28,6 @@ return require('packer').startup(function(use)
   -- Table helpers
   use 'godlygeek/tabular'
 
-  -- Language Support
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'neovim/nvim-lspconfig'
-
-  -- Completion
-  use 'Shougo/ddc.vim'
-  use 'vim-denops/denops.vim'
-  use 'tani/ddc-git'
-  use 'matsui54/ddc-buffer'
-  use 'delphinus/ddc-treesitter'
-  use 'Shougo/ddc-nvim-lsp'
-  use 'Shougo/ddc-matcher_head'
-  use 'Shougo/ddc-sorter_rank'
-
   -- Fuzzy Finder
   use { 'junegunn/fzf', run = fn['fzf#install()'] }
   use 'junegunn/fzf.vim'
@@ -55,7 +41,20 @@ return require('packer').startup(function(use)
   use 'tpope/vim-commentary'
 
   -- colorscheme
-  use 'srcery-colors/srcery-vim'
+  opt.termguicolors = true
+  use {
+    'srcery-colors/srcery-vim',
+    config = (function()
+      vim.g['srcery_italic'] = 1
+      vim.g['srcery_bold'] = 1
+      vim.g['srcery_underline'] = 1
+      vim.g['srcery_undercurl'] = 1
+      vim.g['srcery_inverse'] = 1
+      vim.g['srcery_inverse_matches'] = 1
+      vim.g['srcery_inverse_match_paren'] = 1
+      vim.cmd('colorscheme srcery')
+    end)
+  }
 
   -- Git
   use {
@@ -63,10 +62,12 @@ return require('packer').startup(function(use)
     requires = {
       'nvim-lua/plenary.nvim'
     },
+    config = (function()
+      require('gitsigns').setup {
+        current_line_blame = true,
+      }
+    end)
   }
-
-  -- Vertical Lines
-  use 'lukas-reineke/indent-blankline.nvim'
 
   -- Remote Copy
   use 'justone/remotecopy-vim'
@@ -78,36 +79,41 @@ return require('packer').startup(function(use)
   end
 
   -- Colors
-  cmd 'colorscheme srcery'
-  opt.termguicolors = true
-  g['srcery_italic'] = 1
-  g['srcery_bold'] = 1
-  g['srcery_underline'] = 1
-  g['srcery_undercurl'] = 1
-  g['srcery_inverse'] = 1
-  g['srcery_inverse_matches'] = 1
-  g['srcery_inverse_match_paren'] = 1
 
   -- Completion
-  fn['ddc#custom#patch_global']('sources', {'nvim-lsp', 'treesitter', 'buffer', 'git-branch'})
-  fn['ddc#custom#patch_global']('completionMode', 'inline')
-  fn['ddc#custom#patch_global']('sourceOptions', { _ = { matchers = {'matcher_head'}}})
-  fn['ddc#custom#patch_global']('sourceOptions', { _ = { sorters = {'sorter_rank'}}})
-  fn['ddc#custom#patch_global']('sourceOptions', { ['nvim-lsp'] = { mark = '[LSP]' }})
-  fn['ddc#custom#patch_global']('sourceOptions', { ['treesitter'] = { mark = '[TS]' }})
-  fn['ddc#custom#patch_global']('sourceOptions', { ['git-branch'] = { mark = '[GB]' }})
-  fn['ddc#custom#patch_global']('sourceOptions', { ['buffer'] = { mark = '[B]' }})
-  fn['ddc#custom#patch_global']('sourceParams', { ['buffer'] = {
-    requireSameFiletype = false,
-    fromAltBuf = true,
-    forceCollect = true,
-    bufNameStyle = 'basename',
-  }})
+  use {
+    'Shougo/ddc.vim',
+    requires = {
+      'vim-denops/denops.vim',
+      'tani/ddc-git',
+      'matsui54/ddc-buffer',
+      'delphinus/ddc-treesitter',
+      'Shougo/ddc-nvim-lsp',
+      'Shougo/ddc-matcher_head',
+      'Shougo/ddc-sorter_rank',
+    },
+    config = (function()
+      vim.fn['ddc#custom#patch_global']('sources', {'nvim-lsp', 'treesitter', 'buffer', 'git-branch'})
+      vim.fn['ddc#custom#patch_global']('completionMode', 'inline')
+      vim.fn['ddc#custom#patch_global']('sourceOptions', { _ = { matchers = {'matcher_head'}}})
+      vim.fn['ddc#custom#patch_global']('sourceOptions', { _ = { sorters = {'sorter_rank'}}})
+      vim.fn['ddc#custom#patch_global']('sourceOptions', { ['nvim-lsp'] = { mark = '[LSP]' }})
+      vim.fn['ddc#custom#patch_global']('sourceOptions', { ['treesitter'] = { mark = '[TS]' }})
+      vim.fn['ddc#custom#patch_global']('sourceOptions', { ['git-branch'] = { mark = '[GB]' }})
+      vim.fn['ddc#custom#patch_global']('sourceOptions', { ['buffer'] = { mark = '[B]' }})
+      vim.fn['ddc#custom#patch_global']('sourceParams', { ['buffer'] = {
+              requireSameFiletype = false,
+              fromAltBuf = true,
+              forceCollect = true,
+              bufNameStyle = 'basename',
+      }})
+      vim.fn['ddc#enable']()
+    end)
+  }
 
   map('i', '<TAB>', "ddc#map#pum_visible() ? '<C-n>' : ddc#insert_item(0)", {expr = true})
-  map('i', '<C-n>', "ddc#map#pum_visible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()", {expr = true})
+  map('i', '<C-n>', [[ddc#map#pum_visible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()]], {expr = true})
   map('i', '<S-TAB>', "ddc#map#pum_visible() ? '<C-p>' : '<C-h>'")
-  fn['ddc#enable']()
 
   -- Misc
   opt.number = true
@@ -173,11 +179,6 @@ return require('packer').startup(function(use)
     false
   )
 
-  -- Git
-  require('gitsigns').setup {
-    current_line_blame = false
-  }
-
   -- Remove Whitespaces
   cmd 'autocmd FileType lua,c,cpp,java,php,ruby,python,javascript,scala,elixir,markdown,scss,eruby,javascriptreact autocmd BufWritePre * :FixWhitespace'
 
@@ -192,48 +193,55 @@ return require('packer').startup(function(use)
   g['neoformat_enabled_javascript'] = {'prettier'}
   g['neoformat_enabled_javascriptreact'] = {'prettier'}
 
-  -- Tree-Sitter
-  local ts = require 'nvim-treesitter.configs'
-  ts.setup {
-    ensure_installed = { "css", "dockerfile", "javascript", "json", "html", "lua", "markdown", "python", "ruby", "scss", "bash" },
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = false,
-    }
+  -- Language Support
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = (function()
+      local ts = require 'nvim-treesitter.configs'
+      ts.setup {
+        ensure_installed = { "css", "dockerfile", "javascript", "json", "html", "lua", "markdown", "python", "ruby", "scss", "bash" },
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        }
+      }
+    end)
   }
 
   -- LSP
-  local lsp = require 'lspconfig'
-  local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  use {
+    'neovim/nvim-lspconfig',
+    config = (function()
+      local lsp = require 'lspconfig'
+      local on_attach = function(client, bufnr)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-    -- Mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    local bufopts = { noremap=true, silent=true, buffer=bufnr }
-    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, bufopts)
-    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
-  end
-  lsp.solargraph.setup{
-    on_attach = on_attach,
+        -- Mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local bufopts = { noremap=true, silent=true, buffer=bufnr }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+        vim.keymap.set('n', '<space>wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, bufopts)
+        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+        vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+        vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+      end
+      lsp.solargraph.setup{
+        on_attach = on_attach,
+      }
+    end)
   }
-
-  -- lsp.ruby.setup {}
-  -- lsp.javascript.setup {}
-  -- lsp.javascriptreact.setup {}
 
   -- FZF
   -- Open FZF with CTRL+p
@@ -242,17 +250,17 @@ return require('packer').startup(function(use)
   map('', '<Tab><Tab>', ':Buffers<CR>')
 
   -- Vertical Lines
-  require('indent_blankline').setup {
-    show_current_context = true,
-    show_current_context_start = true,
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = (function()
+      require('indent_blankline').setup {
+        show_current_context = true,
+        show_current_context_start = true,
+      }
+    end)
   }
 
   -- Remote Copy
   map('', ',y', ':RemoteCopy<CR>')
   map('v', ',y', ':RemoteCopyVisual<CR>')
-
-  -- Gitsigns
-  require('gitsigns').setup {
-    current_line_blame = true,
-  }
 end)
