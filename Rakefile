@@ -13,6 +13,7 @@ task :link do
 #  files += %w[.slate]
 #  files += %w[.powconfig]
 #  files += %w[.pryrc .pry .irbrc]
+  files = %w[.asdfrc]
   files += %w[.rubocop.yml .scss-lint.yml]
 #  files += %w[.ledgerrc]
   files += %w[.bundle]
