@@ -200,7 +200,7 @@ return require('packer').startup(function(use)
     config = (function()
       local ts = require 'nvim-treesitter.configs'
       ts.setup {
-        ensure_installed = { "css", "dockerfile", "javascript", "json", "html", "lua", "markdown", "python", "ruby", "scss", "bash" },
+        ensure_installed = { "css", "dockerfile", "javascript", "json", "html", "lua", "markdown", "python", "ruby", "scss", "bash", "hcl" },
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
