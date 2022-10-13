@@ -100,12 +100,12 @@ return require('packer').startup(function(use)
       vim.fn['ddc#custom#patch_global']('sourceOptions', { ['nvim-lsp'] = { mark = '[LSP]' }})
       vim.fn['ddc#custom#patch_global']('sourceOptions', { ['treesitter'] = { mark = '[TS]' }})
       vim.fn['ddc#custom#patch_global']('sourceOptions', { ['git-branch'] = { mark = '[GB]' }})
-      vim.fn['ddc#custom#patch_global']('sourceOptions', { ['buffer'] = { mark = '[B]' }})
       vim.fn['ddc#custom#patch_global']('sourceParams', { ['buffer'] = {
-              requireSameFiletype = false,
-              fromAltBuf = true,
-              forceCollect = true,
-              bufNameStyle = 'basename',
+        mark = '[B]',
+        requireSameFiletype = false,
+        fromAltBuf = true,
+        forceCollect = true,
+        bufNameStyle = 'basename',
       }})
       vim.fn['ddc#enable']()
     end)
