@@ -19,6 +19,8 @@ https://*.agent.wt.d.yux.ch:443 {
   reverse_proxy /packs/* http://host.docker.internal:3035
   reverse_proxy /sockjs-node* http://host.docker.internal:3035
   reverse_proxy /* http://host.docker.internal:3310
+
+  reverse_proxy /chat http://host.docker.internal:18443
 }
 
 # https://chat.wt.d.yux.ch:443 {
