@@ -59,9 +59,6 @@ return require('packer').startup(function(use)
   -- Git
   use {
     'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
     config = (function()
       require('gitsigns').setup {
         current_line_blame = true,
@@ -85,6 +82,7 @@ return require('packer').startup(function(use)
     'Shougo/ddc.vim',
     requires = {
       'vim-denops/denops.vim',
+      'Shougo/ddc-ui-native',
       'tani/ddc-git',
       'matsui54/ddc-buffer',
       'delphinus/ddc-treesitter',
@@ -95,6 +93,7 @@ return require('packer').startup(function(use)
     config = (function()
       vim.fn['ddc#custom#patch_global']('sources', {'nvim-lsp', 'treesitter', 'buffer', 'git-branch'})
       vim.fn['ddc#custom#patch_global']('completionMode', 'inline')
+      vim.fn['ddc#custom#patch_global']('ui', 'native')
       vim.fn['ddc#custom#patch_global']('sourceOptions', { _ = { matchers = {'matcher_head'}}})
       vim.fn['ddc#custom#patch_global']('sourceOptions', { _ = { sorters = {'sorter_rank'}}})
       vim.fn['ddc#custom#patch_global']('sourceOptions', { ['nvim-lsp'] = { mark = '[LSP]' }})
@@ -111,9 +110,9 @@ return require('packer').startup(function(use)
     end)
   }
 
-  map('i', '<TAB>', "ddc#map#pum_visible() ? '<C-n>' : ddc#insert_item(0)", {expr = true})
-  map('i', '<C-n>', [[ddc#map#pum_visible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()]], {expr = true})
-  map('i', '<S-TAB>', "ddc#map#pum_visible() ? '<C-p>' : '<C-h>'")
+  map('i', '<TAB>', "pumvisible() ? '<C-n>' : ddc#insert_item(0)", {expr = true})
+  -- map('i', '<C-n>', [[pumvisible() ? '<C-n>' : (col('.') <= 1 <Bar><Bar> getline('.')[col('.') - 2] =~# '\s') ? '<TAB>' : ddc#map#manual_complete()]], {expr = true})
+  map('i', '<S-TAB>', "pumvisible() ? '<C-p>' : '<C-h>'", {expr = true})
 
   -- Misc
   opt.number = true
